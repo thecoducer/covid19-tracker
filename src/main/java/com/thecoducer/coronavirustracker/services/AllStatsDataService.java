@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thecoducer.coronavirustracker.models.AllStats;
@@ -22,6 +23,8 @@ public class AllStatsDataService {
 	public void fetchAllStats() throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
 		
 		ObjectMapper objectMapper = new ObjectMapper();
+		
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         //read json file and convert to customer object
         AllStats newAllStats = objectMapper.readValue(new URL("https://corona.lmao.ninja/all"), AllStats.class);

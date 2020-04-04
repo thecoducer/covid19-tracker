@@ -8,8 +8,21 @@ public class AllStats {
 	private String active;
 	private String affectedCountries;
 	
+	//later added on occurence of error
+//	private String todayCases;
+//	private String todayDeaths;
+//	private String casesPerOneMillion;
+//	private String deathsPerOneMillion;
+//	private
 	
 	
+	
+//	public String getTodayCases() {
+//		return todayCases;
+//	}
+//	public void setTodayCases(String todayCases) {
+//		this.todayCases = todayCases;
+//	}
 	public String getCases() {
 		return cases;
 	}

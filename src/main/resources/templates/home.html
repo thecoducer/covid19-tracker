@@ -79,7 +79,7 @@
 		<div class="container">
 
 			<!-- Main jumbotron for a primary marketing message or call to action -->
-			<div class="jumbotron container">
+			<div class="jumbotron container" id="jumbo_totals">
 
 				<div class="row">
 
@@ -155,6 +155,25 @@
 						</div>
 					</div>
 
+
+					<!-- <div class="jumbotron container" id="jumbo_timeseries">
+
+						<div class="row">
+		
+							<div class="col">
+								<p class="display-3" id="total_counter" th:text="${totalIndiaCases}"></p>
+								<p class="lead" id="total_p">Total number of cases in India</p>
+							</div>
+		
+							<div class="col">
+								<p class="display-3" id="total_counter" th:text="${totalWorldCases}"></p>
+								<p class="lead" id="total_p">Total number of cases in the World</p>
+							</div>
+		
+						</div>
+					</div> -->
+
+
 					<div class="table-responsive" id="mytable">
 						<table class="table table-hover" id="table_id">
 							<thead id="table-header">
@@ -164,9 +183,9 @@
 									<th>New cases</th>
 									<th>Active cases</th>
 									<th>Total Deaths</th>
+									<th>Death Rate</th>
 									<th>Total Recovered</th>
 									<th>Recovered Rate</th>
-									<th>Death Rate</th>
 									<th>% of cases</th>
 								</tr>
 							</thead>
@@ -177,12 +196,12 @@
 									<td class="text-right" th:text="${indiaStat.delta_Confirmed}">0</td>
 									<td class="text-right" th:text="${indiaStat.active}">0</td>
 									<td class="text-right" th:text="${indiaStat.deaths}">0</td>
+									<td class="text-right" th:text="${indiaStat.deathRate}+'%'"></td>
 									<td class="text-right" th:text="${indiaStat.recovered}">0</td>
 									<!-- <td th:text="${#numbers.formatDecimal(indiaStat.recoveredRate, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td>
 									<td th:text="${#numbers.formatDecimal(indiaStat.deathRate, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td>
 									<td th:text="${#numbers.formatDecimal(indiaStat.casePercentage, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td> -->
 									<td class="text-right" th:text="${indiaStat.recoveredRate}+'%'"></td>
-									<td class="text-right" th:text="${indiaStat.deathRate}+'%'"></td>
 									<td class="text-right" th:text="${indiaStat.casePercentage}+'%'"></td>
 								</tr>
 							</tbody>
@@ -248,10 +267,10 @@
 									<th>New cases</th>
 									<th>Active cases</th>
 									<th>Total Deaths</th>
+									<th>Death Rate</th>
 									<th>New Deaths</th>
 									<th>Total Recovered</th>
 									<th>Recovered Rate</th>
-									<th>Death Rate</th>
 									<th>% of cases</th>
 								</tr>
 							</thead>
@@ -265,13 +284,13 @@
 									<td class="text-right" th:text="${worldStat.todayCases}">0</td>
 									<td class="text-right" th:text="${worldStat.active}">0</td>
 									<td class="text-right" th:text="${worldStat.deaths}">0</td>
+									<td class="text-right" th:text="${worldStat.deathRate}+'%'"></td>
 									<td class="text-right" th:text="${worldStat.todayDeaths}">0</td>
 									<td class="text-right" th:text="${worldStat.recovered}">0</td>
 									<!-- <td th:text="${#numbers.formatDecimal(worldStat.recoveredRate, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td>
 									<td th:text="${#numbers.formatDecimal(worldStat.deathRate, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td>
 									<td th:text="${#numbers.formatDecimal(worldStat.casePercentage, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td> -->
 									<td class="text-right" th:text="${worldStat.recoveredRate}+'%'"></td>
-									<td class="text-right" th:text="${worldStat.deathRate}+'%'"></td>
 									<td class="text-right" th:text="${worldStat.casePercentage}+'%'"></td>
 								</tr>
 							</tbody>

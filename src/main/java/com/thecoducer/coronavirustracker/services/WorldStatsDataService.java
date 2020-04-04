@@ -91,7 +91,7 @@ public class WorldStatsDataService {
         	
         }
         
-        newWorldStats.remove(0);
+        //newWorldStats.remove(0);
         
         this.worldStats = newWorldStats;
         this.totalNewCasesCount = totalnewcases;

@@ -13,7 +13,7 @@ input {
     box-shadow: none;
 }
 
-.jumbotron {
+#jumbo_totals {
     background-color: #5500b1;
     padding-top: 5%;
     padding-bottom: 5%;
@@ -21,6 +21,11 @@ input {
     margin-bottom: 55px;
     color: white;
     font-family: 'Raleway', sans-serif;
+    border-radius: 0em;
+}
+
+#jumbo_timeseries {
+    background-color: #e9e7e7;
     border-radius: 0em;
 }
 
