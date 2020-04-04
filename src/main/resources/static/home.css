@@ -1,0 +1,269 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+
+body {
+    padding-top: 3.5rem;
+    font-family: 'Lato', sans-serif;
+}
+
+hr {
+    border-top: 1px solid white;
+}
+
+input {
+    box-shadow: none;
+}
+
+.jumbotron {
+    background-color: #5500b1;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-top: 4%;
+    margin-bottom: 55px;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    border-radius: 0em;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    /* Set the fixed height of the footer here */
+    line-height: 60px;
+    /* Vertically center the text there */
+    background-color: #e9e7e7;
+}
+
+#mynavbar {
+    background-color: #151E3F;
+    font-family: 'Raleway', sans-serif;
+}
+
+#totalnewcases {
+    font-size: 18px;
+}
+
+#table-header {
+    color: white;
+    background-color: #3b3c44;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+#mytable {
+    font-size: 15px;
+    margin-bottom: 10%;
+    border-radius: 0em;
+}
+
+#navpills {
+    margin-bottom: 50px;
+    border-radius: 0em;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.card {
+    font-family: 'Raleway', sans-serif;
+    border-radius: 0em;
+    border: none;
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+}
+
+#card-container {
+    margin-bottom: 50px;
+}
+
+.card-title {
+    font-size: 30px;
+}
+
+.card-text {
+    font-size: 18px;
+}
+
+#newcases {
+    background-color: #4a7afc;
+    color: white;
+}
+
+#activecases {
+    background-color: #be00af;
+    color: white;
+}
+
+#recoveredcases {
+    background-color: #19af47;
+    color: white;
+}
+
+#deaths {
+    background-color: #fc3e3e;
+    color: white;
+}
+
+#newdeaths {
+    background-color: #f5814c;
+    color: white;
+}
+
+#affectedCountriesh3 {
+    font-family: 'Raleway', sans-serif;
+    color: #8a8a8a;
+    margin-bottom: 25px;
+    margin-top: 50px;
+}
+
+#total_p {
+    font-size: 20px;
+}
+
+#total_counter {
+    font-size: 72px;
+}
+
+div.dataTables_filter input {
+    width: auto;
+}
+
+/* 
+##Device = Desktops
+##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+    #mytable {
+        font-size: 15px;
+        margin-bottom: 10%;
+        border-radius: 0em;
+    }
+    tbody {
+        display: block;
+        height: 500px;
+        overflow: auto;
+    }
+    thead, tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+}
+
+/* 
+##Device = Laptops, Desktops
+##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    #mytable {
+        font-size: 15px;
+        margin-bottom: 10%;
+        border-radius: 0em;
+    }
+    tbody {
+        display: block;
+        height: 400px;
+        overflow: auto;
+    }
+    thead, tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+}
+
+/* 
+##Device = Tablets, Ipads (portrait)
+##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    #mytable {
+        font-size: 15px;
+        margin-bottom: 20%;
+        border-radius: 0em;
+    }
+    tbody {
+        display: block;
+        height: 300px;
+        overflow: auto;
+    }
+    thead, tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+}
+
+/* 
+##Device = Tablets, Ipads (landscape)
+##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    #mytable {
+        font-size: 15px;
+        margin-bottom: 10%;
+        border-radius: 0em;
+    }
+    tbody {
+        display: block;
+        height: 400px;
+        overflow: auto;
+    }
+    thead, tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+}
+
+/* 
+##Device = Low Resolution Tablets, Mobiles (Landscape)
+##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+    #mytable {
+        font-size: 15px;
+        margin-bottom: 20%;
+        border-radius: 0em;
+    }
+}
+
+/* 
+##Device = Most of the Smartphones Mobiles (Portrait)
+##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+    #mytable {
+        font-size: 15px;
+        margin-bottom: 20%;
+        border-radius: 0em;
+    }
+}

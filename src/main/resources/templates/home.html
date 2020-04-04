@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>COVID-19 Tracker</title>
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="home.css" />
+
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="mynavbar">
+		<a class="navbar-brand" href="#">COVID-19 Tracker</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+
+				</li>
+				<li class="nav-item">
+
+				</li>
+				<li class="nav-item">
+
+				</li>
+				<li class="nav-item dropdown">
+
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+
+					</div>
+				</li>
+			</ul>
+			<span class="my-2 my-lg-0">
+				<a class="btn btn-light my-2 my-sm-0" href="https://github.com/thecoducer/covid19-tracker"
+					target="_blank">Fork on GitHub</a>
+			</span>
+		</div>
+	</nav>
+
+	<main role="main">
+
+		<div class="container">
+
+			<!-- Main jumbotron for a primary marketing message or call to action -->
+			<div class="jumbotron container">
+
+				<div class="row">
+
+					<div class="col">
+						<p class="display-3" id="total_counter" th:text="${totalIndiaCases}"></p>
+						<p class="lead" id="total_p">Total number of cases in India</p>
+					</div>
+
+					<div class="col">
+						<p class="display-3" id="total_counter" th:text="${totalWorldCases}"></p>
+						<p class="lead" id="total_p">Total number of cases in the World</p>
+					</div>
+
+				</div>
+			</div>
+
+
+			<nav id="navpills">
+				<div class="nav nav-pills " id="nav-tab" role="tablist">
+					<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+						aria-controls="nav-home" aria-selected="true">India</a>
+
+					<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+						aria-controls="nav-profile" aria-selected="false">World</a>
+				</div>
+			</nav>
+
+
+
+
+			<div class="tab-content" id="nav-tabContent">
+
+				<!-- INDIA STATS -->
+				<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+					<div class="container" id="card-container">
+						<div class="row">
+							<div class="card col-sm" style="width: 18rem;">
+								<div class="card-body" id="newcases">
+									<p class="card-title" th:text="${totalIndiaNewCases}"></p>
+									<p class="card-text">new cases today</p>
+								</div>
+							</div>
+
+							<div class="card col-sm" style="width: 18rem;">
+								<div class="card-body" id="activecases">
+									<p class="card-title" th:text="${totalIndiaActiveCases}"></p>
+									<p class="card-text">active cases in total</p>
+								</div>
+							</div>
+
+							<div class="card col-sm" style="width: 18rem;">
+								<div class="card-body" id="recoveredcases">
+									<p class="card-title" th:text="${totalIndiaRecoveredCases}"></p>
+									<p class="card-text">recovered cases in total</p>
+								</div>
+							</div>
+
+							<div class="card col-sm" style="width: 18rem;">
+								<div class="card-body" id="newdeaths">
+									<p class="card-title" th:text="${totalIndiaNewDeaths}"></p>
+									<p class="card-text">died today</p>
+								</div>
+							</div>
+
+							<div class="card col-sm" style="width: 18rem;">
+								<div class="card-body" id="deaths">
+									<p class="card-title" th:text="${totalIndiaDeaths}"></p>
+									<p class="card-text">deaths in total</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="table-responsive" id="mytable">
+						<table class="table table-hover" id="table_id">
+							<thead id="table-header">
+								<tr>
+									<th>State</th>
+									<th>Total cases</th>
+									<th>New cases</th>
+									<th>Active cases</th>
+									<th>Total Deaths</th>
+									<th>Total Recovered</th>
+									<th>Recovered Rate</th>
+									<th>Death Rate</th>
+									<th>% of cases</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="indiaStat : ${indiaStats}">
+									<td th:text="${indiaStat.state}"></td>
+									<td class="text-right" th:text="${indiaStat.confirmed}">0</td>
+									<td class="text-right" th:text="${indiaStat.delta_Confirmed}">0</td>
+									<td class="text-right" th:text="${indiaStat.active}">0</td>
+									<td class="text-right" th:text="${indiaStat.deaths}">0</td>
+									<td class="text-right" th:text="${indiaStat.recovered}">0</td>
+									<!-- <td th:text="${#numbers.formatDecimal(indiaStat.recoveredRate, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td>
+									<td th:text="${#numbers.formatDecimal(indiaStat.deathRate, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td>
+									<td th:text="${#numbers.formatDecimal(indiaStat.casePercentage, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td> -->
+									<td class="text-right" th:text="${indiaStat.recoveredRate}+'%'"></td>
+									<td class="text-right" th:text="${indiaStat.deathRate}+'%'"></td>
+									<td class="text-right" th:text="${indiaStat.casePercentage}+'%'"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+
+
+				<!-- WORLD STATS -->
+				<div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+					<div class="container" id="card-container">
+						<div class="row">
+							<div class="card col-sm" style="width: 18rem;">
+								<div class="card-body" id="newcases">
+									<p class="card-title" th:text="${totalNewCases}"></p>
+									<p class="card-text">new cases today</p>
+								</div>
+							</div>
+
+							<div class="card col-sm" style="width: 18rem;">
+								<div class="card-body" id="activecases">
+									<p class="card-title" th:text="${totalActiveCases}"></p>
+									<p class="card-text">active cases in total</p>
+								</div>
+							</div>
+
+							<div class="card col-sm" style="width: 18rem;">
+								<div class="card-body" id="recoveredcases">
+									<p class="card-title" th:text="${totalRecoveredCases}"></p>
+									<p class="card-text">recovered cases in total</p>
+								</div>
+							</div>
+
+							<div class="card col-sm" style="width: 18rem;">
+								<div class="card-body" id="newdeaths">
+									<p class="card-title" th:text="${totalNewDeathsCount}"></p>
+									<p class="card-text">died today</p>
+								</div>
+							</div>
+
+							<div class="card col-sm" style="width: 18rem;">
+								<div class="card-body" id="deaths">
+									<p class="card-title" th:text="${totalDeathCount}"></p>
+									<p class="card-text">deaths in total</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<h3 class="text-center" id="affectedCountriesh3">
+						<span th:text="${affectedCountries}"></span>
+						countries affected
+					</h3>
+
+					<div class="table-responsive" id="mytable">
+						<table class="table table-hover" id="table_id2">
+							<thead id="table-header">
+								<tr>
+									<th>Country</th>
+									<th>Total cases</th>
+									<th>New cases</th>
+									<th>Active cases</th>
+									<th>Total Deaths</th>
+									<th>New Deaths</th>
+									<th>Total Recovered</th>
+									<th>Recovered Rate</th>
+									<th>Death Rate</th>
+									<th>% of cases</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="worldStat : ${worldStats}">
+									<td>
+										<span th:text="${worldStat.country}"></span> &nbsp; <img
+											th:src="${worldStat.countryInfo.flag}" width="20" height="20">
+									</td>
+									<td class="text-right" th:text="${worldStat.cases}">0</td>
+									<td class="text-right" th:text="${worldStat.todayCases}">0</td>
+									<td class="text-right" th:text="${worldStat.active}">0</td>
+									<td class="text-right" th:text="${worldStat.deaths}">0</td>
+									<td class="text-right" th:text="${worldStat.todayDeaths}">0</td>
+									<td class="text-right" th:text="${worldStat.recovered}">0</td>
+									<!-- <td th:text="${#numbers.formatDecimal(worldStat.recoveredRate, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td>
+									<td th:text="${#numbers.formatDecimal(worldStat.deathRate, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td>
+									<td th:text="${#numbers.formatDecimal(worldStat.casePercentage, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td> -->
+									<td class="text-right" th:text="${worldStat.recoveredRate}+'%'"></td>
+									<td class="text-right" th:text="${worldStat.deathRate}+'%'"></td>
+									<td class="text-right" th:text="${worldStat.casePercentage}+'%'"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</main>
+
+	<footer class="footer" style="margin-top: 50px; margin-bottom: -20px;">
+		<div class="text-center">
+			Made with <i class="icon ion-heart"></i> by <a href="https://thecoducer.github.io/" target="_blank">The
+				Coducer</a>
+		</div>
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+
+	<script>
+		window.jQuery
+			|| document
+				.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')
+	</script>
+
+	<script src="/docs/4.4/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+		crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+	<script>
+		$(document).ready(function () {
+			$('#table_id').dataTable();
+		});
+
+		$(document).ready(function () {
+			$('#table_id2').dataTable();
+		});
+
+		$('#table_id').dataTable({
+			"bInfo": false,
+			"paging": false,
+			"responsive": true,
+			language: {
+				searchPlaceholder: "Search state",
+				search: ""
+			},
+			"order": []
+		});
+
+		$('#table_id2').dataTable({
+			"bInfo": false,
+			"paging": false,
+			"responsive": true,
+			language: {
+				searchPlaceholder: "Search country",
+				search: ""
+			},
+			"order": []
+		});
+
+		$('div.dataTables_filter input').addClass('form-control');
+
+	</script>
+
+</body>
+
+</html>
