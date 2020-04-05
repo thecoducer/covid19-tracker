@@ -9,9 +9,7 @@ hr {
     border-top: 1px solid white;
 }
 
-#seriesgraph {
-    
-}
+#seriesgraph {}
 
 input {
     box-shadow: none;
@@ -159,6 +157,28 @@ div.dataTables_filter input {
     width: auto;
 }
 
+#totalIndvTestd, #totalSampTestd {
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+#samples_h3 {
+    font-family: 'Raleway', sans-serif;
+    color: #8a8a8a;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#individuals_h3 {
+    font-family: 'Raleway', sans-serif;
+    color: #8580ff;
+    margin-bottom: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 /* 
 ##Device = Desktops
 ##Screen = 1281px to higher resolution desktops
@@ -262,6 +282,15 @@ div.dataTables_filter input {
         margin-bottom: 20%;
         border-radius: 0em;
     }
+
+    #samples_h3 {
+        font-family: 'Raleway', sans-serif;
+        color: #8a8a8a;
+        margin-bottom: 28px;
+        margin-top: 50px;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
 }
 
 /* 
@@ -274,5 +303,14 @@ div.dataTables_filter input {
         font-size: 15px;
         margin-bottom: 20%;
         border-radius: 0em;
+    }
+
+    #samples_h3 {
+        font-family: 'Raleway', sans-serif;
+        color: #8a8a8a;
+        margin-bottom: 28px;
+        margin-top: 50px;
+        margin-left: 10%;
+        margin-right: 10%;
     }
 }

@@ -10,9 +10,11 @@ import java.util.List;
 
 import com.thecoducer.coronavirustracker.models.AllStats;
 import com.thecoducer.coronavirustracker.models.IndiaStats;
+import com.thecoducer.coronavirustracker.models.TestedStats;
 import com.thecoducer.coronavirustracker.models.WorldStats;
 import com.thecoducer.coronavirustracker.services.AllStatsDataService;
 import com.thecoducer.coronavirustracker.services.IndiaStatsDataService;
+import com.thecoducer.coronavirustracker.services.IndiaTestedDataService;
 import com.thecoducer.coronavirustracker.services.IndiaTotalCountersDataService;
 import com.thecoducer.coronavirustracker.services.WorldStatsDataService;
 
@@ -34,6 +36,9 @@ public class HomeController {
 	@Autowired
 	IndiaTotalCountersDataService indiaTotalCounterDataService;
 	
+	@Autowired
+	IndiaTestedDataService indiaTestedDataService;
+	
 	@GetMapping("/")
 	public String home(Model model) {
 		
@@ -44,6 +49,8 @@ public class HomeController {
 		List<WorldStats> worldStats = worldStatsDataService.getWorldStats();
 		
 		List<IndiaStats> indiaStats = indiaStatsDataService.getIndiaStats();
+		
+		TestedStats testStats = indiaTestedDataService.getTestStats();
 		
 		
 		model.addAttribute("worldStats", worldStats);
@@ -71,6 +78,22 @@ public class HomeController {
 		model.addAttribute("totalIndiaNewRecoveredCases", totalIndiaNewRecoveredCases);
 		model.addAttribute("totalIndiaNewDeaths", totalIndiaNewDeaths);
 		model.addAttribute("totalIndiaDeaths", totalIndiaDeaths);
+		
+		String sourceIndividualTested = testStats.getSourceIndividualTested();
+		String sourceSamplesTested = testStats.getSourceSamplesTested();
+		
+		String timestampIndividual = testStats.getTimestampIndividual();
+		String timestampSamples = testStats.getTimestampSamples();
+		
+		String totalIndividualTested = numberFormat.format(Long.parseLong(testStats.getTotalIndividualTested()));
+		String totalSamplesTested = numberFormat.format(Long.parseLong(testStats.getTotalSamplesTested()));
+		
+		model.addAttribute("sourceIndividualTested", sourceIndividualTested);
+		model.addAttribute("sourceSamplesTested", sourceSamplesTested);
+		model.addAttribute("timestampIndividual", timestampIndividual);
+		model.addAttribute("timestampSamples", timestampSamples);
+		model.addAttribute("totalIndividualTested", totalIndividualTested);
+		model.addAttribute("totalSamplesTested", totalSamplesTested);
 		
 		return "home";
 	}

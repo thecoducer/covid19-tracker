@@ -165,6 +165,17 @@
 					</div> -->
 
 
+					<h3 class="text-center" id="samples_h3">
+						<span th:text="${totalSamplesTested}"></span>
+						samples tested till <span th:text="${timestampSamples}"></span>
+					</h3>
+
+
+					<h3 class="text-center" id="individuals_h3">
+						<span th:text="${totalIndividualTested}"></span>
+						individuals tested till <span th:text="${timestampIndividual}"></span>
+					</h3>
+
 					<div class="table-responsive" id="mytable">
 						<table class="table table-hover" id="table_id">
 							<thead id="table-header">
