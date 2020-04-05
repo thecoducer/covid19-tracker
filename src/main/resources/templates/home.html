@@ -156,13 +156,19 @@
 					</div>
 
 
-					<!-- <div class="jumbotron container" id="jumbo_timeseries">
+					<div class="container" id="container_timeseries">
 
-						<div id="seriesgraph">
+						<div class="row">
+
+							<div class="col-md" id="seriesgraph">
+							</div>
+
+							<!-- <div class="col-md" id="agechart">
+							</div> -->
 
 						</div>
 
-					</div> -->
+					</div>
 
 
 					<h3 class="text-center" id="samples_h3">
@@ -357,73 +363,98 @@
 	</script>
 
 
-	<!-- <script type="text/javascript">
+	<script type="text/javascript">
 
 		$(document).ready(
 			function () {
 				$.ajax({
 					url: "/getseries",
 					success: function (result) {
-						var yearDtls = [];
-						var countDtls = [];
-						console.log(result);
+
+						var dailyConfirmed = [];
+						var dailyDeceased = [];
+						var dailyRecovered = [];
+
 						Object.keys(result).forEach(
 							function (key) {
-								yearDtls.push(key);
-								countDtls.push(result[key]);
+
+								dailyConfirmed.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyConfirmed)]);
+
+								dailyDeceased.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyDeceased)]);
+
+								dailyRecovered.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyRecovered)]);
 							});
 
-						var yearDt = [];
-						var countDt = [];
-						console.log(result);
-						Object.keys(result).forEach(
-							function (key) {
-								yearDt.push(key);
-								countDt.push(result[key]+5);
-							});
+						console.log(dailyConfirmed);
+						console.log(dailyDeceased);
+						console.log(dailyRecovered);
 
-						drawChart(yearDtls, countDtls, countDt);
-						
+						drawChart(dailyConfirmed, dailyDeceased, dailyRecovered);
+
 					}
 				});
 			});
 
-		function drawChart(year, viewCounts, countDt) {
+		function drawChart(dailyConfirmed, dailyDeceased, dailyRecovered) {
 			Highcharts.chart('seriesgraph', {
 				plotOptions: {
 					series: {
-						
-						pointStart: 2010
+
+						pointStart: Date.UTC(2020, 0, 30),
+						pointInterval: 1000 * 3600 * 24
 					}
 				},
 				title: {
-					text: 'Blog Page view count'
+					text: ''
 				},
-				xAxis: [{
-					title: {
-						text: 'Year'
-					},
-					categories: year
-				}],
+				xAxis: {
+					type: 'datetime',
+				},
 				yAxis: [{
 					className: 'highcharts-color-0',
 					title: {
-						text: 'Page View Count'
+						text: ''
 					}
 				}],
+				tooltip: {
+					crosshairs: true,
+					shared: true,
+					valueSuffix: '',
+					xDateFormat: '%A, %b %e, %Y'
+				},
 				series: [{
-					name: 'mayukh',
-					data: viewCounts,
-					type: 'line'
+					name: 'Confirmed',
+					data: dailyConfirmed,
+					type: 'line',
+					color: '#4830ff'
 				},
 				{
-					name: 'komal',
-					data: countDt,
-					type: 'line'
+					name: 'Deceased',
+					data: dailyDeceased,
+					type: 'line',
+					color: '#ff0000'
+				},
+				{
+					name: 'Recovered',
+					data: dailyRecovered,
+					type: 'line',
+					color: '#29ff00'
 				}]
 			});
 		}
-	</script> -->
+	</script>
+
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-104755350-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-104755350-2');
+	</script>
+
 
 </body>
 

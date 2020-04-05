@@ -37,10 +37,9 @@ public class IndiaTestedDataService {
 			JSONObject tested_obj = (JSONObject) tested.get(i);
 			
 			String totIndvTestd = (String) tested_obj.get("totalindividualstested");
-			
-			System.out.println(totIndvTestd);
 					
 			if(totIndvTestd.equals("") == false && flag1 == 0) {
+				
 				newTestStats.setTotalIndividualTested(totIndvTestd);
 				newTestStats.setSourceIndividualTested((String) tested_obj.get("source"));
 				newTestStats.setTimestampIndividual((String) tested_obj.get("updatetimestamp"));
@@ -51,6 +50,7 @@ public class IndiaTestedDataService {
 			String totSampTestd = (String) tested_obj.get("totalsamplestested");
 						
 			if(totSampTestd.equals("") == false && flag2 == 0) {
+				
 				newTestStats.setTotalSamplesTested(totSampTestd);
 				newTestStats.setSourceSamplesTested((String) tested_obj.get("source"));
 				newTestStats.setTimestampSamples((String) tested_obj.get("updatetimestamp"));
