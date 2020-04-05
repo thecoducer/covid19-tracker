@@ -40,9 +40,12 @@ public class IndiaTestedDataService {
 					
 			if(totIndvTestd.equals("") == false && flag1 == 0) {
 				
-				newTestStats.setTotalIndividualTested(totIndvTestd);
-				newTestStats.setSourceIndividualTested((String) tested_obj.get("source"));
-				newTestStats.setTimestampIndividual((String) tested_obj.get("updatetimestamp"));
+				String so = (String) tested_obj.get("source");
+				String ts = (String) tested_obj.get("updatetimestamp");
+				
+				newTestStats.setTotalIndividualTested(totIndvTestd.replaceAll("\\p{Punct}",""));
+				newTestStats.setSourceIndividualTested(so);
+				newTestStats.setTimestampIndividual(ts);
 				
 				flag1 = 1;
 			}
@@ -51,9 +54,12 @@ public class IndiaTestedDataService {
 						
 			if(totSampTestd.equals("") == false && flag2 == 0) {
 				
-				newTestStats.setTotalSamplesTested(totSampTestd);
-				newTestStats.setSourceSamplesTested((String) tested_obj.get("source"));
-				newTestStats.setTimestampSamples((String) tested_obj.get("updatetimestamp"));
+				String sa = (String) tested_obj.get("source");
+				String tsa = (String) tested_obj.get("updatetimestamp");
+				
+				newTestStats.setTotalSamplesTested(totSampTestd.replaceAll("\\p{Punct}",""));
+				newTestStats.setSourceSamplesTested(sa);
+				newTestStats.setTimestampSamples(tsa);
 				
 				flag2 = 1;
 			}
