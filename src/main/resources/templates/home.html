@@ -21,10 +21,6 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 		crossorigin="anonymous"></script>
@@ -33,10 +29,14 @@
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css" />
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+	<link rel="stylesheet" type="text/css" href="css/home.css" />
 
-	<link rel="stylesheet" type="text/css" href="home.css" />
 
 
 </head>
@@ -158,19 +158,10 @@
 
 					<!-- <div class="jumbotron container" id="jumbo_timeseries">
 
-						<div class="row">
-		
-							<div class="col">
-								<p class="display-3" id="total_counter" th:text="${totalIndiaCases}"></p>
-								<p class="lead" id="total_p">Total number of cases in India</p>
-							</div>
-		
-							<div class="col">
-								<p class="display-3" id="total_counter" th:text="${totalWorldCases}"></p>
-								<p class="lead" id="total_p">Total number of cases in the World</p>
-							</div>
-		
+						<div id="seriesgraph">
+
 						</div>
+
 					</div> -->
 
 
@@ -309,15 +300,6 @@
 				Coducer</a>
 		</div>
 	</footer>
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-		crossorigin="anonymous"></script>
-
-	<script>
-		window.jQuery
-			|| document
-				.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')
-	</script>
 
 	<script src="/docs/4.4/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
@@ -362,6 +344,75 @@
 		$('div.dataTables_filter input').addClass('form-control');
 
 	</script>
+
+
+	<!-- <script type="text/javascript">
+
+		$(document).ready(
+			function () {
+				$.ajax({
+					url: "/getseries",
+					success: function (result) {
+						var yearDtls = [];
+						var countDtls = [];
+						console.log(result);
+						Object.keys(result).forEach(
+							function (key) {
+								yearDtls.push(key);
+								countDtls.push(result[key]);
+							});
+
+						var yearDt = [];
+						var countDt = [];
+						console.log(result);
+						Object.keys(result).forEach(
+							function (key) {
+								yearDt.push(key);
+								countDt.push(result[key]+5);
+							});
+
+						drawChart(yearDtls, countDtls, countDt);
+						
+					}
+				});
+			});
+
+		function drawChart(year, viewCounts, countDt) {
+			Highcharts.chart('seriesgraph', {
+				plotOptions: {
+					series: {
+						
+						pointStart: 2010
+					}
+				},
+				title: {
+					text: 'Blog Page view count'
+				},
+				xAxis: [{
+					title: {
+						text: 'Year'
+					},
+					categories: year
+				}],
+				yAxis: [{
+					className: 'highcharts-color-0',
+					title: {
+						text: 'Page View Count'
+					}
+				}],
+				series: [{
+					name: 'mayukh',
+					data: viewCounts,
+					type: 'line'
+				},
+				{
+					name: 'komal',
+					data: countDt,
+					type: 'line'
+				}]
+			});
+		}
+	</script> -->
 
 </body>
 

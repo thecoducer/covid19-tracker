@@ -30,20 +30,20 @@ public class IndiaTotalCountersDataService {
 		JSONObject jo = (JSONObject) new JSONParser()
 				.parse(IOUtils.toString(new URL("https://api.covid19india.org/data.json").openStream()));
 
-		JSONArray key_values = (JSONArray) jo.get("key_values");
+		//JSONArray key_values = (JSONArray) jo.get("key_values");
 
 		JSONArray statewise = (JSONArray) jo.get("statewise");
 
-		JSONObject kv_obj = (JSONObject) key_values.get(0);
+		//JSONObject kv_obj = (JSONObject) key_values.get(0);
 
 		JSONObject first_s_obj = (JSONObject) statewise.get(0);
 
 		this.totalCases = (String) first_s_obj.get("confirmed");
-		this.totalNewCases = (String) kv_obj.get("confirmeddelta");
+		this.totalNewCases = (String) first_s_obj.get("deltaconfirmed");
 		this.totalActiveCases = (String) first_s_obj.get("active");
 		this.totalRecoveredCases = (String) first_s_obj.get("recovered");
-		this.totalNewRecoveredCases = (String) kv_obj.get("recovereddelta");
-		this.totalNewDeaths = (String) kv_obj.get("deceaseddelta");
+		this.totalNewRecoveredCases = (String) first_s_obj.get("deltarecovered");
+		this.totalNewDeaths = (String) first_s_obj.get("deltadeaths");
 		this.totalDeaths = (String) first_s_obj.get("deaths");
 	}
 

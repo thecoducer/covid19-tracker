@@ -52,13 +52,17 @@ public class IndiaStatsDataService {
 			stats.setRecovered((String) s_obj.get("recovered"));
 			stats.setState((String) s_obj.get("state"));
 			
-			JSONObject delta = (JSONObject) s_obj.get("delta");
+			//JSONObject delta = (JSONObject) s_obj.get("delta");
 			
 			//stats.setDelta_Active(String.valueOf((long) delta.get("active")));
 			
-			stats.setDelta_Confirmed(String.valueOf((long) delta.get("confirmed")));
-			stats.setDelta_Deaths(String.valueOf((long) delta.get("deaths")));
-			stats.setDelta_Recovered(String.valueOf((long) delta.get("recovered")));
+//			stats.setDelta_Confirmed(String.valueOf((long) delta.get("confirmed")));
+//			stats.setDelta_Deaths(String.valueOf((long) delta.get("deaths")));
+//			stats.setDelta_Recovered(String.valueOf((long) delta.get("recovered")));
+			
+			stats.setDelta_Confirmed((String) s_obj.get("deltaconfirmed"));
+			stats.setDelta_Deaths((String) s_obj.get("deltadeaths"));
+			stats.setDelta_Recovered((String) s_obj.get("deltarecovered"));
 			
 			DecimalFormat df = new DecimalFormat("#.##");
 			
