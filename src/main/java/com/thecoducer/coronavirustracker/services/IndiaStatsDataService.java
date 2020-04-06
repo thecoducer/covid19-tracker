@@ -46,19 +46,16 @@ public class IndiaStatsDataService {
 			
 			JSONObject s_obj = (JSONObject) s;
 			
-			stats.setActive((String) s_obj.get("active"));
-			stats.setConfirmed((String) s_obj.get("confirmed"));
-			stats.setDeaths((String) s_obj.get("deaths"));
-			stats.setRecovered((String) s_obj.get("recovered"));
+			String active = (String) s_obj.get("active");
+			String confirmed = (String) s_obj.get("confirmed");
+			String deaths = (String) s_obj.get("deaths");
+			String recovered = (String) s_obj.get("recovered");
+			
+			stats.setActive(setHyphenIfZero(active));
+			stats.setConfirmed(setHyphenIfZero(confirmed));
+			stats.setDeaths(setHyphenIfZero(deaths));
+			stats.setRecovered(setHyphenIfZero(recovered));
 			stats.setState((String) s_obj.get("state"));
-			
-			//JSONObject delta = (JSONObject) s_obj.get("delta");
-			
-			//stats.setDelta_Active(String.valueOf((long) delta.get("active")));
-			
-//			stats.setDelta_Confirmed(String.valueOf((long) delta.get("confirmed")));
-//			stats.setDelta_Deaths(String.valueOf((long) delta.get("deaths")));
-//			stats.setDelta_Recovered(String.valueOf((long) delta.get("recovered")));
 			
 			stats.setDelta_Confirmed((String) s_obj.get("deltaconfirmed"));
 			stats.setDelta_Deaths((String) s_obj.get("deltadeaths"));
@@ -67,24 +64,24 @@ public class IndiaStatsDataService {
 			DecimalFormat df = new DecimalFormat("#.##");
 			
 			if(stats.getConfirmed().equals("0")) {
-				stats.setDeathRate("0");
-				stats.setRecoveredRate("0");
-				stats.setCasePercentage("0");
+				stats.setDeathRate("-");
+				stats.setRecoveredRate("-");
+				stats.setCasePercentage("-");
 			}else {
 				try {
 	        		double rr = (Double.parseDouble(stats.getRecovered()) / Double.parseDouble(stats.getConfirmed())) * 100;
 	        		String recoveredRate = df.format(rr);
-	        		stats.setRecoveredRate(recoveredRate);
+	        		stats.setRecoveredRate(recoveredRate+"%");
 	        	}catch (Exception e) {
-					stats.setRecoveredRate("0"); 
+					stats.setRecoveredRate("-"); 
 				}
 				
 				try {
 	        		double d = (Double.parseDouble(stats.getDeaths()) / Double.parseDouble(stats.getConfirmed())) * 100;
 	        		String deathRate = df.format(d);
-	        		stats.setDeathRate(deathRate);
+	        		stats.setDeathRate(deathRate+"%");
 	        	}catch (Exception e) {
-					stats.setDeathRate("0"); 
+					stats.setDeathRate("-"); 
 				}
 				
 				
@@ -92,9 +89,9 @@ public class IndiaStatsDataService {
 	        		double cp = (Double.parseDouble(stats.getConfirmed()) / 
 	        				Double.parseDouble(indiaTotalCounterDataService.getTotalCases())) * 100;
 	        		String casePercentage = df.format(cp);
-	        		stats.setCasePercentage(casePercentage);
+	        		stats.setCasePercentage(casePercentage+"%");
 	        	}catch (Exception e) {
-					stats.setCasePercentage("0"); 
+					stats.setCasePercentage("-"); 
 				}
 			}
 			
@@ -109,6 +106,14 @@ public class IndiaStatsDataService {
 		
 		this.indiaStats = newIndiaStats;
 	
+	}
+	
+	public static String setHyphenIfZero(String str) {
+		if(str.equals("0") || str.equals("")) {
+			return "-";
+		}else {
+			return str;
+		}
 	}
 	
 

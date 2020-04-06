@@ -11,11 +11,11 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"> -->
 
-	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Karla|Montserrat&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" /> -->
 
 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
 
@@ -29,13 +29,17 @@
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css" />
+	<!-- <link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css" />
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 	<script src="https://code.highcharts.com/modules/export-data.js"></script>
-	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
 
-	<link rel="stylesheet" type="text/css" href="css/home.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/8.0.4/highcharts.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/jquery.dataTables.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/css/home.css" />
 
 
 
@@ -97,7 +101,7 @@
 			</div>
 
 
-			<nav id="navpills">
+			<nav id="navpills" style="font-family: 'Karla', sans-serif;">
 				<div class="nav nav-pills " id="nav-tab" role="tablist">
 					<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
 						aria-controls="nav-home" aria-selected="true">India</a>
@@ -163,10 +167,8 @@
 							<div class="col-md" id="seriesgraph">
 							</div>
 
-							<!-- <div class="col-md" id="agechart">
-							</div> -->
-
 						</div>
+						<p class="text-center" id="info">Tap on any label to show/hide its respective line</p>
 
 					</div>
 
@@ -182,35 +184,74 @@
 						individuals tested till <span th:text="${timestampIndividual}"></span>
 					</h3>
 
+					<p class="text-center" id="info_table">Swipe the table left or right to read more</p>
+
 					<div class="table-responsive" id="mytable">
 						<table class="table table-hover" id="table_id">
 							<thead id="table-header">
 								<tr>
 									<th>State</th>
-									<th>Total cases</th>
-									<th>New cases</th>
-									<th>Active cases</th>
-									<th>Total Deaths</th>
-									<th>Death Rate</th>
-									<th>Total Recovered</th>
-									<th>Recovered Rate</th>
-									<th>% of cases</th>
+									<th>Total</th>
+									<th>Active</th>
+									<th>Tot Recvrd</th>
+									<th>Tot Dths</th>
+									<th>Recvrd %</th>
+									<th>Dth %</th>
+									<th id="india_casesrate">Cases %</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="ind_tablebody">
 								<tr th:each="indiaStat : ${indiaStats}">
-									<td th:text="${indiaStat.state}"></td>
-									<td class="text-right" th:text="${indiaStat.confirmed}">0</td>
-									<td class="text-right" th:text="${indiaStat.delta_Confirmed}">0</td>
-									<td class="text-right" th:text="${indiaStat.active}">0</td>
-									<td class="text-right" th:text="${indiaStat.deaths}">0</td>
-									<td class="text-right" th:text="${indiaStat.deathRate}+'%'"></td>
-									<td class="text-right" th:text="${indiaStat.recovered}">0</td>
-									<!-- <td th:text="${#numbers.formatDecimal(indiaStat.recoveredRate, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td>
-									<td th:text="${#numbers.formatDecimal(indiaStat.deathRate, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td>
-									<td th:text="${#numbers.formatDecimal(indiaStat.casePercentage, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td> -->
-									<td class="text-right" th:text="${indiaStat.recoveredRate}+'%'"></td>
-									<td class="text-right" th:text="${indiaStat.casePercentage}+'%'"></td>
+
+									<td id="td_state" th:text="${indiaStat.state}"></td>
+
+									<td class="text-right">
+										<span id="up_newcases" th:if="${indiaStat.delta_Confirmed != '0'}">
+											<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round">
+												<line x1="12" y1="19" x2="12" y2="5"></line>
+												<polyline points="5 12 12 5 19 12"></polyline>
+											</svg>
+
+											<span id="india_newcases" th:text="${indiaStat.delta_Confirmed}"></span>
+										</span>
+										<span th:text="${indiaStat.confirmed}"></span>
+									</td>
+
+									<td class="text-right" th:text="${indiaStat.active}"></td>
+
+									<td class="text-right">
+										<span id="up_newrecovered" th:if="${indiaStat.delta_Recovered != '0'}">
+											<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round">
+												<line x1="12" y1="19" x2="12" y2="5"></line>
+												<polyline points="5 12 12 5 19 12"></polyline>
+											</svg>
+
+											<span id="india_newrecovered" th:text="${indiaStat.delta_Recovered}"></span>
+										</span>
+										<span th:text="${indiaStat.recovered}"></span>
+									</td>
+
+									<td class="text-right">
+										<span id="up_newdeaths" th:if="${indiaStat.delta_Deaths != '0'}">
+											<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round">
+												<line x1="12" y1="19" x2="12" y2="5"></line>
+												<polyline points="5 12 12 5 19 12"></polyline>
+											</svg>
+
+											<span id="india_newdeaths" th:text="${indiaStat.delta_Deaths}"></span>
+										</span>
+										<span th:text="${indiaStat.deaths}"></span>
+									</td>
+
+									<td class="text-right" th:text="${indiaStat.recoveredRate}"></td>
+									<td class="text-right" th:text="${indiaStat.deathRate}"></td>
+									<td class="text-right" th:text="${indiaStat.casePercentage}"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -271,35 +312,57 @@
 							<thead id="table-header">
 								<tr>
 									<th>Country</th>
-									<th>Total cases</th>
-									<th>New cases</th>
-									<th>Active cases</th>
-									<th>Total Deaths</th>
-									<th>Death Rate</th>
-									<th>New Deaths</th>
-									<th>Total Recovered</th>
-									<th>Recovered Rate</th>
-									<th>% of cases</th>
+									<th>Total</th>
+									<th>Active</th>
+									<th>Tot Recvrd</th>
+									<th>Tot Dths</th>
+									<th>Recvrd %</th>
+									<th>Dth %</th>
+									<th>Cases %</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="worldStat : ${worldStats}">
-									<td>
-										<span th:text="${worldStat.country}"></span> &nbsp; <img
-											th:src="${worldStat.countryInfo.flag}" width="20" height="20">
+									<td id="td_country">
+										<span th:text="${worldStat.country}"></span>
+										<!-- &nbsp; <img
+											th:src="${worldStat.countryInfo.flag}" width="20" height="20"> -->
 									</td>
-									<td class="text-right" th:text="${worldStat.cases}">0</td>
-									<td class="text-right" th:text="${worldStat.todayCases}">0</td>
-									<td class="text-right" th:text="${worldStat.active}">0</td>
-									<td class="text-right" th:text="${worldStat.deaths}">0</td>
-									<td class="text-right" th:text="${worldStat.deathRate}+'%'"></td>
-									<td class="text-right" th:text="${worldStat.todayDeaths}">0</td>
-									<td class="text-right" th:text="${worldStat.recovered}">0</td>
-									<!-- <td th:text="${#numbers.formatDecimal(worldStat.recoveredRate, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td>
-									<td th:text="${#numbers.formatDecimal(worldStat.deathRate, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td>
-									<td th:text="${#numbers.formatDecimal(worldStat.casePercentage, 1, 'DEFAULT', 2, 'DEFAULT')}+'%'"></td> -->
-									<td class="text-right" th:text="${worldStat.recoveredRate}+'%'"></td>
-									<td class="text-right" th:text="${worldStat.casePercentage}+'%'"></td>
+									<td class="text-right">
+										<span id="up_newcases" th:if="${worldStat.todayCases != '0'}">
+											<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round">
+												<line x1="12" y1="19" x2="12" y2="5"></line>
+												<polyline points="5 12 12 5 19 12"></polyline>
+											</svg>
+											<span th:text="${worldStat.todayCases}"></span>
+										</span>
+										<span th:text="${worldStat.cases}"></span>
+									</td>
+
+									<td class="text-right" th:text="${worldStat.active}"></td>
+
+									<td class="text-right" th:text="${worldStat.recovered}"></td>
+
+									<td class="text-right">
+										<span id="up_newdeaths" th:if="${worldStat.todayDeaths != '0'}">
+											<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round">
+												<line x1="12" y1="19" x2="12" y2="5"></line>
+												<polyline points="5 12 12 5 19 12"></polyline>
+											</svg>
+											<span th:text="${worldStat.todayDeaths}"></span>
+										</span>
+										<span th:text="${worldStat.deaths}"></span>
+									</td>
+
+									<td class="text-right" th:text="${worldStat.recoveredRate}"></td>
+
+									<td class="text-right" th:text="${worldStat.deathRate}"></td>
+
+									<td class="text-right" th:text="${worldStat.casePercentage}"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -313,54 +376,14 @@
 
 	<footer class="footer" style="margin-top: 50px; margin-bottom: -20px;">
 		<div class="text-center">
-			Made with <i class="icon ion-heart"></i> by <a href="https://thecoducer.github.io/" target="_blank">The
+			Developed by <a href="https://thecoducer.github.io/" target="_blank">The
 				Coducer</a>
 		</div>
 	</footer>
 
-	<script src="/docs/4.4/dist/js/bootstrap.bundle.min.js"
+	<!-- <script src="/docs/4.4/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
-		crossorigin="anonymous"></script>
-
-	<script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-
-
-	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-	<script>
-		$(document).ready(function () {
-			$('#table_id').dataTable();
-		});
-
-		$(document).ready(function () {
-			$('#table_id2').dataTable();
-		});
-
-		$('#table_id').dataTable({
-			"bInfo": false,
-			"paging": false,
-			"responsive": true,
-			language: {
-				searchPlaceholder: "Search state",
-				search: ""
-			},
-			"order": []
-		});
-
-		$('#table_id2').dataTable({
-			"bInfo": false,
-			"paging": false,
-			"responsive": true,
-			language: {
-				searchPlaceholder: "Search country",
-				search: ""
-			},
-			"order": []
-		});
-
-		$('div.dataTables_filter input').addClass('form-control');
-
-	</script>
+		crossorigin="anonymous"></script> -->
 
 
 	<script type="text/javascript">
@@ -385,9 +408,9 @@
 								dailyRecovered.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyRecovered)]);
 							});
 
-						console.log(dailyConfirmed);
+						/* console.log(dailyConfirmed);
 						console.log(dailyDeceased);
-						console.log(dailyRecovered);
+						console.log(dailyRecovered); */
 
 						drawChart(dailyConfirmed, dailyDeceased, dailyRecovered);
 
@@ -416,6 +439,9 @@
 						text: ''
 					}
 				}],
+				credits: {
+					enabled: false
+				},
 				tooltip: {
 					crosshairs: true,
 					shared: true,
@@ -444,16 +470,78 @@
 		}
 	</script>
 
+	<script>
+		$(document).ready(function () {
+			$('#table_id').dataTable();
+		});
+
+		$(document).ready(function () {
+			$('#table_id2').dataTable();
+		});
+
+		$('#table_id').dataTable({
+			"bInfo": false,
+			"paging": false,
+			"responsive": true,
+			language: {
+				searchPlaceholder: "Search state",
+				search: ""
+			},
+			"order": [],
+			'columnDefs': [{
+				'targets': [1, 3, 4], /* column index */
+				'orderable': false, /* true or false */
+
+			}]
+		});
+
+		$('#table_id2').dataTable({
+			"bInfo": false,
+			"paging": false,
+			"responsive": true,
+			language: {
+				searchPlaceholder: "Search country",
+				search: ""
+			},
+			"order": [],
+			'columnDefs': [{
+				'targets': [1, 4], /* column index */
+				'orderable': false, /* true or false */
+
+			}]
+		});
+
+		$('div.dataTables_filter input').addClass('form-control');
+
+	</script>
+
+	<script>
+		$(function () {
+			$('#india_casesrate').click();
+			$('#india_casesrate').click();
+		});
+	</script>
+
+	<!-- <script>
+
+		let tbl = document.getElementById("table_id").getElementsByTagName('tbody')[0];
+		for (var i = 0; i < tbl.rows.length; i++) {
+			if (tbl.rows[i].cells[2].innerHTML == 0) {
+				tbl.rows[i].cells[2].getElementsByClassName("india_nc");
+			}
+		}
+	</script> -->
+
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-104755350-2"></script>
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104755350-2"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
 		gtag('js', new Date());
 
 		gtag('config', 'UA-104755350-2');
-	</script>
+	</script> -->
 
 
 </body>

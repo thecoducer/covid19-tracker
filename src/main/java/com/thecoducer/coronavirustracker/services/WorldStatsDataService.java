@@ -54,27 +54,27 @@ public class WorldStatsDataService {
         	try {
         		double rr = (Double.parseDouble(worldStat.getRecovered()) / Double.parseDouble(worldStat.getCases())) * 100;
         		String recoveredRate = df.format(rr);
-        		worldStat.setRecoveredRate(recoveredRate);
+        		worldStat.setRecoveredRate(setHyphenIfZero(recoveredRate));
         	}catch (Exception e) {
-				worldStat.setRecoveredRate("0"); 
+				worldStat.setRecoveredRate("-"); 
 			}
         	
         	
         	try {
         		double d = (Double.parseDouble(worldStat.getDeaths()) / Double.parseDouble(worldStat.getCases())) * 100;
         		String deathRate = df.format(d);
-        		worldStat.setDeathRate(deathRate);
+        		worldStat.setDeathRate(setHyphenIfZero(deathRate));
         	}catch (Exception e) {
-				worldStat.setDeathRate("0"); 
+				worldStat.setDeathRate("-"); 
 			}
         	
         	try {
         		double cp = (Double.parseDouble(worldStat.getCases()) / 
         				Double.parseDouble(allStatsDataService.getAllStats().getCases())) * 100;
         		String casePercentage = df.format(cp);
-        		worldStat.setCasePercentage(casePercentage);
+        		worldStat.setCasePercentage(setHyphenIfZero(casePercentage));
         	}catch (Exception e) {
-				worldStat.setCasePercentage("0"); 
+				worldStat.setCasePercentage("-"); 
 			}
         	
         	totalnewcases += Long.parseLong(worldStat.getTodayCases());
@@ -82,12 +82,12 @@ public class WorldStatsDataService {
         	totalnewdeathscount += Long.parseLong(worldStat.getTodayDeaths());
         	
         	
-        	worldStat.setCases(numberFormat.format(Long.parseLong(worldStat.getCases())));
+        	worldStat.setCases(setHyphenOrNumberFormat(worldStat.getCases()));
         	worldStat.setTodayCases(numberFormat.format(Long.parseLong(worldStat.getTodayCases())));
-        	worldStat.setActive(numberFormat.format(Long.parseLong(worldStat.getActive())));
-        	worldStat.setDeaths(numberFormat.format(Long.parseLong(worldStat.getDeaths())));
+        	worldStat.setActive(setHyphenOrNumberFormat(worldStat.getActive()));
+        	worldStat.setDeaths(setHyphenOrNumberFormat(worldStat.getDeaths()));
         	worldStat.setTodayDeaths(numberFormat.format(Long.parseLong(worldStat.getTodayDeaths())));
-        	worldStat.setRecovered(numberFormat.format(Long.parseLong(worldStat.getRecovered())));
+        	worldStat.setRecovered(setHyphenOrNumberFormat(worldStat.getRecovered()));
         	
         }
         
@@ -96,6 +96,24 @@ public class WorldStatsDataService {
         this.worldStats = newWorldStats;
         this.totalNewCasesCount = totalnewcases;
         this.totalNewDeathsCount = totalnewdeathscount;
+	}
+	
+	public static String setHyphenOrNumberFormat(String str) {
+		if(str.equals("0") || str.equals("")) {
+			return "-";
+		}else {
+			NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+			
+			return numberFormat.format(Long.parseLong(str));
+		}
+	}
+	
+	public static String setHyphenIfZero(String str) {
+		if(str.equals("0") || str.equals("")) {
+			return "-";
+		}else {
+			return str+"%";
+		}
 	}
 	
 	public List<WorldStats> getWorldStats() {

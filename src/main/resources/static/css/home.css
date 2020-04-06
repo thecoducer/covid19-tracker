@@ -2,7 +2,7 @@
 
 body {
     padding-top: 3.5rem;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 hr {
@@ -22,14 +22,13 @@ input {
     margin-top: 4%;
     margin-bottom: 55px;
     color: white;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     border-radius: 0em;
 }
 
-#container_timeseries {
+#container_timeseries, #container_patientdata {
     background-color: ;
     border-radius: 0em;
-    
 }
 
 .bd-placeholder-img {
@@ -60,7 +59,7 @@ input {
 
 #mynavbar {
     background-color: #151E3F;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #totalnewcases {
@@ -77,10 +76,32 @@ html {
     min-height: 100%;
 }
 
+#info {
+    font-family: 'Karla', sans-serif;
+    color: #777777;
+    font-size: 13px;
+}
+
 #mytable {
     font-size: 15px;
     margin-bottom: 10%;
     border-radius: 0em;
+}
+
+#ind_tablebody {
+    font-size: ;
+}
+
+td {
+    white-space: nowrap;
+}
+
+#td_state {
+    white-space: normal;
+}
+
+#td_country {
+    white-space: normal;
 }
 
 #navpills {
@@ -94,7 +115,7 @@ html {
 }
 
 .card {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     border-radius: 0em;
     border: none;
     margin: 0 auto;
@@ -140,7 +161,7 @@ html {
 }
 
 #affectedCountriesh3 {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #8a8a8a;
     margin-bottom: 25px;
     margin-top: 50px;
@@ -160,11 +181,11 @@ div.dataTables_filter input {
 
 #totalIndvTestd, #totalSampTestd {
     font-size: 20px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #samples_h3 {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #8a8a8a;
     margin-bottom: 20px;
     margin-top: 50px;
@@ -173,11 +194,27 @@ div.dataTables_filter input {
 }
 
 #individuals_h3 {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #8580ff;
     margin-bottom: 50px;
     margin-left: 10%;
     margin-right: 10%;
+}
+
+#up_newcases {
+    color: #ff0000;
+}
+
+#up_newdeaths {
+    color: #ff0000;
+}
+
+#up_newrecovered {
+    color: #058600;
+}
+
+#india_newcases, #india_newdeaths, #india_newrecovered {
+    font-size: 13px;
 }
 
 /* 
@@ -200,6 +237,12 @@ div.dataTables_filter input {
         display: table;
         width: 100%;
         table-layout: fixed;
+    }
+    #info_table {
+        font-family: 'Karla', sans-serif;
+        color: #777777;
+        font-size: 13px;
+        display: none;
     }
 }
 
@@ -224,6 +267,12 @@ div.dataTables_filter input {
         width: 100%;
         table-layout: fixed;
     }
+    #info_table {
+        font-family: 'Karla', sans-serif;
+        color: #777777;
+        font-size: 13px;
+        display: none;
+    }
 }
 
 /* 
@@ -246,6 +295,12 @@ div.dataTables_filter input {
         display: table;
         width: 100%;
         table-layout: fixed;
+    }
+    #info_table {
+        font-family: 'Karla', sans-serif;
+        color: #777777;
+        font-size: 13px;
+        display: ;
     }
 }
 
@@ -270,6 +325,11 @@ div.dataTables_filter input {
         width: 100%;
         table-layout: fixed;
     }
+    #info_table {
+        font-family: 'Karla', sans-serif;
+        color: #777777;
+        font-size: 13px;
+    }
 }
 
 /* 
@@ -279,18 +339,22 @@ div.dataTables_filter input {
 
 @media (min-width: 481px) and (max-width: 767px) {
     #mytable {
-        font-size: 15px;
+        font-size: 13px;
         margin-bottom: 20%;
         border-radius: 0em;
     }
-
     #samples_h3 {
-        font-family: 'Raleway', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         color: #8a8a8a;
         margin-bottom: 28px;
         margin-top: 50px;
         margin-left: 10%;
         margin-right: 10%;
+    }
+    #info_table {
+        font-family: 'Karla', sans-serif;
+        color: #777777;
+        font-size: 13px;
     }
 }
 
@@ -301,17 +365,21 @@ div.dataTables_filter input {
 
 @media (min-width: 320px) and (max-width: 480px) {
     #mytable {
-        font-size: 15px;
+        font-size: 13px;
         margin-bottom: 20%;
         border-radius: 0em;
     }
-
     #samples_h3 {
-        font-family: 'Raleway', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         color: #8a8a8a;
         margin-bottom: 28px;
         margin-top: 50px;
         margin-left: 10%;
         margin-right: 10%;
+    }
+    #info_table {
+        font-family: 'Karla', sans-serif;
+        color: #777777;
+        font-size: 13px;
     }
 }
