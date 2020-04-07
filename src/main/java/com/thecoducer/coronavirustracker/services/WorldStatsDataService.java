@@ -7,6 +7,8 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
+import java.util.TreeMap;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
@@ -118,6 +120,21 @@ public class WorldStatsDataService {
 	
 	public List<WorldStats> getWorldStats() {
 		return worldStats;
+	}
+	
+	public Map<String, Integer> getWorldDataForMap(){
+		
+		Map<String, Integer> mapData = new TreeMap<>();
+		
+		for(WorldStats itr : this.worldStats) {
+			try {
+				mapData.put(itr.getCountryInfo().getIso3(), Integer.parseInt(itr.getCases().replaceAll("\\p{Punct}","")));
+			}catch (NullPointerException e) {
+				System.out.println("");
+			}
+		}
+		
+		return mapData;
 	}
 	
 	public String getTotalNewCasesCount() {
