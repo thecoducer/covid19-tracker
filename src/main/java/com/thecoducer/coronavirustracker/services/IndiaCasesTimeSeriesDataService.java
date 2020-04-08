@@ -14,6 +14,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.thecoducer.coronavirustracker.models.IndiaCasesTimeSeries;
@@ -24,6 +25,7 @@ public class IndiaCasesTimeSeriesDataService {
 	private SortedMap<Integer, IndiaCasesTimeSeries> graphData = new TreeMap<>();
 	
 	@PostConstruct
+	@Scheduled(cron = "0 0/15 * * * *")
 	public void fetchTimeSeriesData() throws MalformedURLException, ParseException, IOException {
 		
 		JSONObject jo = (JSONObject) new JSONParser().parse(IOUtils.toString(new URL("https://api.covid19india.org/data.json").openStream()));
@@ -44,11 +46,16 @@ public class IndiaCasesTimeSeriesDataService {
 			day.setDailyDeceased((String) t_obj.get("dailydeceased"));
 			day.setDailyRecovered((String) t_obj.get("dailyrecovered"));
 			day.setDate((String) t_obj.get("date"));
+//			day.setTotalConfirmed((String) t_obj.get("totalconfirmed"));
+//			day.setTotalDeceased((String) t_obj.get("totaldeceased"));
+//			day.setTotalRecovered((String) t_obj.get("totalrecovered"));
 			
 			newGraphData.put(i++, day);
 		}
 		
 		this.graphData = newGraphData;
+		
+		System.out.println("hhhhhhhhhhhhhhhhhh");
 	}
 	
 	public SortedMap<Integer, IndiaCasesTimeSeries> getIndiaTimeSeriesData(){

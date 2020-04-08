@@ -17,6 +17,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.thecoducer.coronavirustracker.models.IndiaStats;
@@ -30,6 +31,7 @@ public class IndiaStatsDataService {
 	private List<IndiaStats> indiaStats;
 
 	@PostConstruct
+	@Scheduled(cron = "0 0/15 * * * *")
 	public void fetchIndiaStats() throws MalformedURLException, ParseException, IOException {
 		
 		List<IndiaStats> newIndiaStats = new ArrayList<>();

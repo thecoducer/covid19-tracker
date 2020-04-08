@@ -13,6 +13,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -34,6 +35,7 @@ public class WorldStatsDataService {
 	private long totalNewDeathsCount;
 	
 	@PostConstruct
+	@Scheduled(cron = "0 0/15 * * * *")
 	public void fetchWorldStats() throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
 		
 		NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);

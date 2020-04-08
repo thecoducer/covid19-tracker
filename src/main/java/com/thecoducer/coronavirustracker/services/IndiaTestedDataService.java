@@ -11,6 +11,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.thecoducer.coronavirustracker.models.TestedStats;
@@ -21,6 +22,7 @@ public class IndiaTestedDataService {
 	private TestedStats testStats;
 	
 	@PostConstruct
+	@Scheduled(cron = "0 0/15 * * * *")
 	public void fetchTestedData() throws MalformedURLException, ParseException, IOException {
 		
 		JSONObject jo = (JSONObject) new JSONParser().parse(IOUtils.toString(

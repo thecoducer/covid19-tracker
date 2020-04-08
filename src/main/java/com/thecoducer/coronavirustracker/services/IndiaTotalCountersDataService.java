@@ -11,6 +11,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,6 +26,7 @@ public class IndiaTotalCountersDataService {
 	private String totalDeaths;
 
 	@PostConstruct
+	@Scheduled(cron = "0 0/15 * * * *")
 	public void setTotalCounters() throws MalformedURLException, ParseException, IOException {
 
 		JSONObject jo = (JSONObject) new JSONParser()

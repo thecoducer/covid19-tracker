@@ -26,7 +26,7 @@ input {
     border-radius: 0em;
 }
 
-#container_timeseries, #container_patientdata {
+#container_dailytimeseries, #container_totaltimeseries {
     background-color: ;
     border-radius: 0em;
 }

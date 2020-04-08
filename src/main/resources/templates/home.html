@@ -51,7 +51,7 @@
 
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="mynavbar">
-		<a class="navbar-brand" href="#">COVID-19 Tracker</a>
+		<a class="navbar-brand" href="http://tcovid19.herokuapp.com/">COVID-19 Tracker</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
 			aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -324,6 +324,8 @@
 						<span th:text="${affectedCountries}"></span>
 						countries affected
 					</h3>
+
+					<p class="text-center" id="info_table">Swipe the table left or right to read more</p>
 
 					<div class="table-responsive" id="mytable">
 						<table class="table table-hover" id="table_id2">

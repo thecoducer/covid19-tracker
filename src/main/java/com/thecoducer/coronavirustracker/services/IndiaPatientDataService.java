@@ -14,6 +14,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.thecoducer.coronavirustracker.models.PatientStats;
@@ -37,6 +38,7 @@ public class IndiaPatientDataService {
 	private int patientsDataCount;
 
 	@PostConstruct
+	@Scheduled(cron = "0 0/15 * * * *")
 	public void fetchPatientData() throws MalformedURLException, ParseException, IOException {
 
 		JSONObject jo = (JSONObject) new JSONParser()
@@ -50,12 +52,14 @@ public class IndiaPatientDataService {
 
 		int i = 0;
 		double avgAgeMaleRec = 0.0;
+		double avgAgeMaleDied = 0.0;
 		double mcount = 0;
 		double fcount = 0;
 		double count = 0;
 		double genderknowncount = 0;
 		double ageknowncount = 0;
-		double genderAndStatusKnown = 0;
+		double genderAndRecvKnown = 0;
+		double genderAndDiedKnown = 0;
 		
 		int agemin = Integer.MAX_VALUE;
 		int agemax = Integer.MIN_VALUE;
@@ -103,15 +107,21 @@ public class IndiaPatientDataService {
 				}
 			}
 			
-			if((patient.getGender().equals("m") || patient.getGender().equals("f")) && (patient.getCurrentStatus().equals("recovered"))) {
-				genderAndStatusKnown++;
+			if(patient.getGender().equals("") == false && (patient.getCurrentStatus().equals("recovered"))) {
+				genderAndRecvKnown++;
+			}
+			
+			if(patient.getGender().equals("") == false && (patient.getCurrentStatus().equals("deceased"))) {
+				genderAndDiedKnown++;
 			}
 			
 			if(patient.getAge().equals("") == false && patient.getGender().equals("m") && patient.getCurrentStatus().equals("recovered")) {
 				avgAgeMaleRec += Double.parseDouble(patient.getAge());
 			}
 
-
+			if(patient.getAge().equals("") == false && patient.getGender().equals("m") && patient.getCurrentStatus().equals("deceased")) {
+				avgAgeMaleDied += Double.parseDouble(patient.getAge());
+			}
 			
 			count++;
 		}
@@ -124,7 +134,8 @@ public class IndiaPatientDataService {
 		ipds.setEldestAffected(agemax);
 		ipds.setYoungestAffected(agemin);
 		
-		ipds.setAvgMaleRecovered(df.format((avgAgeMaleRec/genderAndStatusKnown)*100));
+		ipds.setAvgMaleRecovered(df.format(avgAgeMaleRec/genderAndRecvKnown));
+		ipds.setAvgMaleDied(df.format(avgAgeMaleDied/genderAndDiedKnown));
 
 		this.patientData = newPatientData;
 		
@@ -132,6 +143,8 @@ public class IndiaPatientDataService {
 		System.out.println(ipds.getYoungestAffected());
 		System.out.println(ipds.getEldestAffected());
 		System.out.println(ipds.getAvgMaleRecovered());
+		System.out.println(ipds.getAvgMaleDied());
+		
 		
 	}
 

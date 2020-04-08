@@ -6,6 +6,7 @@ import java.net.URL;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -20,6 +21,7 @@ public class AllStatsDataService {
 	private AllStats allStats;
 	
 	@PostConstruct
+	@Scheduled(cron = "0 0/15 * * * *")
 	public void fetchAllStats() throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
 		
 		ObjectMapper objectMapper = new ObjectMapper();
