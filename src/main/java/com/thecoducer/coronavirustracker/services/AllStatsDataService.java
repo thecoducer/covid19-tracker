@@ -21,7 +21,7 @@ public class AllStatsDataService {
 	private AllStats allStats;
 	
 	@PostConstruct
-	@Scheduled(cron = "0 0/15 * * * *")
+	@Scheduled(cron = "0 0/5 * * * *")
 	public void fetchAllStats() throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
 		
 		ObjectMapper objectMapper = new ObjectMapper();

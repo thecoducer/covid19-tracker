@@ -25,7 +25,7 @@ public class IndiaCasesTimeSeriesDataService {
 	private SortedMap<Integer, IndiaCasesTimeSeries> graphData = new TreeMap<>();
 	
 	@PostConstruct
-	@Scheduled(cron = "0 0/15 * * * *")
+	@Scheduled(cron = "0 0/5 * * * *")
 	public void fetchTimeSeriesData() throws MalformedURLException, ParseException, IOException {
 		
 		JSONObject jo = (JSONObject) new JSONParser().parse(IOUtils.toString(new URL("https://api.covid19india.org/data.json").openStream()));
@@ -42,13 +42,15 @@ public class IndiaCasesTimeSeriesDataService {
 			
 			JSONObject t_obj = (JSONObject) t;
 			
+			System.out.println(t_obj);
+			
 			day.setDailyConfirmed((String) t_obj.get("dailyconfirmed"));
 			day.setDailyDeceased((String) t_obj.get("dailydeceased"));
 			day.setDailyRecovered((String) t_obj.get("dailyrecovered"));
 			day.setDate((String) t_obj.get("date"));
-//			day.setTotalConfirmed((String) t_obj.get("totalconfirmed"));
-//			day.setTotalDeceased((String) t_obj.get("totaldeceased"));
-//			day.setTotalRecovered((String) t_obj.get("totalrecovered"));
+			day.setTotalConfirmed((String) t_obj.get("totalconfirmed"));
+			day.setTotalDeceased((String) t_obj.get("totaldeceased"));
+			day.setTotalRecovered((String) t_obj.get("totalrecovered"));
 			
 			newGraphData.put(i++, day);
 		}

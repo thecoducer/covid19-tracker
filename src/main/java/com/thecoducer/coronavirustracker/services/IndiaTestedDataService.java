@@ -22,7 +22,7 @@ public class IndiaTestedDataService {
 	private TestedStats testStats;
 	
 	@PostConstruct
-	@Scheduled(cron = "0 0/15 * * * *")
+	@Scheduled(cron = "0 0/5 * * * *")
 	public void fetchTestedData() throws MalformedURLException, ParseException, IOException {
 		
 		JSONObject jo = (JSONObject) new JSONParser().parse(IOUtils.toString(

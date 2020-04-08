@@ -31,7 +31,7 @@ public class IndiaStatsDataService {
 	private List<IndiaStats> indiaStats;
 
 	@PostConstruct
-	@Scheduled(cron = "0 0/15 * * * *")
+	@Scheduled(cron = "0 0/5 * * * *")
 	public void fetchIndiaStats() throws MalformedURLException, ParseException, IOException {
 		
 		List<IndiaStats> newIndiaStats = new ArrayList<>();

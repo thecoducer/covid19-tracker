@@ -26,7 +26,7 @@ public class IndiaTotalCountersDataService {
 	private String totalDeaths;
 
 	@PostConstruct
-	@Scheduled(cron = "0 0/15 * * * *")
+	@Scheduled(cron = "0 0/5 * * * *")
 	public void setTotalCounters() throws MalformedURLException, ParseException, IOException {
 
 		JSONObject jo = (JSONObject) new JSONParser()

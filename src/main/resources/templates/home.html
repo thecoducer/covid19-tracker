@@ -34,12 +34,12 @@
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
 
-		<!-- <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+	<!-- <script src="https://code.highcharts.com/maps/highmaps.js"></script>
 		<script src="https://code.highcharts.com/maps/modules/data.js"></script>
 		<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
 		<script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
 		<script src="https://code.highcharts.com/mapdata/custom/world.js"></script> -->
-		
+
 
 	<link rel="stylesheet" type="text/css" href="/css/home.css" />
 
@@ -163,13 +163,16 @@
 						</div>
 					</div>
 
-					<h5 class="text-center" style="color: #646464;">Daily Cases</h5>
+
 
 					<div class="container" id="container_timeseries">
 
 						<div class="row">
 
-							<div class="col-md" id="seriesgraph">
+							<div class="col-md" id="dailyseriesgraph">
+							</div>
+
+							<div class="col-md" id="totalseriesgraph">
 							</div>
 
 						</div>
@@ -192,7 +195,7 @@
 					<p class="text-center" id="info_table">Swipe the table left or right to read more</p>
 
 					<div class="table-responsive" id="mytable">
-						<table class="table table-hover" id="table_id">
+						<table class="table table-hover table-sm" id="table_id">
 							<thead id="table-header">
 								<tr>
 									<th>State</th>

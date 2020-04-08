@@ -98,10 +98,12 @@ td {
 
 #td_state {
     white-space: normal;
+    font-weight: 600;
 }
 
 #td_country {
     white-space: normal;
+    font-weight: 600;
 }
 
 #navpills {
@@ -172,7 +174,7 @@ td {
 }
 
 #total_counter {
-    font-size: 72px;
+    font-size: 60px;
 }
 
 div.dataTables_filter input {
@@ -215,6 +217,11 @@ div.dataTables_filter input {
 
 #india_newcases, #india_newdeaths, #india_newrecovered {
     font-size: 13px;
+}
+
+tspan {
+    font-size: ;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* 
@@ -364,6 +371,9 @@ div.dataTables_filter input {
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
+    #total_counter {
+        font-size: 55px;
+    }
     #mytable {
         font-size: 13px;
         margin-bottom: 20%;
@@ -383,3 +393,4 @@ div.dataTables_filter input {
         font-size: 13px;
     }
 }
+
