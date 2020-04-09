@@ -15,6 +15,13 @@ input {
     box-shadow: none;
 }
 
+/* #total_p {
+    font-size: 15px;
+}
+#total_counter {
+    font-size: 55px;
+} */
+
 #jumbo_totals {
     background-color: #5500b1;
     padding-top: 5%;
@@ -169,14 +176,6 @@ td {
     margin-top: 50px;
 }
 
-#total_p {
-    font-size: 20px;
-}
-
-#total_counter {
-    font-size: 60px;
-}
-
 div.dataTables_filter input {
     width: auto;
 }
@@ -230,6 +229,12 @@ tspan {
 */
 
 @media (min-width: 1281px) {
+    #total_p {
+        font-size: 20px;
+    }
+    #total_counter {
+        font-size: 60px;
+    }
     #mytable {
         font-size: 15px;
         margin-bottom: 10%;
@@ -259,6 +264,12 @@ tspan {
 */
 
 @media (min-width: 1025px) and (max-width: 1280px) {
+    #total_p {
+        font-size: 20px;
+    }
+    #total_counter {
+        font-size: 60px;
+    }
     #mytable {
         font-size: 15px;
         margin-bottom: 10%;
@@ -288,6 +299,15 @@ tspan {
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
+    #total_p {
+        font-size: 20px;
+    }
+    #total_counter {
+        font-size: 60px;
+    }
+    .card-title {
+        font-size: 25px;
+    }
     #mytable {
         font-size: 15px;
         margin-bottom: 20%;
@@ -317,8 +337,20 @@ tspan {
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    #total_p {
+        font-size: 20px;
+    }
+    #total_counter {
+        font-size: 45px;
+    }
+    .card-title {
+        font-size: 20px;
+    }
+    .card {
+        min-width: fit-content;
+    }
     #mytable {
-        font-size: 15px;
+        font-size: 13px;
         margin-bottom: 10%;
         border-radius: 0em;
     }
@@ -337,6 +369,9 @@ tspan {
         color: #777777;
         font-size: 13px;
     }
+    #dailyseriesgraph {
+        margin-bottom: 40px;
+    }
 }
 
 /* 
@@ -345,6 +380,18 @@ tspan {
 */
 
 @media (min-width: 481px) and (max-width: 767px) {
+    #total_p {
+        font-size: 20px;
+    }
+    #total_counter {
+        font-size: 45px;
+    }
+    .card-title {
+        font-size: 20px;
+    }
+    .card {
+        min-width: fit-content;
+    }
     #mytable {
         font-size: 13px;
         margin-bottom: 20%;
@@ -362,6 +409,9 @@ tspan {
         font-family: 'Karla', sans-serif;
         color: #777777;
         font-size: 13px;
+    }
+    #dailyseriesgraph {
+        margin-bottom: 40px;
     }
 }
 
@@ -371,8 +421,17 @@ tspan {
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
+    #total_p {
+        font-size: 15px;
+    }
     #total_counter {
-        font-size: 55px;
+        font-size: 45px;
+    }
+    .card-title {
+        font-size: 20px;
+    }
+    .card {
+        min-width: fit-content;
     }
     #mytable {
         font-size: 13px;
@@ -392,5 +451,34 @@ tspan {
         color: #777777;
         font-size: 13px;
     }
+    #dailyseriesgraph {
+        margin-bottom: 40px;
+    }
 }
 
+@media (min-width: 200px) and (max-width: 480px) {
+    #total_counter {
+        font-size: 35px;
+    }
+    #mytable {
+        font-size: 13px;
+        margin-bottom: 20%;
+        border-radius: 0em;
+    }
+    #samples_h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: #8a8a8a;
+        margin-bottom: 28px;
+        margin-top: 50px;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    #info_table {
+        font-family: 'Karla', sans-serif;
+        color: #777777;
+        font-size: 13px;
+    }
+    #dailyseriesgraph {
+        margin-bottom: 40px;
+    }
+}

@@ -39,10 +39,6 @@ public class IndiaTotalCountersDataService {
 		//JSONObject kv_obj = (JSONObject) key_values.get(0);
 
 		JSONObject first_s_obj = (JSONObject) statewise.get(0);
-		
-		System.out.println(first_s_obj.keySet());
-		
-		
 
 		this.totalCases = (String) first_s_obj.get("confirmed");
 		this.totalNewCases = (String) first_s_obj.get("deltaconfirmed");

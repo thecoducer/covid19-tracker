@@ -42,8 +42,6 @@ public class IndiaCasesTimeSeriesDataService {
 			
 			JSONObject t_obj = (JSONObject) t;
 			
-			System.out.println(t_obj);
-			
 			day.setDailyConfirmed((String) t_obj.get("dailyconfirmed"));
 			day.setDailyDeceased((String) t_obj.get("dailydeceased"));
 			day.setDailyRecovered((String) t_obj.get("dailyrecovered"));
