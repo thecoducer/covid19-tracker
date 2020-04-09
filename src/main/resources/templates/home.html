@@ -276,7 +276,7 @@
 
 					<div class="modal fade" id="districtModal" tabindex="-1" role="dialog"
 						aria-labelledby="districtModalTitle" aria-hidden="true">
-						<div class="modal-dialog .modal-dialog-centered modal-sm" role="document">
+						<div class="modal-dialog .modal-dialog-centered modal-sm modal-dialog-scrollable" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h6 class="modal-title" id="modaltitle"></h6>
@@ -1311,9 +1311,6 @@
 			var id = m.get(tdValue);
 			$("#district_table").find("tbody").not("#"+id).hide();
 			$("#"+id).show();
-			console.log(id);
-			console.log(tdValue);
-
 		});
 
 	</script>
