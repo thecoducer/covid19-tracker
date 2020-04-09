@@ -55,7 +55,7 @@ public class IndiaCasesTimeSeriesDataService {
 		
 		this.graphData = newGraphData;
 		
-		System.out.println("hhhhhhhhhhhhhhhhhh");
+//		System.out.println("hhhhhhhhhhhhhhhhhh");
 	}
 	
 	public SortedMap<Integer, IndiaCasesTimeSeries> getIndiaTimeSeriesData(){

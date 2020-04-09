@@ -145,4 +145,9 @@ function drawTotalCasesChart(totalConfirmed, totalDeceased, totalRecovered) {
     });
 }
 
+/* $('table tbody tr  td').on('click', function () {
+    $("#modaltitle").val($(this).closest('tr').children()[0].textContent);
+}); */
 
+
+	

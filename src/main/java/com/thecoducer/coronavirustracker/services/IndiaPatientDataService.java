@@ -140,10 +140,10 @@ public class IndiaPatientDataService {
 		this.patientData = newPatientData;
 		
 		
-		System.out.println(ipds.getYoungestAffected());
-		System.out.println(ipds.getEldestAffected());
-		System.out.println(ipds.getAvgMaleRecovered());
-		System.out.println(ipds.getAvgMaleDied());
+//		System.out.println(ipds.getYoungestAffected());
+//		System.out.println(ipds.getEldestAffected());
+//		System.out.println(ipds.getAvgMaleRecovered());
+//		System.out.println(ipds.getAvgMaleDied());
 		
 		
 	}

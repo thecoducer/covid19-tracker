@@ -1,17 +1,16 @@
 package com.thecoducer.coronavirustracker.models;
 
-public class IndiaDistrictsStats {
-	private String district;
+public class IndiaStateDistricts {
+	private String districtName;
 	private String confirmed;
 	private String deltaConfirmed;
 	
 	
-	
-	public String getDistrict() {
-		return district;
+	public String getDistrictName() {
+		return districtName;
 	}
-	public void setDistrict(String district) {
-		this.district = district;
+	public void setDistrictName(String districtName) {
+		this.districtName = districtName;
 	}
 	public String getConfirmed() {
 		return confirmed;
@@ -25,5 +24,10 @@ public class IndiaDistrictsStats {
 	public void setDeltaConfirmed(String deltaConfirmed) {
 		this.deltaConfirmed = deltaConfirmed;
 	}
-		
+	@Override
+	public String toString() {
+		return "IndiaStateDistricts [districtName=" + districtName + ", confirmed=" + confirmed + ", deltaConfirmed="
+				+ deltaConfirmed + "]";
+	}
+	
 }

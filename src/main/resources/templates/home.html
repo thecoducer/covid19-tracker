@@ -34,6 +34,8 @@
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
 
+	<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+
 	<!-- <script src="https://code.highcharts.com/maps/highmaps.js"></script>
 		<script src="https://code.highcharts.com/maps/modules/data.js"></script>
 		<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
@@ -76,7 +78,7 @@
 				</li>
 			</ul>
 			<span class="my-2 my-lg-0">
-				<a class="btn btn-light my-2 my-sm-0" href="https://github.com/thecoducer/covid19-tracker"
+				<a class="btn btn-light btn-sm my-2 my-sm-0" href="https://github.com/thecoducer/covid19-tracker"
 					target="_blank">Fork on GitHub</a>
 			</span>
 		</div>
@@ -195,9 +197,10 @@
 					</h3>
 
 					<p class="text-center" id="info_table">Swipe the table left or right to read more</p>
+					<p class="text-center" id="info">Tap on any state row to view its district data</p>
 
 					<div class="table-responsive" id="mytable">
-						<table class="table table-hover table-sm" id="table_id">
+						<table class="table table-hover pointer" id="table_id">
 							<thead id="table-header">
 								<tr>
 									<th>State</th>
@@ -210,8 +213,9 @@
 									<th id="india_casesrate">Cases %</th>
 								</tr>
 							</thead>
-							<tbody id="ind_tablebody">
-								<tr th:each="indiaStat : ${indiaStats}">
+							<tbody id="india_tbody">
+								<tr th:each="indiaStat : ${indiaStats}" data-toggle="modal"
+									data-target="#districtModal">
 
 									<td id="td_state" th:text="${indiaStat.state}"></td>
 
@@ -267,6 +271,805 @@
 							</tbody>
 						</table>
 					</div>
+
+					<!-- Modal for district data -->
+
+					<div class="modal fade" id="districtModal" tabindex="-1" role="dialog"
+						aria-labelledby="districtModalTitle" aria-hidden="true">
+						<div class="modal-dialog .modal-dialog-centered modal-sm" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h6 class="modal-title" id="modaltitle"></h6>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<div class="table-responsive">
+										<table class="table table-hover" id="district_table">
+											<thead id="table-header">
+												<tr>
+													<th>District</th>
+													<th class="text-right">Confirmed</th>
+												</tr>
+											</thead>
+
+											<tbody id="AN_tbody">
+												<tr th:each="AN : ${AndamanandNicobarIslands}">
+
+													<td th:text="${AN.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${AN.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${AN.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${AN.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="AP_tbody">
+												<tr th:each="AP : ${AndhraPradesh}">
+
+													<td th:text="${AP.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${AP.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${AP.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${AP.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="AR_tbody">
+												<tr th:each="AR : ${ArunachalPradesh}">
+
+													<td th:text="${AR.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${AR.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${AR.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${AR.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="AS_tbody">
+												<tr th:each="AS : ${Assam}">
+
+													<td th:text="${AS.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${AS.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${AS.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${AS.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="BR_tbody">
+												<tr th:each="BR : ${Bihar}">
+
+													<td th:text="${BR.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${BR.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${BR.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${BR.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="CH_tbody">
+												<tr th:each="CH : ${Chandigarh}">
+
+													<td th:text="${CH.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${CH.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${CH.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${CH.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="CT_tbody">
+												<tr th:each="CT : ${Chhattisgarh}">
+
+													<td th:text="${CT.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${CT.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${CT.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${CT.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="DN_tbody">
+												<tr th:each="DN : ${DadraandNagarHaveli}">
+
+													<td th:text="${DN.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${DN.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${DN.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${DN.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="DL_tbody">
+												<tr th:each="DL : ${Delhi}">
+
+													<td th:text="${DL.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${DL.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${DL.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${DL.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="GA_tbody">
+												<tr th:each="GA : ${Goa}">
+
+													<td th:text="${GA.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${GA.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${GA.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${GA.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="GJ_tbody">
+												<tr th:each="GJ : ${Gujarat}">
+
+													<td th:text="${GJ.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${GJ.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${GJ.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${GJ.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="HR_tbody">
+												<tr th:each="HR : ${Haryana}">
+
+													<td th:text="${HR.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${HR.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${HR.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${HR.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="HP_tbody">
+												<tr th:each="HP : ${HimachalPradesh}">
+
+													<td th:text="${HP.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${HP.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${HP.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${HP.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="JK_tbody">
+												<tr th:each="JK : ${JammuandKashmir}">
+
+													<td th:text="${JK.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${JK.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${JK.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${JK.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="JH_tbody">
+												<tr th:each="JH : ${Jharkhand}">
+
+													<td th:text="${JH.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${JH.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${JH.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${JH.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="KA_tbody">
+												<tr th:each="KA : ${Karnataka}">
+
+													<td th:text="${KA.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${KA.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${KA.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${KA.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="KL_tbody">
+												<tr th:each="KL : ${Kerala}">
+
+													<td th:text="${KL.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${KL.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${KL.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${KL.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="LA_tbody">
+												<tr th:each="LA : ${Ladakh}">
+
+													<td th:text="${LA.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${LA.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${LA.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${LA.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="MP_tbody">
+												<tr th:each="MP : ${MadhyaPradesh}">
+
+													<td th:text="${MP.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${MP.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${MP.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${MP.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="MH_tbody">
+												<tr th:each="MH : ${Maharashtra}">
+
+													<td th:text="${MH.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${MH.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${MH.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${MH.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="MN_tbody">
+												<tr th:each="MN : ${Manipur}">
+
+													<td th:text="${MN.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${MN.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${MN.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${MN.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="MZ_tbody">
+												<tr th:each="MZ : ${Mizoram}">
+
+													<td th:text="${MZ.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${MZ.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${MZ.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${MZ.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="ORR_tbody">
+												<tr th:each="ORR : ${Odisha}">
+
+													<td th:text="${ORR.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${ORR.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${ORR.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${ORR.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="PY_tbody">
+												<tr th:each="PY : ${Puducherry}">
+
+													<td th:text="${PY.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${PY.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${PY.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${PY.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="PB_tbody">
+												<tr th:each="PB : ${Punjab}">
+
+													<td th:text="${PB.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${PB.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${PB.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${PB.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="RJ_tbody">
+												<tr th:each="RJ : ${Rajasthan}">
+
+													<td th:text="${RJ.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${RJ.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${RJ.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${RJ.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="TN_tbody">
+												<tr th:each="TN : ${TamilNadu}">
+
+													<td th:text="${TN.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${TN.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${TN.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${TN.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="TG_tbody">
+												<tr th:each="TG : ${Telangana}">
+
+													<td th:text="${TG.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${TG.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${TG.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${TG.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="TR_tbody">
+												<tr th:each="TR : ${Tripura}">
+
+													<td th:text="${TR.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${TR.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${TR.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${TR.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="UP_tbody">
+												<tr th:each="UP : ${UttarPradesh}">
+
+													<td th:text="${UP.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${UP.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${UP.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${UP.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="UT_tbody">
+												<tr th:each="UT : ${Uttarakhand}">
+
+													<td th:text="${UT.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${UT.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${UT.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${UT.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="WB_tbody">
+												<tr th:each="WB : ${WestBengal}">
+
+													<td th:text="${WB.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${WB.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${WB.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${WB.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- end modal -->
 
 				</div>
 
@@ -346,7 +1149,7 @@
 									<th>Cases %</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="world_tbody">
 								<tr th:each="worldStat : ${worldStats}">
 									<td id="td_country">
 										<span th:text="${worldStat.country}"></span>
@@ -458,15 +1261,62 @@
 		});
 	</script>
 
-	<!-- <script>
+	<script>
 
-		let tbl = document.getElementById("table_id").getElementsByTagName('tbody')[0];
-		for (var i = 0; i < tbl.rows.length; i++) {
-			if (tbl.rows[i].cells[2].innerHTML == 0) {
-				tbl.rows[i].cells[2].getElementsByClassName("india_nc");
-			}
-		}
-	</script> -->
+		/* var i = 0;
+		while (i < 36) {
+			var trs = $("#district_table").find("tbody").get(i).getAttribute('id');
+			console.log(trs);
+			i++;
+		} */
+
+		var m = new Map([
+			["Andaman and Nicobar Islands", "AN_tbody"],
+			["Andhra Pradesh", "AP_tbody"],
+			["Arunachal Pradesh", "AR_tbody"],
+			["Assam", "AS_tbody"],
+			["Bihar", "BR_tbody"],
+			["Chandigarh", "CH_tbody"],
+			["Chhattisgarh", "CT_tbody"],
+			["Dadra and Nagar Haveli", "DN_tbody"],
+			["Delhi", "DL_tbody"],
+			["Goa", "GA_tbody"],
+			["Gujarat", "GJ_tbody"],
+			["Haryana", "HR_tbody"],
+			["Himachal Pradesh", "HP_tbody"],
+			["Jammu and Kashmir", "JK_tbody"],
+			["Jharkhand", "JH_tbody"],
+			["Karnataka", "KA_tbody"],
+			["Kerala", "KL_tbody"],
+			["Ladakh", "LA_tbody"],
+			["Madhya Pradesh", "MP_tbody"],
+			["Maharashtra", "MH_tbody"],
+			["Manipur", "MN_tbody"],
+			["Mizoram", "MZ_tbody"],
+			["Odisha", "ORR_tbody"],
+			["Puducherry", "PY_tbody"],
+			["Punjab", "PB_tbody"],
+			["Rajasthan", "RJ_tbody"],
+			["Tamil Nadu", "TN_tbody"],
+			["Telangana", "TG_tbody"],
+			["Tripura", "TR_tbody"],
+			["Uttar Pradesh", "UP_tbody"],
+			["Uttarakhand", "UT_tbody"],
+			["West Bengal", "WB_tbody"],
+		]);
+
+		$("#table_id").on('click', 'tr', function () {
+			var tdValue = $(this).children(':first').text();
+			$("#modaltitle").text(tdValue);
+			var id = m.get(tdValue);
+			$("#district_table").find("tbody").not("#"+id).hide();
+			$("#"+id).show();
+			console.log(id);
+			console.log(tdValue);
+
+		});
+
+	</script>
 
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
