@@ -145,9 +145,54 @@ function drawTotalCasesChart(totalConfirmed, totalDeceased, totalRecovered) {
     });
 }
 
-/* $('table tbody tr  td').on('click', function () {
-    $("#modaltitle").val($(this).closest('tr').children()[0].textContent);
-}); */
+
+$(document).ready(function () {
+    $('#india_casesrate').click();
+    $('#india_casesrate').click();
+});
 
 
-	
+$(document).ready(function () {
+    var m = new Map([
+        ["Andaman and Nicobar Islands", "AN_tbody"],
+        ["Andhra Pradesh", "AP_tbody"],
+        ["Arunachal Pradesh", "AR_tbody"],
+        ["Assam", "AS_tbody"],
+        ["Bihar", "BR_tbody"],
+        ["Chandigarh", "CH_tbody"],
+        ["Chhattisgarh", "CT_tbody"],
+        ["Dadra and Nagar Haveli", "DN_tbody"],
+        ["Delhi", "DL_tbody"],
+        ["Goa", "GA_tbody"],
+        ["Gujarat", "GJ_tbody"],
+        ["Haryana", "HR_tbody"],
+        ["Himachal Pradesh", "HP_tbody"],
+        ["Jammu and Kashmir", "JK_tbody"],
+        ["Jharkhand", "JH_tbody"],
+        ["Karnataka", "KA_tbody"],
+        ["Kerala", "KL_tbody"],
+        ["Ladakh", "LA_tbody"],
+        ["Madhya Pradesh", "MP_tbody"],
+        ["Maharashtra", "MH_tbody"],
+        ["Manipur", "MN_tbody"],
+        ["Mizoram", "MZ_tbody"],
+        ["Odisha", "ORR_tbody"],
+        ["Puducherry", "PY_tbody"],
+        ["Punjab", "PB_tbody"],
+        ["Rajasthan", "RJ_tbody"],
+        ["Tamil Nadu", "TN_tbody"],
+        ["Telangana", "TG_tbody"],
+        ["Tripura", "TR_tbody"],
+        ["Uttar Pradesh", "UP_tbody"],
+        ["Uttarakhand", "UT_tbody"],
+        ["West Bengal", "WB_tbody"],
+    ]);
+
+    $("#table_id").on('click', 'tr', function () {
+        var tdValue = $(this).children(':first').text();
+        $("#modaltitle").text(tdValue);
+        var id = m.get(tdValue);
+        $("#district_table").find("tbody").not("#" + id).hide();
+        $("#" + id).show();
+    });
+});

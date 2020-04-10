@@ -34,8 +34,6 @@
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
 
-	<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-
 	<!-- <script src="https://code.highcharts.com/maps/highmaps.js"></script>
 		<script src="https://code.highcharts.com/maps/modules/data.js"></script>
 		<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
@@ -104,8 +102,16 @@
 					</div>
 
 				</div>
-			</div>
 
+				<hr>
+
+				<div class="col-sm">
+					<a type="button" href="https://www.altnews.in/?s=covid19+coronavirus"
+						class="btn btn-outline-light btn-sm" target="_blank" id="links">COVID-19 related Fake News</a>
+					<a type="button" href="https://news.google.com/topics/CAAqBwgKMMqAmAsw9KmvAw?oc=3&ceid=IN:en"
+						class="btn btn-outline-light btn-sm" target="_blank">Read latest COVID-19 News</a>
+				</div>
+			</div>
 
 			<nav id="navpills" style="font-family: 'Karla', sans-serif;">
 				<div class="nav nav-pills " id="nav-tab" role="tablist">
@@ -276,7 +282,8 @@
 
 					<div class="modal fade" id="districtModal" tabindex="-1" role="dialog"
 						aria-labelledby="districtModalTitle" aria-hidden="true">
-						<div class="modal-dialog .modal-dialog-centered modal-sm modal-dialog-scrollable" role="document">
+						<div class="modal-dialog .modal-dialog-centered modal-sm modal-dialog-scrollable"
+							role="document">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h6 class="modal-title" id="modaltitle"></h6>
@@ -1254,67 +1261,12 @@
 
 	</script>
 
-	<script>
+	<!-- <script>
 		$(function () {
 			$('#india_casesrate').click();
 			$('#india_casesrate').click();
 		});
-	</script>
-
-	<script>
-
-		/* var i = 0;
-		while (i < 36) {
-			var trs = $("#district_table").find("tbody").get(i).getAttribute('id');
-			console.log(trs);
-			i++;
-		} */
-
-		var m = new Map([
-			["Andaman and Nicobar Islands", "AN_tbody"],
-			["Andhra Pradesh", "AP_tbody"],
-			["Arunachal Pradesh", "AR_tbody"],
-			["Assam", "AS_tbody"],
-			["Bihar", "BR_tbody"],
-			["Chandigarh", "CH_tbody"],
-			["Chhattisgarh", "CT_tbody"],
-			["Dadra and Nagar Haveli", "DN_tbody"],
-			["Delhi", "DL_tbody"],
-			["Goa", "GA_tbody"],
-			["Gujarat", "GJ_tbody"],
-			["Haryana", "HR_tbody"],
-			["Himachal Pradesh", "HP_tbody"],
-			["Jammu and Kashmir", "JK_tbody"],
-			["Jharkhand", "JH_tbody"],
-			["Karnataka", "KA_tbody"],
-			["Kerala", "KL_tbody"],
-			["Ladakh", "LA_tbody"],
-			["Madhya Pradesh", "MP_tbody"],
-			["Maharashtra", "MH_tbody"],
-			["Manipur", "MN_tbody"],
-			["Mizoram", "MZ_tbody"],
-			["Odisha", "ORR_tbody"],
-			["Puducherry", "PY_tbody"],
-			["Punjab", "PB_tbody"],
-			["Rajasthan", "RJ_tbody"],
-			["Tamil Nadu", "TN_tbody"],
-			["Telangana", "TG_tbody"],
-			["Tripura", "TR_tbody"],
-			["Uttar Pradesh", "UP_tbody"],
-			["Uttarakhand", "UT_tbody"],
-			["West Bengal", "WB_tbody"],
-		]);
-
-		$("#table_id").on('click', 'tr', function () {
-			var tdValue = $(this).children(':first').text();
-			$("#modaltitle").text(tdValue);
-			var id = m.get(tdValue);
-			$("#district_table").find("tbody").not("#"+id).hide();
-			$("#"+id).show();
-		});
-
-	</script>
-
+	</script> -->
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-104755350-2"></script>

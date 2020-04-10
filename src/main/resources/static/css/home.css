@@ -9,14 +9,16 @@ hr {
     border-top: 1px solid white;
 }
 
-.pointer {cursor: pointer;}
+.pointer {
+    cursor: pointer;
+}
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-    background-color: #e1ddff;
+    background-color: #e9fbff;
 }
 
 .table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
-    background-color: #e1ddff;
+    background-color: #e9fbff;
 }
 
 .modal-content {
@@ -64,7 +66,8 @@ input {
 } */
 
 #jumbo_totals {
-    background-color: #5500b1;
+    /* background-color: #5500b1; */
+    background-image: radial-gradient( circle 263px at 100.2% 3%, rgba(12, 85, 141, 1) 31.1%, rgba(205, 181, 93, 1) 36.4%, rgba(244, 102, 90, 1) 50.9%, rgba(199, 206, 187, 1) 60.7%, rgba(249, 140, 69, 1) 72.5%, rgba(12, 73, 116, 1) 72.6%);
     padding-top: 5%;
     padding-bottom: 5%;
     margin-top: 4%;
@@ -106,7 +109,7 @@ input {
 }
 
 #mynavbar {
-    background-color: #151E3F;
+    background-image: linear-gradient( 109.6deg,  rgba(0,0,0,1) 11.2%, rgba(11,132,145,1) 91.1% );
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -116,7 +119,7 @@ input {
 
 #table-header {
     color: white;
-    background-color: #3b3c44;
+    background-image: radial-gradient( circle 919px at 1.7% 6.1%,  rgba(41,58,76,1) 0%, rgba(40,171,226,1) 100.2% );
 }
 
 html {
@@ -154,6 +157,11 @@ td {
     font-weight: 600;
 }
 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-image: linear-gradient( 113.3deg,  rgba(134,209,228,1) -1.8%, rgba(60,80,115,1) 86.4% );
+}
+
 #navpills {
     margin-bottom: 50px;
     border-radius: 0em;
@@ -186,27 +194,27 @@ td {
 }
 
 #newcases {
-    background-color: #4a7afc;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(0, 149, 218, 0.85) 9.9%, rgba(56, 80, 114, 1) 100.3%);
     color: white;
 }
 
 #activecases {
-    background-color: #be00af;
+    background-image: linear-gradient( 90.5deg, rgba(250, 156, 245, 1) 1.6%, rgba(182, 76, 233, 1) 98.2%);
     color: white;
 }
 
 #recoveredcases {
-    background-color: #19af47;
+    background-image: radial-gradient( circle 862px at 6% 18%, rgba(21, 219, 149, 1) 9.4%, rgba(26, 35, 160, 1) 83.6%);
     color: white;
 }
 
 #deaths {
-    background-color: #fc3e3e;
+    background-image: linear-gradient( 117.8deg, rgba(240, 19, 77, 1) 22.2%, rgba(228, 0, 124, 1) 88.7%);
     color: white;
 }
 
 #newdeaths {
-    background-color: #f5814c;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(239, 87, 87, 0.74) 0%, rgba(245, 123, 13, 0.74) 90.2%);
     color: white;
 }
 
@@ -421,6 +429,9 @@ tspan {
 */
 
 @media (min-width: 481px) and (max-width: 767px) {
+    #links {
+        margin-bottom: 10px;
+    }
     #total_p {
         font-size: 20px;
     }
@@ -462,6 +473,9 @@ tspan {
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
+    #links {
+        margin-bottom: 10px;
+    }
     #total_p {
         font-size: 15px;
     }
@@ -498,6 +512,9 @@ tspan {
 }
 
 @media (min-width: 200px) and (max-width: 480px) {
+    #links {
+        margin-bottom: 10px;
+    }
     #total_p {
         font-size: 16px;
     }
