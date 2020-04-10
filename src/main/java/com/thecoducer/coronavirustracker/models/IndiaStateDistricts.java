@@ -1,10 +1,27 @@
 package com.thecoducer.coronavirustracker.models;
 
+import java.util.Comparator;
+
 public class IndiaStateDistricts {
 	private String districtName;
 	private String confirmed;
 	private String deltaConfirmed;
 	
+	
+	public static Comparator<IndiaStateDistricts> iSDComparator = new Comparator<IndiaStateDistricts>() {
+		public int compare(IndiaStateDistricts d1, IndiaStateDistricts d2) {
+			long c1 = Long.parseLong(d1.getConfirmed());
+			long c2 = Long.parseLong(d2.getConfirmed());
+			
+			if(c1 == c2) {
+				return 0;
+			}else if(c1 > c2) {
+				return -1;
+			}else {
+				return 1;
+			}
+		}
+	};
 	
 	public String getDistrictName() {
 		return districtName;
