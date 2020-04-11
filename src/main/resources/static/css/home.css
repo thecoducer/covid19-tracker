@@ -82,6 +82,10 @@ input {
     border-radius: 0em;
 }
 
+#container_worldgraph {
+    margin-bottom: 40px;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;

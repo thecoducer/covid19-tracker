@@ -39,9 +39,15 @@
 		<script src="https://code.highcharts.com/mapdata/custom/world.js"></script> -->
 
 
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/thecoducer/covid19-tracker/src/main/resources/static/css/home.css" />
+	<link rel="stylesheet" type="text/css"
+		href="https://cdn.jsdelivr.net/gh/thecoducer/covid19-tracker/src/main/resources/static/css/home.css" />
 
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/thecoducer/covid19-tracker/src/main/resources/static/js/home.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/gh/thecoducer/covid19-tracker/src/main/resources/static/js/home.js"></script>
+
+	<!-- <link rel="stylesheet" type="text/css" href="/css/home.css" />
+
+	<script type="text/javascript" src="/js/home.js"></script> -->
 
 
 
@@ -58,7 +64,7 @@
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					
+
 				</li>
 				<li class="nav-item">
 
@@ -76,7 +82,7 @@
 			<span class="my-2 my-lg-0">
 				<a class="btn btn-light btn-sm my-2 my-sm-0" href="https://github.com/thecoducer/covid19-tracker"
 					target="_blank">Fork on GitHub</a>
-					<a class="btn btn-light btn-sm my-2 my-sm-0" href="https://forms.gle/NycW8q9PN3BgQETZ9">Contact</a>
+				<a class="btn btn-light btn-sm my-2 my-sm-0" href="https://forms.gle/NycW8q9PN3BgQETZ9">Contact</a>
 			</span>
 		</div>
 	</nav>
@@ -113,12 +119,12 @@
 			</div>
 
 			<nav id="navpills" style="font-family: 'Karla', sans-serif;">
-				<div class="nav nav-pills " id="nav-tab" role="tablist">
+				<div class="nav nav-pills" id="nav-tab" role="tablist">
 					<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
 						aria-controls="nav-home" aria-selected="true">India</a>
 
-					<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-						aria-controls="nav-profile" aria-selected="false">World</a>
+					<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+						role="tab" aria-controls="nav-profile" aria-selected="false">World</a>
 				</div>
 			</nav>
 
@@ -1081,7 +1087,8 @@
 
 
 				<!-- WORLD STATS -->
-				<div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+				<div class="tab-pane fade " id="nav-profile" role="tabpanel"
+					aria-labelledby="nav-profile-tab">
 
 					<div class="container" id="card-container">
 						<div class="row">
@@ -1133,6 +1140,42 @@
 						<p class="text-center" id="info">Tap on any label to show/hide its respective line</p>
 
 					</div> -->
+
+					<div class="container" id="container_worldgraph">
+
+						<div class="row">
+
+							<div class="col-md" id="worldtotalcasesgraph">
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="container" id="container_worldgraph">
+
+						<div class="row">
+
+							<div class="col-md" id="worlddeathsgraph">
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="container" id="container_worldgraph">
+
+						<div class="row">
+
+							<div class="col-md" id="worldrecoveredgraph">
+							</div>
+
+						</div>
+						<p class="text-center" id="info">Tap on any label to show/hide its respective line</p>
+
+					</div>
+
+
 
 					<h3 class="text-center" id="affectedCountriesh3">
 						<span th:text="${affectedCountries}"></span>
@@ -1259,13 +1302,6 @@
 		$('div.dataTables_filter input').addClass('form-control');
 
 	</script>
-
-	<!-- <script>
-		$(function () {
-			$('#india_casesrate').click();
-			$('#india_casesrate').click();
-		});
-	</script> -->
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-104755350-2"></script>
