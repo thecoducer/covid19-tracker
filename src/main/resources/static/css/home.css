@@ -309,6 +309,10 @@ tspan {
         font-size: 13px;
         display: none;
     }
+    #container_recoveredgraph {
+        width: 600px; 
+        height: 450px;
+    }
 }
 
 /* 
@@ -343,6 +347,10 @@ tspan {
         color: #777777;
         font-size: 13px;
         display: none;
+    }
+    #container_recoveredgraph {
+        width: 600px; 
+        height: 450px;
     }
 }
 
@@ -424,6 +432,10 @@ tspan {
     }
     #dailyseriesgraph {
         margin-bottom: 40px;
+    }
+    #container_recoveredgraph {
+        width: 600px; 
+        height: 450px;
     }
 }
 
