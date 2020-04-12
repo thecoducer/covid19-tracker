@@ -50,383 +50,418 @@ $(document).ready(function () {
 });
 
 
-$.getJSON('https://corona.lmao.ninja/v2/historical/USA,Spain,Italy,Germany,France,China,Iran,UK,Turkey,Belgium,S.%20Korea?lastdays=40',
-    function (data) {
+$(document).ready(function () {
 
-        var i;
-        var m = new Map();
+    var m = new Map();
 
-        for (i = 0; i < data.length; i++) {
+    $.getJSON('https://corona.lmao.ninja/v2/historical/USA,Spain,Italy,Germany,France,China,Iran,UK,Turkey,Belgium,S.%20Korea,India?lastdays=40',
+        function (data) {
 
-            var cases = data[i].timeline.cases;
-            var deaths = data[i].timeline.deaths;
-            var recovered = data[i].timeline.recovered;
-            var countryName = data[i].country;
-            var date;
+            var i;
 
-            for (x in cases) {
-                date = x;
-                break;
+            for (i = 0; i < data.length; i++) {
+
+                var cases = data[i].timeline.cases;
+                var deaths = data[i].timeline.deaths;
+                var recovered = data[i].timeline.recovered;
+                var countryName = data[i].country;
+
+                for (x in cases) {
+                    date = x;
+                    break;
+                }
+
+                var countryList = [];
+                var casesList = [];
+                var deathsList = [];
+                var recoveredList = [];
+
+                for (x in cases) {
+                    casesList.push([new Date(x), cases[x]]);
+                }
+
+                for (x in deaths) {
+                    deathsList.push([new Date(x), deaths[x]]);
+                }
+
+                for (x in recovered) {
+                    recoveredList.push([new Date(x), recovered[x]]);
+                }
+
+                countryList.push(casesList, deathsList, recoveredList);
+
+                var casesList = [];
+                var deathsList = [];
+                var recoveredList = [];
+
+                m.set(countryName, countryList);
             }
 
-            var countryList = [];
-            var casesList = [];
-            var deathsList = [];
-            var recoveredList = [];
+            var dateArray = date.split("/");
 
-            for (x in cases) {
-                casesList.push([new Date(x), cases[x]]);
-            }
+            /* console.log(dateArray); */
 
-            for (x in deaths) {
-                deathsList.push([new Date(x), deaths[x]]);
-            }
+            var date = Date.UTC(dateArray[2] + "20", dateArray[0] - 1, dateArray[1]);
 
-            for (x in recovered) {
-                recoveredList.push([new Date(x), recovered[x]]);
-            }
+            /* console.log(date); */
+            /* console.log(Date.UTC(2020, 2, 12)); */
 
-            countryList.push(casesList, deathsList, recoveredList);
+            drawWorldTotalCasesChart(m, date);
+            drawWorldDeathChart(m, date);
+            drawWorldRecoveredChart(m, date);
 
-            var casesList = [];
-            var deathsList = [];
-            var recoveredList = [];
+        });
 
-            m.set(countryName, countryList);
-        }
 
-        var dateArray = date.split("/");
-
-        /* console.log(dateArray); */
-
-        var date = Date.UTC(dateArray[2] + "20", dateArray[0] - 1, dateArray[1]);
-
-        /* console.log(date); */
-        /* console.log(Date.UTC(2020, 2, 12)); */
-
+    /* $("#nav-profile-tab").click(function () {
+        console.log("Initiate world charts");
         drawWorldTotalCasesChart(m, date);
         drawWorldDeathChart(m, date);
         drawWorldRecoveredChart(m, date);
-
-    });
-
+    }); */
 
 
-function drawWorldTotalCasesChart(m, date) {
-    Highcharts.chart('worldtotalcasesgraph', {
-        plotOptions: {
-            series: {
-                pointStart: date,
-                pointInterval: 1000 * 3600 * 24
-            }
-        },
-        title: {
-            text: 'Confirmed Cases'
-        },
-        xAxis: {
-            type: 'datetime',
+    function drawWorldTotalCasesChart(m, date) {
+        Highcharts.chart('worldtotalcasesgraph', {
+            plotOptions: {
+                series: {
+                    pointStart: date,
+                    pointInterval: 1000 * 3600 * 24,
+                    marker: {
+                        enabled: false
+                    }
+                }
+            },
             title: {
-                text: 'Last 40 days'
+                text: 'Confirmed Cases'
+            },
+            xAxis: {
+                type: 'datetime',
+                title: {
+                    text: 'Last 40 days'
+                }
+            },
+            yAxis: [{
+                className: 'highcharts-color-0',
+                title: {
+                    text: ''
+                }
+            }],
+            credits: {
+                enabled: false
+            },
+            tooltip: {
+                crosshairs: true,
+                shared: true,
+                valueSuffix: '',
+                xDateFormat: '%A, %b %e, %Y'
+            },
+            series: [{
+                name: 'USA',
+                data: m.get("USA")[0],
+                type: 'line',
+                color: '#4830ff'
+            },
+            {
+                name: 'Spain',
+                data: m.get("Spain")[0],
+                type: 'line',
+                color: '#ff0000'
+            },
+            {
+                name: 'Italy',
+                data: m.get("Italy")[0],
+                type: 'line',
+                color: '#29ff00'
+            },
+            {
+                name: 'Germany',
+                data: m.get("Germany")[0],
+                type: 'line',
+                color: '#d9c630'
+            },
+            {
+                name: 'France',
+                data: m.get("France")[0],
+                type: 'line',
+                color: '#969aff'
+            },
+            {
+                name: 'China',
+                data: m.get("China")[0],
+                type: 'line',
+                color: '#000000'
+            },
+            {
+                name: 'Iran',
+                data: m.get("Iran")[0],
+                type: 'line',
+                color: '#b698d3'
+            },
+            {
+                name: 'UK',
+                data: m.get("UK")[0],
+                type: 'line',
+                color: '#FF00F3'
+            },
+            {
+                name: 'Turkey',
+                data: m.get("Turkey")[0],
+                type: 'line',
+                color: '#FE6F00'
+            },
+            {
+                name: 'Belgium',
+                data: m.get("Belgium")[0],
+                type: 'line',
+                color: '#950000'
+            },
+            {
+                name: 'South Korea',
+                data: m.get("S. Korea")[0],
+                type: 'line',
+                color: '#3aa287'
+            },
+            {
+                name: 'India',
+                data: m.get("India")[0],
+                type: 'line',
+                color: '#a75c5c'
             }
-        },
-        yAxis: [{
-            className: 'highcharts-color-0',
+            ]
+        });
+    }
+
+
+    function drawWorldDeathChart(m, date) {
+        Highcharts.chart('worlddeathsgraph', {
+            plotOptions: {
+                series: {
+                    pointStart: date,
+                    pointInterval: 1000 * 3600 * 24,
+                    marker: {
+                        enabled: false
+                    }
+                }
+            },
             title: {
-                text: ''
+                text: 'Deaths'
+            },
+            xAxis: {
+                type: 'datetime',
+                title: {
+                    text: 'Last 40 days'
+                }
+            },
+            yAxis: [{
+                className: 'highcharts-color-0',
+                title: {
+                    text: ''
+                }
+            }],
+            credits: {
+                enabled: false
+            },
+            tooltip: {
+                crosshairs: true,
+                shared: true,
+                valueSuffix: '',
+                xDateFormat: '%A, %b %e, %Y'
+            },
+            series: [{
+                name: 'USA',
+                data: m.get("USA")[1],
+                type: 'line',
+                color: '#4830ff'
+            },
+            {
+                name: 'Spain',
+                data: m.get("Spain")[1],
+                type: 'line',
+                color: '#ff0000'
+            },
+            {
+                name: 'Italy',
+                data: m.get("Italy")[1],
+                type: 'line',
+                color: '#29ff00'
+            },
+            {
+                name: 'Germany',
+                data: m.get("Germany")[1],
+                type: 'line',
+                color: '#d9c630'
+            },
+            {
+                name: 'France',
+                data: m.get("France")[1],
+                type: 'line',
+                color: '#969aff'
+            },
+            {
+                name: 'China',
+                data: m.get("China")[1],
+                type: 'line',
+                color: '#000000'
+            },
+            {
+                name: 'Iran',
+                data: m.get("Iran")[1],
+                type: 'line',
+                color: '#b698d3'
+            },
+            {
+                name: 'UK',
+                data: m.get("UK")[1],
+                type: 'line',
+                color: '#FF00F3'
+            },
+            {
+                name: 'Turkey',
+                data: m.get("Turkey")[1],
+                type: 'line',
+                color: '#FE6F00'
+            },
+            {
+                name: 'Belgium',
+                data: m.get("Belgium")[1],
+                type: 'line',
+                color: '#950000'
+            },
+            {
+                name: 'South Korea',
+                data: m.get("S. Korea")[1],
+                type: 'line',
+                color: '#3aa287'
+            },
+            {
+                name: 'India',
+                data: m.get("India")[1],
+                type: 'line',
+                color: '#a75c5c'
             }
-        }],
-        credits: {
-            enabled: false
-        },
-        tooltip: {
-            crosshairs: true,
-            shared: true,
-            valueSuffix: '',
-            xDateFormat: '%A, %b %e, %Y'
-        },
-        series: [{
-            name: 'USA',
-            data: m.get("USA")[0],
-            type: 'line',
-            color: '#4830ff'
-        },
-        {
-            name: 'Spain',
-            data: m.get("Spain")[0],
-            type: 'line',
-            color: '#ff0000'
-        },
-        {
-            name: 'Italy',
-            data: m.get("Italy")[0],
-            type: 'line',
-            color: '#29ff00'
-        },
-        {
-            name: 'Germany',
-            data: m.get("Germany")[0],
-            type: 'line',
-            color: '#d9c630'
-        },
-        {
-            name: 'France',
-            data: m.get("France")[0],
-            type: 'line',
-            color: '#003373'
-        },
-        {
-            name: 'China',
-            data: m.get("China")[0],
-            type: 'line',
-            color: '#000000'
-        },
-        {
-            name: 'Iran',
-            data: m.get("Iran")[0],
-            type: 'line',
-            color: '#64FFF8'
-        },
-        {
-            name: 'UK',
-            data: m.get("UK")[0],
-            type: 'line',
-            color: '#FF00F3'
-        },
-        {
-            name: 'Turkey',
-            data: m.get("Turkey")[0],
-            type: 'line',
-            color: '#FE6F00'
-        },
-        {
-            name: 'Belgium',
-            data: m.get("Belgium")[0],
-            type: 'line',
-            color: '#950000'
-        },
-        {
-            name: 'South Korea',
-            data: m.get("S. Korea")[0],
-            type: 'line',
-            color: '#3aa287'
-        },
-        ]
-    });
-}
+            ]
+        });
+    }
 
 
-function drawWorldDeathChart(m, date) {
-    Highcharts.chart('worlddeathsgraph', {
-        plotOptions: {
-            series: {
 
-                pointStart: date,
-                pointInterval: 1000 * 3600 * 24
-            }
-        },
-        title: {
-            text: 'Deaths'
-        },
-        xAxis: {
-            type: 'datetime',
+    function drawWorldRecoveredChart(m, date) {
+        Highcharts.chart('worldrecoveredgraph', {
+            plotOptions: {
+                series: {
+                    pointStart: date,
+                    pointInterval: 1000 * 3600 * 24,
+                    marker: {
+                        enabled: false
+                    }
+                }
+            },
             title: {
-                text: 'Last 40 days'
+                text: 'Recovered'
+            },
+            xAxis: {
+                type: 'datetime',
+                title: {
+                    text: 'Last 40 days'
+                }
+            },
+            yAxis: [{
+                className: 'highcharts-color-0',
+                title: {
+                    text: ''
+                }
+            }],
+            credits: {
+                enabled: false
+            },
+            tooltip: {
+                crosshairs: true,
+                shared: true,
+                valueSuffix: '',
+                xDateFormat: '%A, %b %e, %Y'
+            },
+            series: [{
+                name: 'USA',
+                data: m.get("USA")[2],
+                type: 'line',
+                color: '#4830ff'
+            },
+            {
+                name: 'Spain',
+                data: m.get("Spain")[2],
+                type: 'line',
+                color: '#ff0000'
+            },
+            {
+                name: 'Italy',
+                data: m.get("Italy")[2],
+                type: 'line',
+                color: '#29ff00'
+            },
+            {
+                name: 'Germany',
+                data: m.get("Germany")[2],
+                type: 'line',
+                color: '#d9c630'
+            },
+            {
+                name: 'France',
+                data: m.get("France")[2],
+                type: 'line',
+                color: '#969aff'
+            },
+            {
+                name: 'China',
+                data: m.get("China")[2],
+                type: 'line',
+                color: '#000000'
+            },
+            {
+                name: 'Iran',
+                data: m.get("Iran")[2],
+                type: 'line',
+                color: '#b698d3'
+            },
+            {
+                name: 'UK',
+                data: m.get("UK")[2],
+                type: 'line',
+                color: '#FF00F3'
+            },
+            {
+                name: 'Turkey',
+                data: m.get("Turkey")[2],
+                type: 'line',
+                color: '#FE6F00'
+            },
+            {
+                name: 'Belgium',
+                data: m.get("Belgium")[2],
+                type: 'line',
+                color: '#950000'
+            },
+            {
+                name: 'South Korea',
+                data: m.get("S. Korea")[2],
+                type: 'line',
+                color: '#3aa287'
+            },
+            {
+                name: 'India',
+                data: m.get("India")[2],
+                type: 'line',
+                color: '#a75c5c'
             }
-        },
-        yAxis: [{
-            className: 'highcharts-color-0',
-            title: {
-                text: ''
-            }
-        }],
-        credits: {
-            enabled: false
-        },
-        tooltip: {
-            crosshairs: true,
-            shared: true,
-            valueSuffix: '',
-            xDateFormat: '%A, %b %e, %Y'
-        },
-        series: [{
-            name: 'USA',
-            data: m.get("USA")[1],
-            type: 'line',
-            color: '#4830ff'
-        },
-        {
-            name: 'Spain',
-            data: m.get("Spain")[1],
-            type: 'line',
-            color: '#ff0000'
-        },
-        {
-            name: 'Italy',
-            data: m.get("Italy")[1],
-            type: 'line',
-            color: '#29ff00'
-        },
-        {
-            name: 'Germany',
-            data: m.get("Germany")[1],
-            type: 'line',
-            color: '#d9c630'
-        },
-        {
-            name: 'France',
-            data: m.get("France")[1],
-            type: 'line',
-            color: '#003373'
-        },
-        {
-            name: 'China',
-            data: m.get("China")[1],
-            type: 'line',
-            color: '#000000'
-        },
-        {
-            name: 'Iran',
-            data: m.get("Iran")[1],
-            type: 'line',
-            color: '#64FFF8'
-        },
-        {
-            name: 'UK',
-            data: m.get("UK")[1],
-            type: 'line',
-            color: '#FF00F3'
-        },
-        {
-            name: 'Turkey',
-            data: m.get("Turkey")[1],
-            type: 'line',
-            color: '#FE6F00'
-        },
-        {
-            name: 'Belgium',
-            data: m.get("Belgium")[1],
-            type: 'line',
-            color: '#950000'
-        },
-        {
-            name: 'South Korea',
-            data: m.get("S. Korea")[1],
-            type: 'line',
-            color: '#3aa287'
-        },
-        ]
-    });
-}
-
-
-
-function drawWorldRecoveredChart(m, date) {
-    Highcharts.chart('worldrecoveredgraph', {
-        plotOptions: {
-            series: {
-
-                pointStart: date,
-                pointInterval: 1000 * 3600 * 24
-            }
-        },
-        title: {
-            text: 'Recovered'
-        },
-        xAxis: {
-            type: 'datetime',
-            title: {
-                text: 'Last 40 days'
-            }
-        },
-        yAxis: [{
-            className: 'highcharts-color-0',
-            title: {
-                text: ''
-            }
-        }],
-        credits: {
-            enabled: false
-        },
-        tooltip: {
-            crosshairs: true,
-            shared: true,
-            valueSuffix: '',
-            xDateFormat: '%A, %b %e, %Y'
-        },
-        series: [{
-            name: 'USA',
-            data: m.get("USA")[2],
-            type: 'line',
-            color: '#4830ff'
-        },
-        {
-            name: 'Spain',
-            data: m.get("Spain")[2],
-            type: 'line',
-            color: '#ff0000'
-        },
-        {
-            name: 'Italy',
-            data: m.get("Italy")[2],
-            type: 'line',
-            color: '#29ff00'
-        },
-        {
-            name: 'Germany',
-            data: m.get("Germany")[2],
-            type: 'line',
-            color: '#d9c630'
-        },
-        {
-            name: 'France',
-            data: m.get("France")[2],
-            type: 'line',
-            color: '#003373'
-        },
-        {
-            name: 'China',
-            data: m.get("China")[2],
-            type: 'line',
-            color: '#000000'
-        },
-        {
-            name: 'Iran',
-            data: m.get("Iran")[2],
-            type: 'line',
-            color: '#64FFF8'
-        },
-        {
-            name: 'UK',
-            data: m.get("UK")[2],
-            type: 'line',
-            color: '#FF00F3'
-        },
-        {
-            name: 'Turkey',
-            data: m.get("Turkey")[2],
-            type: 'line',
-            color: '#FE6F00'
-        },
-        {
-            name: 'Belgium',
-            data: m.get("Belgium")[2],
-            type: 'line',
-            color: '#950000'
-        },
-        {
-            name: 'South Korea',
-            data: m.get("S. Korea")[2],
-            type: 'line',
-            color: '#3aa287'
-        },
-        ]
-    });
-}
+            ]
+        });
+    }
+});
 
 
 
 
-$(document).ready(
+/* $(document).ready(
     function () {
         $.ajax({
             url: "/getseries",
@@ -457,16 +492,56 @@ $(document).ready(
                         totalRecovered.push([new Date(result[key].date + '2020'), parseInt(result[key].totalRecovered)]);
                     });
 
-                /* console.log(dailyConfirmed);
-                console.log(dailyDeceased);
-                console.log(dailyRecovered); */
-
                 drawDailyCasesChart(dailyConfirmed, dailyDeceased, dailyRecovered);
                 drawTotalCasesChart(totalConfirmed, totalDeceased, totalRecovered);
 
             }
         });
+    }); */
+
+
+$.getJSON('https://api.covid19india.org/data.json',
+    function (result) {
+
+        var dailyConfirmed = [];
+        var dailyDeceased = [];
+        var dailyRecovered = [];
+
+        var totalConfirmed = [];
+        var totalDeceased = [];
+        var totalRecovered = [];
+
+        var cts = result.cases_time_series;
+
+
+        for (x in cts) {
+
+            var date_i = new Date(cts[x].date + '2020');
+            var date_str = date_i.getFullYear() + '-' + (date_i.getMonth() + 1) + '-' + date_i.getDate()
+            var today = new Date();
+            var today_str = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+            if (date_str != today_str) {
+
+                dailyConfirmed.push([date_i, parseInt(cts[x].dailyconfirmed)]);
+
+                dailyDeceased.push([date_i, parseInt(cts[x].dailydeceased)]);
+
+                dailyRecovered.push([date_i, parseInt(cts[x].dailyrecovered)]);
+
+                totalConfirmed.push([date_i, parseInt(cts[x].totalconfirmed)]);
+
+                totalDeceased.push([date_i, parseInt(cts[x].totaldeceased)]);
+
+                totalRecovered.push([date_i, parseInt(cts[x].totalrecovered)]);
+            }
+        }
+
+        drawDailyCasesChart(dailyConfirmed, dailyDeceased, dailyRecovered);
+        drawTotalCasesChart(totalConfirmed, totalDeceased, totalRecovered);
     });
+
+
 
 function drawDailyCasesChart(dailyConfirmed, dailyDeceased, dailyRecovered) {
     Highcharts.chart('dailyseriesgraph', {

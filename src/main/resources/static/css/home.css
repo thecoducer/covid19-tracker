@@ -198,7 +198,7 @@ td {
 }
 
 #newcases {
-    background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(0, 149, 218, 0.85) 9.9%, rgba(56, 80, 114, 1) 100.3%);
+    background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
     color: white;
 }
 
