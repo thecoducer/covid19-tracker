@@ -156,24 +156,25 @@
 
 							<div class="card col-sm" style="width: 18rem;">
 								<div class="card-body" id="recoveredcases">
-									<p class="card-title" th:text="${totalIndiaRecoveredCases}"></p>
-									<p class="card-text">recovered cases in total</p>
-								</div>
-							</div>
-
-							<br>
-
-							<div class="card col-sm" style="width: 18rem;">
-								<div class="card-body" id="newdeaths">
-									<p class="card-title" th:text="${totalIndiaNewDeaths}"></p>
-									<p class="card-text">died today</p>
+									<p class="card-title">
+										<span th:text="${totalIndiaRecoveredCases}"></span>
+										<span id="new_counter" th:if="${totalIndiaNewRecoveredCases != '0'}">
+											[+<span th:text="${totalIndiaNewRecoveredCases}"></span>]
+										</span>
+									</p>
+									<p class="card-text">recovered cases</p>
 								</div>
 							</div>
 
 							<div class="card col-sm" style="width: 18rem;">
 								<div class="card-body" id="deaths">
-									<p class="card-title" th:text="${totalIndiaDeaths}"></p>
-									<p class="card-text">deaths in total</p>
+									<p class="card-title">
+										<span th:text="${totalIndiaDeaths}"></span>
+										<span id="new_counter" th:if="${totalIndiaNewDeaths != '0'}">
+											[+<span th:text="${totalIndiaNewDeaths}"></span>]
+										</span>
+									</p>
+									<p class="card-text">deaths</p>
 								</div>
 							</div>
 
@@ -1091,6 +1092,125 @@
 												</tr>
 											</tbody>
 
+											<tbody id="NL_tbody">
+												<tr th:each="NL : ${Nagaland}">
+
+													<td th:text="${NL.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${NL.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${NL.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${NL.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="ML_tbody">
+												<tr th:each="ML : ${Meghalaya}">
+
+													<td th:text="${ML.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${ML.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${ML.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${ML.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="DD_tbody">
+												<tr th:each="DD : ${DamanandDiu}">
+
+													<td th:text="${DD.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${DD.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+															<span th:text="${DD.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${DD.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="LD_tbody">
+												<tr th:each="LD : ${Lakshadweep}">
+
+													<td th:text="${LD.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${LD.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${LD.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${LD.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
+											<tbody id="SK_tbody">
+												<tr th:each="SK : ${Sikkim}">
+
+													<td th:text="${SK.districtName}" id="district_name"></td>
+
+													<td class="text-right">
+														<span id="up_newcases" th:if="${SK.deltaConfirmed != '0'}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="12"
+																height="12" viewBox="0 0 24 24" fill="none"
+																stroke="currentColor" stroke-width="2"
+																stroke-linecap="round" stroke-linejoin="round">
+																<line x1="12" y1="19" x2="12" y2="5"></line>
+																<polyline points="5 12 12 5 19 12"></polyline>
+															</svg>
+
+															<span th:text="${SK.deltaConfirmed}"></span>
+														</span>
+
+														<span th:text="${.confirmed}"></span>
+													</td>
+
+												</tr>
+											</tbody>
+
 										</table>
 									</div>
 								</div>
@@ -1164,7 +1284,7 @@
 							<div class="col-md" id="worldtotalcasesgraph">
 							</div>
 
-							<div class="col-md" id="worlddeathsgraph">
+							<div class="col-md margin-top-40" id="worlddeathsgraph">
 							</div>
 
 						</div>

@@ -9,6 +9,10 @@ hr {
     border-top: 1px solid white;
 }
 
+#new_counter {
+    font-size: 20px;
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -208,7 +212,7 @@ td {
 }
 
 #recoveredcases {
-    background-image: radial-gradient( circle 862px at 6% 18%, rgba(21, 219, 149, 1) 9.4%, rgba(26, 35, 160, 1) 83.6%);
+    background-image: radial-gradient( circle farthest-corner at 0.4% 34.3%,  rgb(63, 216, 55) 1.3%, rgb(63, 160, 58) 90% );
     color: white;
 }
 
@@ -481,6 +485,9 @@ tspan {
     #dailyseriesgraph {
         margin-bottom: 40px;
     }
+    .margin-top-40 {
+        margin-top: 40px;
+    }
 }
 
 /* 
@@ -525,6 +532,9 @@ tspan {
     #dailyseriesgraph {
         margin-bottom: 40px;
     }
+    .margin-top-40 {
+        margin-top: 40px;
+    }
 }
 
 @media (min-width: 200px) and (max-width: 480px) {
@@ -560,5 +570,8 @@ tspan {
     }
     #dailyseriesgraph {
         margin-bottom: 40px;
+    }
+    .margin-top-40 {
+        margin-top: 40px;
     }
 }

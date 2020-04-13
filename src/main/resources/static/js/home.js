@@ -38,6 +38,11 @@ $(document).ready(function () {
         ["Uttar Pradesh", "UP_tbody"],
         ["Uttarakhand", "UT_tbody"],
         ["West Bengal", "WB_tbody"],
+        ["Nagaland", "NL_tbody"],
+        ["Meghalaya", "ML_tbody"],
+        ["Daman and Diu", "DD_tbody"],
+        ["Lakshadweep", "LD_tbody"],
+        ["Sikkim", "SK_tbody"]
     ]);
 
     $("#table_id").on('click', 'tr', function () {

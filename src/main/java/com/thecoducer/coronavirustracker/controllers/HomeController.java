@@ -69,6 +69,8 @@ public class HomeController {
 		model.addAttribute("totalDeathCount", numberFormat.format(Long.parseLong(allStats.getDeaths())));
 		model.addAttribute("totalActiveCases", numberFormat.format(Long.parseLong(allStats.getActive())));
 		model.addAttribute("affectedCountries", allStats.getAffectedCountries());
+		
+		model.addAttribute("indiaStats", indiaStats);
 
 		String totalIndiaCases = numberFormat.format(Integer.valueOf(indiaTotalCounterDataService.getTotalCases()));
 		String totalIndiaNewCases = numberFormat
@@ -83,7 +85,6 @@ public class HomeController {
 				.format(Integer.valueOf(indiaTotalCounterDataService.getTotalNewDeaths()));
 		String totalIndiaDeaths = numberFormat.format(Integer.valueOf(indiaTotalCounterDataService.getTotalDeaths()));
 
-		model.addAttribute("indiaStats", indiaStats);
 		model.addAttribute("totalIndiaCases", totalIndiaCases);
 		model.addAttribute("totalIndiaNewCases", totalIndiaNewCases);
 		model.addAttribute("totalIndiaActiveCases", totalIndiaActiveCases);
