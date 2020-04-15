@@ -37,8 +37,7 @@ public class IndiaPatientDataService {
 	
 	private int patientsDataCount;
 
-	@PostConstruct
-	@Scheduled(cron = "0 0/5 * * * *")
+	
 	public void fetchPatientData() throws MalformedURLException, ParseException, IOException {
 
 		JSONObject jo = (JSONObject) new JSONParser()

@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    var m = new Map([
+    var m_tbody = new Map([
         ["Andaman and Nicobar Islands", "AN_tbody"],
         ["Andhra Pradesh", "AP_tbody"],
         ["Arunachal Pradesh", "AR_tbody"],
@@ -14,6 +14,7 @@ $(document).ready(function () {
         ["Chandigarh", "CH_tbody"],
         ["Chhattisgarh", "CT_tbody"],
         ["Dadra and Nagar Haveli", "DN_tbody"],
+        ["Daman and Diu", "DD_tbody"],
         ["Delhi", "DL_tbody"],
         ["Goa", "GA_tbody"],
         ["Gujarat", "GJ_tbody"],
@@ -24,31 +25,30 @@ $(document).ready(function () {
         ["Karnataka", "KA_tbody"],
         ["Kerala", "KL_tbody"],
         ["Ladakh", "LA_tbody"],
+        ["Lakshadweep", "LD_tbody"],
         ["Madhya Pradesh", "MP_tbody"],
         ["Maharashtra", "MH_tbody"],
         ["Manipur", "MN_tbody"],
+        ["Meghalaya", "ML_tbody"],
         ["Mizoram", "MZ_tbody"],
+        ["Nagaland", "NL_tbody"],
         ["Odisha", "ORR_tbody"],
         ["Puducherry", "PY_tbody"],
         ["Punjab", "PB_tbody"],
         ["Rajasthan", "RJ_tbody"],
+        ["Sikkim", "SK_tbody"],
         ["Tamil Nadu", "TN_tbody"],
         ["Telangana", "TG_tbody"],
         ["Tripura", "TR_tbody"],
         ["Uttar Pradesh", "UP_tbody"],
         ["Uttarakhand", "UT_tbody"],
-        ["West Bengal", "WB_tbody"],
-        ["Nagaland", "NL_tbody"],
-        ["Meghalaya", "ML_tbody"],
-        ["Daman and Diu", "DD_tbody"],
-        ["Lakshadweep", "LD_tbody"],
-        ["Sikkim", "SK_tbody"]
+        ["West Bengal", "WB_tbody"]
     ]);
 
     $("#table_id").on('click', 'tr', function () {
         var tdValue = $(this).children(':first').text();
         $("#modaltitle").text(tdValue);
-        var id = m.get(tdValue);
+        var id = m_tbody.get(tdValue);
         $("#district_table").find("tbody").not("#" + id).hide();
         $("#" + id).show();
     });
@@ -59,7 +59,7 @@ $(document).ready(function () {
 
     var m = new Map();
 
-    $.getJSON('https://corona.lmao.ninja/v2/historical/USA,Spain,Italy,Germany,France,China,Iran,UK,Turkey,Belgium,S.%20Korea,India?lastdays=40',
+    $.getJSON('https://corona.lmao.ninja/v2/historical/USA,Spain,Italy,Germany,France,China,Iran,UK,Turkey,Belgium,S.%20Korea,India?lastdays=30',
         function (data) {
 
             var i;
@@ -143,7 +143,7 @@ $(document).ready(function () {
             xAxis: {
                 type: 'datetime',
                 title: {
-                    text: 'Last 40 days'
+                    text: 'Last 30 days'
                 }
             },
             yAxis: [{
@@ -255,7 +255,7 @@ $(document).ready(function () {
             xAxis: {
                 type: 'datetime',
                 title: {
-                    text: 'Last 40 days'
+                    text: 'Last 30 days'
                 }
             },
             yAxis: [{
@@ -368,7 +368,7 @@ $(document).ready(function () {
             xAxis: {
                 type: 'datetime',
                 title: {
-                    text: 'Last 40 days'
+                    text: 'Last 30 days'
                 }
             },
             yAxis: [{
@@ -522,7 +522,7 @@ $.getJSON('https://api.covid19india.org/data.json',
         for (x in cts) {
 
             var date_i = new Date(cts[x].date + '2020');
-            var date_str = date_i.getFullYear() + '-' + (date_i.getMonth() + 1) + '-' + date_i.getDate()
+            var date_str = date_i.getFullYear() + '-' + (date_i.getMonth() + 1) + '-' + date_i.getDate();
             var today = new Date();
             var today_str = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
@@ -544,9 +544,6 @@ $.getJSON('https://api.covid19india.org/data.json',
 
         drawDailyCasesChart(dailyConfirmed, dailyDeceased, dailyRecovered);
         drawTotalCasesChart(totalConfirmed, totalDeceased, totalRecovered);
-        /* drawpie1();
-        drawpie2();
-        drawpie3(); */
     });
 
 
@@ -656,200 +653,108 @@ function drawTotalCasesChart(totalConfirmed, totalDeceased, totalRecovered) {
     });
 }
 
-/* function drawpie1() {
-    Highcharts.chart('pie1', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
+/* $(document).ready(function () {
+
+    $.getJSON('https://api.covid19india.org/states_daily.json',
+        function (data) {
+
+            var sm = new Map();
+
+            var months = new Map([
+                ["Jan", "January"],
+                ["Feb", "February"],
+                ["Mar", "March"],
+                ["Apr", "April"],
+                ["May", "May"],
+                ["Jun", "June"],
+                ["Jul", "July"]
+            ]);
+
+            var confirmedList = [];
+            var deceasedList = [];
+            var recoveredList = [];
+
+            var countList = [];
+
+            var i;
+
+            for (i = 0; i < data.states_daily.length; i++) {
+
+                var date = data.states_daily[i].date.split("-");
+                var date_str = date[0] + " " + months.get(date[1]) + " " + date[2] + "20";
+
+                var sd = data.states_daily[i];
+
+                for (x in sd) {
+                    if (data.states_daily[i].status == "Confirmed") {
+
+
+                    } else if (data.states_daily[i].status == "Recovered") {
+
+
+                    } else if (data.states_daily[i].status == "Deceased") {
+
+
+                    }
+
+                   
+                }
+
+
+            }
+
+        });
+});
+
+
+function drawStateGraph(dailyConfirmed, dailyDeceased, dailyRecovered) {
+    Highcharts.chart('statesgraph', {
+        plotOptions: {
+            series: {
+
+                pointStart: Date.UTC(2020, 0, 30),
+                pointInterval: 1000 * 3600 * 24
+            }
         },
         title: {
-            text: 'Browser market shares in January, 2018'
+            text: 'Daily Cases'
+        },
+        xAxis: {
+            type: 'datetime',
+        },
+        yAxis: [{
+            className: 'highcharts-color-0',
+            title: {
+                text: ''
+            }
+        }],
+        credits: {
+            enabled: false
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                }
-            }
+            crosshairs: true,
+            shared: true,
+            valueSuffix: '',
+            xDateFormat: '%A, %b %e, %Y'
         },
         series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                name: 'Chrome',
-                y: 61.41,
-                sliced: true,
-                selected: true
-            }, {
-                name: 'Internet Explorer',
-                y: 11.84
-            }, {
-                name: 'Firefox',
-                y: 10.85
-            }, {
-                name: 'Edge',
-                y: 4.67
-            }, {
-                name: 'Safari',
-                y: 4.18
-            }, {
-                name: 'Sogou Explorer',
-                y: 1.64
-            }, {
-                name: 'Opera',
-                y: 1.6
-            }, {
-                name: 'QQ',
-                y: 1.2
-            }, {
-                name: 'Other',
-                y: 2.61
-            }]
+            name: 'Confirmed',
+            data: dailyConfirmed,
+            type: 'line',
+            color: '#4830ff'
+        },
+        {
+            name: 'Deceased',
+            data: dailyDeceased,
+            type: 'line',
+            color: '#ff0000'
+        },
+        {
+            name: 'Recovered',
+            data: dailyRecovered,
+            type: 'line',
+            color: '#29ff00'
         }]
     });
 }
-
-function drawpie2() {
-    Highcharts.chart('pie2', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'Browser market shares in January, 2018'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                }
-            }
-        },
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                name: 'Chrome',
-                y: 61.41,
-                sliced: true,
-                selected: true
-            }, {
-                name: 'Internet Explorer',
-                y: 11.84
-            }, {
-                name: 'Firefox',
-                y: 10.85
-            }, {
-                name: 'Edge',
-                y: 4.67
-            }, {
-                name: 'Safari',
-                y: 4.18
-            }, {
-                name: 'Sogou Explorer',
-                y: 1.64
-            }, {
-                name: 'Opera',
-                y: 1.6
-            }, {
-                name: 'QQ',
-                y: 1.2
-            }, {
-                name: 'Other',
-                y: 2.61
-            }]
-        }]
-    });
-}
-
-function drawpie3() {
-    Highcharts.chart('pie3', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'Browser market shares in January, 2018'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                }
-            }
-        },
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                name: 'Chrome',
-                y: 61.41,
-                sliced: true,
-                selected: true
-            }, {
-                name: 'Internet Explorer',
-                y: 11.84
-            }, {
-                name: 'Firefox',
-                y: 10.85
-            }, {
-                name: 'Edge',
-                y: 4.67
-            }, {
-                name: 'Safari',
-                y: 4.18
-            }, {
-                name: 'Sogou Explorer',
-                y: 1.64
-            }, {
-                name: 'Opera',
-                y: 1.6
-            }, {
-                name: 'QQ',
-                y: 1.2
-            }, {
-                name: 'Other',
-                y: 2.61
-            }]
-        }]
-    });
-} */
+ */

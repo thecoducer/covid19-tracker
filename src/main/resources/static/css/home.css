@@ -212,7 +212,8 @@ td {
 }
 
 #recoveredcases {
-    background-image: radial-gradient( circle farthest-corner at 0.4% 34.3%,  rgb(63, 216, 55) 1.3%, rgb(63, 160, 58) 90% );
+    /* background-image: radial-gradient( circle farthest-corner at 0.4% 34.3%,  rgb(63, 216, 55) 1.3%, rgb(63, 160, 58) 90% ); */
+    background-image: radial-gradient( circle 862px at 6% 18%, rgba(21, 219, 149, 1) 9.4%, rgba(26, 35, 160, 1) 83.6%);
     color: white;
 }
 

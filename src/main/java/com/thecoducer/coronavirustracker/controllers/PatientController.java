@@ -15,15 +15,15 @@ import com.thecoducer.coronavirustracker.services.IndiaPatientDataService;
 @RestController
 public class PatientController {
 	
-	@Autowired
-	IndiaPatientDataService indiaPatientDataService;
+//	@Autowired
+//	IndiaPatientDataService indiaPatientDataService;
 	
-	@GetMapping("/getpatientsdata")
-	public ResponseEntity<SortedMap<Integer, PatientStats>> getPatientDataGraph(){
-		
-		SortedMap<Integer, PatientStats> graphData = indiaPatientDataService.getPatientData();
-
-		return new ResponseEntity<>(graphData, HttpStatus.OK);
-	}
+//	@GetMapping("/getpatientsdata")
+//	public ResponseEntity<SortedMap<Integer, PatientStats>> getPatientDataGraph(){
+//		
+//		SortedMap<Integer, PatientStats> graphData = indiaPatientDataService.getPatientData();
+//
+//		return new ResponseEntity<>(graphData, HttpStatus.OK);
+//	}
 
 }
