@@ -15,6 +15,21 @@
 ## App is live at
 [tcovid19.herokuapp.com](http://tcovid19.herokuapp.com/)
 
+## Screenshots
+### India and world counters
+![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/india-counters.png)
+![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/world-counters.png)
+### Indian statewise datatable
+![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/india-state-table.png)
+### Indian state's district modals
+![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/district-modal.png)
+### Graphs made using highcharts library
+![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/india-graphs.png)
+![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/world-graphs.png)
+### Search or sort the datatable
+![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/search-state.png)
+![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/world-table.png)
+
 ## Improvements
 Check [this]() list
 
