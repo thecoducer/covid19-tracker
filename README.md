@@ -2,7 +2,7 @@
 
 ### Objective
 * Learn the Spring framework
-* Get data from APIs
+* Learn about APIs and how they work
 * Create my own REST API
 * Parse JSONs in Java
 
