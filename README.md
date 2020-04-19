@@ -9,6 +9,13 @@
 ### Built with
 * [Spring](https://spring.io/)
 
+### Also used
+* [Bootstrap](https://getbootstrap.com/) to make web page responsive and look better
+* [Highcharts](http://www.highcharts.com/) JavaScript library to make the graphs
+* [DataTables](https://datatables.net/) to add search/sort functionality to the tables
+* [jsDelivr](https://www.jsdelivr.com/) CDN to host main JavaScript and CSS files
+* [CSS Gradient](https://cssgradient.io/swatches/) gave the code for beautiful gradient colors
+
 ### Hosted on
 * [Heroku](https://www.heroku.com/)
 
