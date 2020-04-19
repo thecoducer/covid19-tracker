@@ -45,7 +45,7 @@ public class WorldStatsDataService {
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         //read json file and convert to worldstats object
-        List<WorldStats> newWorldStats = objectMapper.readValue(new URL("https://corona.lmao.ninja/countries?sort=cases"), 
+        List<WorldStats> newWorldStats = objectMapper.readValue(new URL("https://corona.lmao.ninja/v2/countries?sort=cases"), 
         		new TypeReference<List<WorldStats>>(){});
         
         long totalnewcases = 0;

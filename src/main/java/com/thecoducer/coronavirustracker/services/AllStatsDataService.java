@@ -29,7 +29,7 @@ public class AllStatsDataService {
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         //read json file and convert to customer object
-        AllStats newAllStats = objectMapper.readValue(new URL("https://corona.lmao.ninja/all"), AllStats.class);
+        AllStats newAllStats = objectMapper.readValue(new URL("https://corona.lmao.ninja/v2/all?yesterday=false"), AllStats.class);
 
         this.allStats = newAllStats;
         
