@@ -10,7 +10,7 @@
 * Learn about APIs and how they work
 * Create my own REST API
 * Parse JSONs in Java
-* Enhance practical knowledge on Java collections
+* Enhance practical knowledge of Java collections
 
 ## ⚒️ Built with
 * [Spring](https://spring.io/)
