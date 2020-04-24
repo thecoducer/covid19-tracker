@@ -52,10 +52,10 @@
 ### World
 
 | Data                                                   | URL                                                      |
-| --------------------------------------------------     | ---------------------------------------------------------|
-| Get All Countries Totals Data                          | https://corona.lmao.ninja/v2/countries?sort=cases        |
-| Get global stats: cases, deaths, recovered, time last updated, and active cases.                                | https://corona.lmao.ninja/v2/all?yesterday=true |
-| Get Specific Country's Totals for Actual and Yesterday Data                          | https://corona.lmao.ninja/v2/historical/USA,Spain,Italy,Germany,France,China,Iran,UK,Turkey,Belgium,S.%20Korea,India?lastdays=30        |
+| --------------------------------------------------     | :---------------------------------------------------------|
+| Get All Countries Totals Data                          | [https://corona.lmao.ninja/v2/countries](https://corona.lmao.ninja/v2/countries?sort=cases)        |
+| Get global stats: cases, deaths, recovered, time last updated, and active cases.                                | [https://corona.lmao.ninja/v2/all](https://corona.lmao.ninja/v2/all?yesterday=true) |
+| Get Specific Country's Totals for Actual and Yesterday Data                          | [https://corona.lmao.ninja/v2/historical/](https://corona.lmao.ninja/v2/historical/USA,Spain,Italy,Germany,France,China,Iran,UK,Turkey,Belgium,S.%20Korea,India?lastdays=30)        |
 
 > Thanks to @NovelCOVID for compiling the COVID-19 cases data of all the countries and including few affected cruise ships. Click [here](https://corona.lmao.ninja/docs/) to check the list of all their APIs. 
 
