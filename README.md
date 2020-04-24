@@ -47,7 +47,7 @@
 | Time series, State-wise stats and Test counts      | https://api.covid19india.org/data.json                   |
 | State-District Data                                | https://api.covid19india.org/v2/state_district_wise.json |
 
-The @covid19india team is working hard to gather COVID-19 cases data and other information from official central and state government websites. They are doing a great job. Click [here](https://api.covid19india.org/) to check the list of all their APIs. 
+The [@covid19india](https://github.com/covid19india) team is working hard to gather COVID-19 cases data and other information from official central and state government websites. They are doing a great job. Click [here](https://api.covid19india.org/) to check the list of all their APIs. 
 
 ### World
 
@@ -57,7 +57,7 @@ The @covid19india team is working hard to gather COVID-19 cases data and other i
 | Get global stats: cases, deaths, recovered, time last updated, and active cases.                                | [https://corona.lmao.ninja/v2/all](https://corona.lmao.ninja/v2/all?yesterday=true) |
 | Get Specific Country's Totals for Actual and Yesterday Data                          | [https://corona.lmao.ninja/v2/historical/{country,country,...}](https://corona.lmao.ninja/v2/historical/USA,Spain,Italy,Germany,France,China,Iran,UK,Turkey,Belgium,S.%20Korea,India?lastdays=30)        |
 
-Thanks to @NovelCOVID for compiling the COVID-19 cases data of all the countries and including few affected cruise ships. Click [here](https://corona.lmao.ninja/docs/) to check the list of all their APIs. 
+Thanks to [@NovelCOVID](https://github.com/NovelCOVID) for compiling the COVID-19 cases data of all the countries and including few affected cruise ships. Click [here](https://corona.lmao.ninja/docs/) to check the list of all their APIs. 
 
 ## 📝 License
 Distributed under the MIT License. See `LICENSE` for more information.
