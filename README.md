@@ -34,7 +34,7 @@
 ![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/district-modal.png)
 
 ### Graphs made using Highcharts library
-![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/world-graphs.png)
+![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/india-graphs.png)
 
 ### World datatable
 ![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/world-table.png)
