@@ -111,22 +111,22 @@ $(document).ready(function () {
             /* console.log(date); */
             /* console.log(Date.UTC(2020, 2, 12)); */
 
-            drawWorldTotalCasesChart(m, date);
-            drawWorldDeathChart(m, date);
-            drawWorldRecoveredChart(m, date);
+            drawWorldTotalCasesGraph(m, date);
+            drawWorldDeathGraph(m, date);
+            drawWorldRecoveredGraph(m, date);
 
         });
 
 
     /* $("#nav-profile-tab").click(function () {
         console.log("Initiate world charts");
-        drawWorldTotalCasesChart(m, date);
-        drawWorldDeathChart(m, date);
-        drawWorldRecoveredChart(m, date);
+        drawWorldTotalCasesGraph(m, date);
+        drawWorldDeathGraph(m, date);
+        drawWorldRecoveredGraph(m, date);
     }); */
 
 
-    function drawWorldTotalCasesChart(m, date) {
+    function drawWorldTotalCasesGraph(m, date) {
         Highcharts.chart('worldtotalcasesgraph', {
             plotOptions: {
                 series: {
@@ -138,7 +138,10 @@ $(document).ready(function () {
                 }
             },
             title: {
-                text: 'Confirmed Cases'
+                text: 'Confirmed Cases',
+                style: {
+                    fontSize: '17px'
+                }
             },
             xAxis: {
                 type: 'datetime',
@@ -238,7 +241,7 @@ $(document).ready(function () {
     }
 
 
-    function drawWorldDeathChart(m, date) {
+    function drawWorldDeathGraph(m, date) {
         Highcharts.chart('worlddeathsgraph', {
             plotOptions: {
                 series: {
@@ -250,7 +253,10 @@ $(document).ready(function () {
                 }
             },
             title: {
-                text: 'Deaths'
+                text: 'Deaths',
+                style: {
+                    fontSize: '17px'
+                }
             },
             xAxis: {
                 type: 'datetime',
@@ -351,7 +357,7 @@ $(document).ready(function () {
 
 
 
-    function drawWorldRecoveredChart(m, date) {
+    function drawWorldRecoveredGraph(m, date) {
         Highcharts.chart('worldrecoveredgraph', {
             plotOptions: {
                 series: {
@@ -363,7 +369,10 @@ $(document).ready(function () {
                 }
             },
             title: {
-                text: 'Recovered'
+                text: 'Recovered',
+                style: {
+                    fontSize: '17px'
+                }
             },
             xAxis: {
                 type: 'datetime',
@@ -497,8 +506,8 @@ $(document).ready(function () {
                         totalRecovered.push([new Date(result[key].date + '2020'), parseInt(result[key].totalRecovered)]);
                     });
 
-                drawDailyCasesChart(dailyConfirmed, dailyDeceased, dailyRecovered);
-                drawTotalCasesChart(totalConfirmed, totalDeceased, totalRecovered);
+                drawDailyCasesGraph(dailyConfirmed, dailyDeceased, dailyRecovered);
+                drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered);
 
             }
         });
@@ -542,23 +551,25 @@ $.getJSON('https://api.covid19india.org/data.json',
             }
         }
 
-        drawDailyCasesChart(dailyConfirmed, dailyDeceased, dailyRecovered);
-        drawTotalCasesChart(totalConfirmed, totalDeceased, totalRecovered);
+        drawDailyCasesGraph(dailyConfirmed, dailyDeceased, dailyRecovered);
+        drawTotalCasesUniformGraph(totalConfirmed, totalDeceased, totalRecovered);
+        drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered);
     });
 
 
-
-function drawDailyCasesChart(dailyConfirmed, dailyDeceased, dailyRecovered) {
+function drawDailyCasesGraph(dailyConfirmed, dailyDeceased, dailyRecovered) {
     Highcharts.chart('dailyseriesgraph', {
         plotOptions: {
             series: {
-
                 pointStart: Date.UTC(2020, 0, 30),
                 pointInterval: 1000 * 3600 * 24
             }
         },
         title: {
-            text: 'Daily Cases'
+            text: 'Daily Cases',
+            style: {
+                fontSize: '17px'
+            }
         },
         xAxis: {
             type: 'datetime',
@@ -600,10 +611,62 @@ function drawDailyCasesChart(dailyConfirmed, dailyDeceased, dailyRecovered) {
 }
 
 
+function drawTotalCasesUniformGraph(totalConfirmed, totalDeceased, totalRecovered) {
+    Highcharts.chart('totalseriesuniformgraph', {
+        plotOptions: {
+            series: {
+                pointStart: Date.UTC(2020, 0, 30),
+                pointInterval: 1000 * 3600 * 24
+            }
+        },
+        title: {
+            text: 'Total Cases in uniform scale',
+            style: {
+                fontSize: '17px'
+            }
+        },
+        xAxis: {
+            type: 'datetime',
+        },
+        yAxis: [{
+            className: 'highcharts-color-0',
+            type: '',
+            title: {
+                text: ''
+            }
+        }],
+        credits: {
+            enabled: false
+        },
+        tooltip: {
+            crosshairs: true,
+            shared: true,
+            valueSuffix: '',
+            xDateFormat: '%A, %b %e, %Y'
+        },
+        series: [{
+            name: 'Confirmed',
+            data: totalConfirmed,
+            type: 'line',
+            color: '#4830ff'
+        },
+        {
+            name: 'Deceased',
+            data: totalDeceased,
+            type: 'line',
+            color: '#ff0000'
+        },
+        {
+            name: 'Recovered',
+            data: totalRecovered,
+            type: 'line',
+            color: '#29ff00'
+        }]
+    });
+}
 
-
-function drawTotalCasesChart(totalConfirmed, totalDeceased, totalRecovered) {
-    Highcharts.chart('totalseriesgraph', {
+function drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered) {
+    Highcharts.chart('totalserieslogarithmicgraph', {
         plotOptions: {
             series: {
 
@@ -612,13 +675,17 @@ function drawTotalCasesChart(totalConfirmed, totalDeceased, totalRecovered) {
             }
         },
         title: {
-            text: 'Total Cases'
+            text: 'Total Cases in log scale',
+            style: {
+                fontSize: '17px'
+            }
         },
         xAxis: {
             type: 'datetime',
         },
         yAxis: [{
             className: 'highcharts-color-0',
+            type: 'logarithmic',
             title: {
                 text: ''
             }
@@ -697,7 +764,7 @@ function drawTotalCasesChart(totalConfirmed, totalDeceased, totalRecovered) {
 
                     }
 
-                   
+
                 }
 
 

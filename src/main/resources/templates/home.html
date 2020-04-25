@@ -41,15 +41,15 @@
 		<script src="https://code.highcharts.com/mapdata/custom/world.js"></script> -->
 
 
-	<link rel="stylesheet" type="text/css"
+	<!-- <link rel="stylesheet" type="text/css"
 		href="https://cdn.jsdelivr.net/gh/thecoducer/covid19-tracker/src/main/resources/static/css/home.css" />
 
 	<script type="text/javascript"
-		src="https://cdn.jsdelivr.net/gh/thecoducer/covid19-tracker/src/main/resources/static/js/home.js"></script>
+		src="https://cdn.jsdelivr.net/gh/thecoducer/covid19-tracker/src/main/resources/static/js/home.js"></script> -->
 
-	<!-- <link rel="stylesheet" type="text/css" href="/css/home.css" />
+	<link rel="stylesheet" type="text/css" href="/css/home.css" />
 
-	<script type="text/javascript" src="/js/home.js"></script> -->
+	<script type="text/javascript" src="/js/home.js"></script>
 
 
 
@@ -81,10 +81,11 @@
 					</div>
 				</li>
 			</ul>
-			<span class="my-2 my-lg-0">
-				<a class="btn btn-light btn-sm my-2 my-sm-0" href="https://github.com/thecoducer/covid19-tracker"
-					target="_blank">Fork on GitHub</a>
-				<a class="btn btn-light btn-sm my-2 my-sm-0" href="https://forms.gle/NycW8q9PN3BgQETZ9">Contact</a>
+			<span class="my-2 my-lg-0" style="font-family: 'Karla', sans-serif;">
+				<a class=" my-2 my-sm-0" href="https://thecoducer.github.io/covid19-tracker/"
+					target="_blank" style="color: white;">About</a>
+					&nbsp;
+				<a class="my-2 my-sm-0" href="https://forms.gle/NycW8q9PN3BgQETZ9" style="color: white;">Contact</a>
 			</span>
 		</div>
 	</nav>
@@ -110,11 +111,11 @@
 
 				</div>
 
-				<div class="col-sm" style="margin-top: 30px;">
+				<div class="col-sm" style="margin-top: 25px; font-family: 'Karla', sans-serif;">
 					<a type="button" href="https://www.altnews.in/?s=coronavirus" class="btn btn-light btn-sm"
-						target="_blank" id="links">COVID-19 related Fake News</a>
+						target="_blank" id="links">COVID-19 Fake News</a>
 					<a type="button" href="https://news.google.com/topics/CAAqBwgKMMqAmAsw9KmvAw?oc=3&ceid=IN:en"
-						class="btn btn-light btn-sm" target="_blank">Read latest COVID-19 News</a>
+						class="btn btn-light btn-sm" target="_blank">Latest COVID-19 News</a>
 				</div>
 			</div>
 
@@ -186,7 +187,10 @@
 							<div class="col-md" id="dailyseriesgraph">
 							</div>
 
-							<div class="col-md" id="totalseriesgraph">
+							<div class="col-md" id="totalseriesuniformgraph">
+							</div>
+
+							<div class="col-md" id="totalserieslogarithmicgraph">
 							</div>
 
 						</div>
