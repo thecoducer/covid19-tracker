@@ -620,7 +620,7 @@ function drawTotalCasesUniformGraph(totalConfirmed, totalDeceased, totalRecovere
             }
         },
         title: {
-            text: 'Total Cases in uniform scale',
+            text: 'Total Cases on linear scale',
             style: {
                 fontSize: '17px'
             }
@@ -675,7 +675,7 @@ function drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered) {
             }
         },
         title: {
-            text: 'Total Cases in log scale',
+            text: 'Total Cases on log scale',
             style: {
                 fontSize: '17px'
             }
