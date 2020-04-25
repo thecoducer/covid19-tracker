@@ -34,7 +34,7 @@
 ![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/district-modal.png)
 
 ### Graphs made using Highcharts library
-![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/world-graphs.png)
+![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/india-graphs.png)
 
 ### World datatable
 ![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/world-table.png)
@@ -45,8 +45,8 @@
 
 | Data                                               | URL                                                      |
 | -------------------------------------------------- | ---------------------------------------------------------|
-| Time series, State-wise stats and Test counts      | https://api.covid19india.org/data.json                   |
-| State-District Data                                | https://api.covid19india.org/v2/state_district_wise.json |
+| Time series, State-wise stats and Test counts      | [https://api.covid19india.org/data.json](https://api.covid19india.org/data.json)                   |
+| State-District Data                                | [https://api.covid19india.org/v2/state_district_wise.json](https://api.covid19india.org/v2/state_district_wise.json) |
 
 The [@covid19india](https://github.com/covid19india) team is working hard to gather COVID-19 cases data and other information from central and state government official websites. They are doing a great job. Click [here](https://api.covid19india.org/) to check the list of all their APIs. 
 
