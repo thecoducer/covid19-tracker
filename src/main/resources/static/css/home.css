@@ -113,11 +113,11 @@ input {
     /* Set the fixed height of the footer here */
     line-height: 60px;
     /* Vertically center the text there */
-    background-image: radial-gradient( circle 827px at 47.3% 48%,  rgba(255,255,255,1) 0%, rgba(138,192,216,1) 90% );
+    background-image: radial-gradient( circle 827px at 47.3% 48%, rgba(255, 255, 255, 1) 0%, rgba(138, 192, 216, 1) 90%);
 }
 
 #mynavbar {
-    background-image: linear-gradient( 109.6deg,  rgba(0,0,0,1) 11.2%, rgba(11,132,145,1) 91.1% );
+    background-image: linear-gradient( 109.6deg, rgba(0, 0, 0, 1) 11.2%, rgba(11, 132, 145, 1) 91.1%);
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -127,7 +127,7 @@ input {
 
 #table-header {
     color: white;
-    background-image: radial-gradient( circle 919px at 1.7% 6.1%,  rgba(41,58,76,1) 0%, rgba(40,171,226,1) 100.2% );
+    background-image: radial-gradient( circle 919px at 1.7% 6.1%, rgba(41, 58, 76, 1) 0%, rgba(40, 171, 226, 1) 100.2%);
 }
 
 html {
@@ -167,7 +167,7 @@ td {
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
-    background-image: linear-gradient( 113.3deg,  rgba(134,209,228,1) -1.8%, rgba(60,80,115,1) 86.4% );
+    background-image: linear-gradient( 113.3deg, rgba(134, 209, 228, 1) -1.8%, rgba(60, 80, 115, 1) 86.4%);
 }
 
 #navpills {
@@ -315,7 +315,7 @@ tspan {
         display: none;
     }
     #container_recoveredgraph {
-        width: 600px; 
+        width: 600px;
         height: 450px;
     }
 }
@@ -354,7 +354,7 @@ tspan {
         display: none;
     }
     #container_recoveredgraph {
-        width: 600px; 
+        width: 600px;
         height: 450px;
     }
 }
@@ -438,8 +438,11 @@ tspan {
     #dailyseriesgraph {
         margin-bottom: 40px;
     }
+    #totalseriesuniformgraph {
+        margin-bottom: 40px;
+    }
     #container_recoveredgraph {
-        width: 600px; 
+        width: 600px;
         height: 450px;
     }
 }
@@ -486,8 +489,14 @@ tspan {
     #dailyseriesgraph {
         margin-bottom: 40px;
     }
+    #totalseriesuniformgraph {
+        margin-bottom: 40px;
+    }
     .margin-top-40 {
         margin-top: 40px;
+    }
+    #latestnewsbtn {
+        margin-bottom: 10px;
     }
 }
 
@@ -533,8 +542,14 @@ tspan {
     #dailyseriesgraph {
         margin-bottom: 40px;
     }
+    #totalseriesuniformgraph {
+        margin-bottom: 40px;
+    }
     .margin-top-40 {
         margin-top: 40px;
+    }
+    #latestnewsbtn {
+        margin-bottom: 10px;
     }
 }
 
@@ -572,7 +587,13 @@ tspan {
     #dailyseriesgraph {
         margin-bottom: 40px;
     }
+    #totalseriesuniformgraph {
+        margin-bottom: 40px;
+    }
     .margin-top-40 {
         margin-top: 40px;
+    }
+    #latestnewsbtn {
+        margin-bottom: 10px;
     }
 }
