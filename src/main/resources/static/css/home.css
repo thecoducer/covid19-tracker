@@ -9,6 +9,22 @@ hr {
     border-top: 1px solid white;
 }
 
+.thehindu_container {
+    margin: auto;
+    margin-top: 40px;
+    font-family: 'Karla', sans-serif;
+    background-color: rgb(240, 240, 240);
+    max-width: 50%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.btn-thehindu {
+    background-color: rgb(110, 173, 255);
+    color: white;
+    border: none;
+}
+
 #new_counter {
     font-size: 20px;
 }
@@ -371,11 +387,11 @@ tspan {
         margin-bottom: 20%;
         border-radius: 0em;
     }
-    #india_tbody, #world_tbody {
+    /* #india_tbody, #world_tbody {
         display: block;
         height: 300px;
         overflow: auto;
-    }
+    } */
     thead, tbody tr {
         display: table;
         width: 100%;
@@ -386,6 +402,15 @@ tspan {
         color: #777777;
         font-size: 13px;
         display: ;
+    }
+    .thehindu_container {
+        margin: auto;
+        margin-top: 40px;
+        font-family: 'Karla', sans-serif;
+        background-color: rgb(240, 240, 240);
+        max-width: 70%;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 }
 
@@ -415,6 +440,7 @@ tspan {
     #india_tbody, #world_tbody {
         display: block;
         height: 400px;
+        width: auto;
         overflow: auto;
     }
     thead, tbody tr {
@@ -481,6 +507,15 @@ tspan {
     #latestnewsbtn {
         margin-bottom: 10px;
     }
+    .thehindu_container {
+        margin: auto;
+        margin-top: 40px;
+        font-family: 'Karla', sans-serif;
+        background-color: rgb(240, 240, 240);
+        max-width: 100%;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
 }
 
 /* 
@@ -528,6 +563,15 @@ tspan {
     #latestnewsbtn {
         margin-bottom: 10px;
     }
+    .thehindu_container {
+        margin: auto;
+        margin-top: 40px;
+        font-family: 'Karla', sans-serif;
+        background-color: rgb(240, 240, 240);
+        max-width: 100%;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
 }
 
 @media (min-width: 200px) and (max-width: 480px) {
@@ -566,5 +610,14 @@ tspan {
     }
     #latestnewsbtn {
         margin-bottom: 10px;
+    }
+    .thehindu_container {
+        margin: auto;
+        margin-top: 40px;
+        font-family: 'Karla', sans-serif;
+        background-color: rgb(240, 240, 240);
+        max-width: 100%;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 }
