@@ -1,8 +1,42 @@
 $(document).ready(function () {
+    $('#table_id').dataTable({
+        "bInfo": false,
+        "paging": false,
+        "responsive": true,
+        language: {
+            searchPlaceholder: "Search state",
+            search: ""
+        },
+        "order": [],
+        'columnDefs': [{
+            'targets': [1, 3, 4], /* column index */
+            'orderable': false, /* true or false */
+
+        }]
+    });
+
+    $('#table_id2').dataTable({
+        "bInfo": false,
+        "paging": false,
+        "responsive": true,
+        language: {
+            searchPlaceholder: "Search country",
+            search: ""
+        },
+        "order": [],
+        'columnDefs': [{
+            'targets': [1, 4], /* column index */
+            'orderable': false, /* true or false */
+
+        }]
+    });
+
+
+    $('div.dataTables_filter input').addClass('form-control');
+
     $('#india_casesrate').click();
     $('#india_casesrate').click();
 });
-
 
 $(document).ready(function () {
     var m_tbody = new Map([
