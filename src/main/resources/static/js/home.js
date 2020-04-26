@@ -631,7 +631,7 @@ $(document).ready(function () {
                 }, {
                     name: "Africa",
                     y: cm.get("Africa"),
-                    color: '#f5ff00'
+                    color: '#d100b8'
                 }, {
                     name: "Oceania",
                     y: cm.get("Oceania"),
