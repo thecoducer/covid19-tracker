@@ -13,15 +13,15 @@ hr {
     margin: auto;
     margin-top: 40px;
     font-family: 'Karla', sans-serif;
-    background-color: rgb(240, 240, 240);
+    background-image: radial-gradient( circle 879px at 10.4% 22.3%,  rgba(255,235,238,1) 0%, rgb(208, 210, 233) 93.6% );
     max-width: 50%;
     padding-top: 40px;
     padding-bottom: 40px;
 }
 
 .btn-thehindu {
-    background-color: rgb(110, 173, 255);
-    color: white;
+    background-color: rgb(255, 255, 255);
+    color: rgb(34, 34, 34);
     border: none;
 }
 
@@ -87,7 +87,7 @@ input {
 
 #jumbo_totals {
     /* background-color: #5500b1; */
-    background-image: radial-gradient( circle 263px at 100.2% 3%, rgba(12, 85, 141, 1) 31.1%, rgba(205, 181, 93, 1) 36.4%, rgba(244, 102, 90, 1) 50.9%, rgba(199, 206, 187, 1) 60.7%, rgba(249, 140, 69, 1) 72.5%, rgba(12, 73, 116, 1) 72.6%);
+    background-image: radial-gradient( circle 263px at 100.2% 3%, rgba(12, 85, 141, 1) 31.1%, rgba(205, 181, 93, 1) 36.4%, rgba(244, 102, 90, 1) 50.9%, rgba(199, 206, 187, 1) 60.7%, rgba(249, 140, 69, 1) 72.5%, rgb(16, 96, 153) 72.6%);
     padding-top: 5%;
     padding-bottom: 5%;
     margin-top: 4%;
