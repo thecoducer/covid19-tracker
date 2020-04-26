@@ -314,10 +314,6 @@ tspan {
         font-size: 13px;
         display: none;
     }
-    #container_recoveredgraph {
-        width: 600px;
-        height: 450px;
-    }
 }
 
 /* 
@@ -352,10 +348,6 @@ tspan {
         color: #777777;
         font-size: 13px;
         display: none;
-    }
-    #container_recoveredgraph {
-        width: 600px;
-        height: 450px;
     }
 }
 
@@ -435,16 +427,13 @@ tspan {
         color: #777777;
         font-size: 13px;
     }
-    #dailyseriesgraph {
-        margin-bottom: 40px;
+    .margin-top-40 {
+        margin-top: 40px;
     }
-    #totalseriesuniformgraph {
-        margin-bottom: 40px;
-    }
-    #container_recoveredgraph {
+    /* #container_recoveredgraph {
         width: 600px;
         height: 450px;
-    }
+    } */
 }
 
 /* 
@@ -485,12 +474,6 @@ tspan {
         font-family: 'Karla', sans-serif;
         color: #777777;
         font-size: 13px;
-    }
-    #dailyseriesgraph {
-        margin-bottom: 40px;
-    }
-    #totalseriesuniformgraph {
-        margin-bottom: 40px;
     }
     .margin-top-40 {
         margin-top: 40px;
@@ -539,12 +522,6 @@ tspan {
         color: #777777;
         font-size: 13px;
     }
-    #dailyseriesgraph {
-        margin-bottom: 40px;
-    }
-    #totalseriesuniformgraph {
-        margin-bottom: 40px;
-    }
     .margin-top-40 {
         margin-top: 40px;
     }
@@ -583,12 +560,6 @@ tspan {
         font-family: 'Karla', sans-serif;
         color: #777777;
         font-size: 13px;
-    }
-    #dailyseriesgraph {
-        margin-bottom: 40px;
-    }
-    #totalseriesuniformgraph {
-        margin-bottom: 40px;
     }
     .margin-top-40 {
         margin-top: 40px;

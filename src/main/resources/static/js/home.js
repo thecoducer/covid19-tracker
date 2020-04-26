@@ -143,6 +143,9 @@ $(document).ready(function () {
                     fontSize: '17px'
                 }
             },
+            subtitle: {
+                text: 'linear scale'
+            },
             xAxis: {
                 type: 'datetime',
                 title: {
@@ -257,6 +260,9 @@ $(document).ready(function () {
                 style: {
                     fontSize: '17px'
                 }
+            },
+            subtitle: {
+                text: 'linear scale'
             },
             xAxis: {
                 type: 'datetime',
@@ -374,6 +380,9 @@ $(document).ready(function () {
                     fontSize: '17px'
                 }
             },
+            subtitle: {
+                text: 'linear scale'
+            },
             xAxis: {
                 type: 'datetime',
                 title: {
@@ -473,6 +482,166 @@ $(document).ready(function () {
 });
 
 
+$(document).ready(function () {
+
+    $.getJSON('https://corona.lmao.ninja/v2/countries/USA,Spain,Italy,Germany,France,Russia,Iran,UK,Turkey,Belgium,S.%20Korea,India',
+        function (data) {
+
+            var i
+            countries = []
+            testsData = []
+            updatedOn = []
+
+            for (i = 0; i < data.length; i++) {
+                countries.push(data[i].country)
+                testsData.push(data[i].testsPerOneMillion)
+                updatedOn.push(new Date(data[i].updated))
+            }
+
+            drawWorldTestsBarChart(countries, testsData, updatedOn);
+
+        });
+
+    function drawWorldTestsBarChart(countries, testsData, updatedOn) {
+        Highcharts.chart('worldtestsbarchart', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Total tests per one million population',
+                style: {
+                    fontSize: '17px'
+                }
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                categories: countries,
+                crosshair: true
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            tooltip: {
+                shared: true,
+                useHTML: true,
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: '',
+                data: testsData,
+                color: '#d100b8',
+                zIndex: 1,
+                events: {
+                    legendItemClick: function (e) {
+                        e.preventDefault()
+                    }
+                }
+            }]
+        });
+    }
+
+});
+
+
+$(document).ready(function () {
+
+    $.getJSON('https://corona.lmao.ninja/v2/continents?yesterday=false&sort=cases',
+        function (data) {
+
+            var i
+            var cm = new Map();
+
+            for (i = 0; i < data.length; i++) {
+                continent = data[i].continent
+                totalcases = data[i].cases
+                cm.set(continent, totalcases)
+            }
+
+            drawContinentsPieChart(cm);
+
+        });
+
+    function drawContinentsPieChart(cm) {
+        Highcharts.chart('worldcontinentscasespiechart', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Total cases per continent/region'
+            },
+            subtitle: {
+                text: ''
+            },
+            tooltip: {
+
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: ''
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                pie: {
+                    size: 200,
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                name: 'Total cases',
+                colorByPoint: true,
+                data: [{
+                    name: "Europe",
+                    y: cm.get("Europe"),
+                    color: '#ff5757'
+                }, {
+                    name: "North America",
+                    y: cm.get("North America"),
+                    color: '#7b5aff'
+                }, {
+                    name: "Asia",
+                    y: cm.get("Asia"),
+                    color: '#3aa287'
+                }, {
+                    name: "South America",
+                    y: cm.get("South America"),
+                    color: '#d9c630'
+                }, {
+                    name: "Africa",
+                    y: cm.get("Africa"),
+                    color: '#f5ff00'
+                }, {
+                    name: "Oceania",
+                    y: cm.get("Oceania"),
+                    color: 'black'
+                }]
+            }]
+        });
+    }
+
+});
 
 
 /* $(document).ready(
@@ -480,35 +649,35 @@ $(document).ready(function () {
         $.ajax({
             url: "/getseries",
             success: function (result) {
-
+ 
                 var dailyConfirmed = [];
                 var dailyDeceased = [];
                 var dailyRecovered = [];
-
+ 
                 var totalConfirmed = [];
                 var totalDeceased = [];
                 var totalRecovered = [];
-
-
+ 
+ 
                 Object.keys(result).forEach(
                     function (key) {
-
+ 
                         dailyConfirmed.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyConfirmed)]);
-
+ 
                         dailyDeceased.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyDeceased)]);
-
+ 
                         dailyRecovered.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyRecovered)]);
-
+ 
                         totalConfirmed.push([new Date(result[key].date + '2020'), parseInt(result[key].totalConfirmed)]);
-
+ 
                         totalDeceased.push([new Date(result[key].date + '2020'), parseInt(result[key].totalDeceased)]);
-
+ 
                         totalRecovered.push([new Date(result[key].date + '2020'), parseInt(result[key].totalRecovered)]);
                     });
-
+ 
                 drawDailyCasesGraph(dailyConfirmed, dailyDeceased, dailyRecovered);
                 drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered);
-
+ 
             }
         });
     }); */
@@ -571,6 +740,9 @@ function drawDailyCasesGraph(dailyConfirmed, dailyDeceased, dailyRecovered) {
                 fontSize: '17px'
             }
         },
+        subtitle: {
+            text: 'linear scale'
+        },
         xAxis: {
             type: 'datetime',
         },
@@ -620,10 +792,13 @@ function drawTotalCasesUniformGraph(totalConfirmed, totalDeceased, totalRecovere
             }
         },
         title: {
-            text: 'Total Cases on linear scale',
+            text: 'Total Cases',
             style: {
                 fontSize: '17px'
             }
+        },
+        subtitle: {
+            text: 'linear scale'
         },
         xAxis: {
             type: 'datetime',
@@ -675,10 +850,13 @@ function drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered) {
             }
         },
         title: {
-            text: 'Total Cases on log scale',
+            text: 'Total Cases',
             style: {
                 fontSize: '17px'
             }
+        },
+        subtitle: {
+            text: 'logarithmic scale'
         },
         xAxis: {
             type: 'datetime',
