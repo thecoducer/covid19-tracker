@@ -92,12 +92,15 @@ public class WorldStatsDataService {
         	worldStat.setDeaths(setHyphenOrNumberFormat(worldStat.getDeaths()));
         	worldStat.setTodayDeaths(numberFormat.format(Long.parseLong(worldStat.getTodayDeaths())));
         	worldStat.setRecovered(setHyphenOrNumberFormat(worldStat.getRecovered()));
+        	worldStat.setTests(setHyphenOrNumberFormat(worldStat.getTests()));
+        	worldStat.setTestsPerOneMillion(setHyphenOrNumberFormat(worldStat.getTestsPerOneMillion()));
         	
         }
         
         //newWorldStats.remove(0);
         
         this.worldStats = newWorldStats;
+        
         this.totalNewCasesCount = totalnewcases;
         this.totalNewDeathsCount = totalnewdeathscount;
 	}

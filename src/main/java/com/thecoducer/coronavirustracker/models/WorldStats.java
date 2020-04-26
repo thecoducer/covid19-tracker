@@ -10,6 +10,8 @@ public class WorldStats {
 	private String todayDeaths;
 	private String recovered;
 	private String active;
+	private String tests;
+	private String testsPerOneMillion;
 	
 	private String recoveredRate;
 	private String deathRate;
@@ -81,6 +83,18 @@ public class WorldStats {
 	}
 	public void setActive(String active) {
 		this.active = active;
+	}
+	public String getTests() {
+		return tests;
+	}
+	public void setTests(String tests) {
+		this.tests = tests;
+	}
+	public String getTestsPerOneMillion() {
+		return testsPerOneMillion;
+	}
+	public void setTestsPerOneMillion(String testsPerOneMillion) {
+		this.testsPerOneMillion = testsPerOneMillion;
 	}
 	@Override
 	public String toString() {

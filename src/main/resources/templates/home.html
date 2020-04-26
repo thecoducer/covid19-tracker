@@ -1360,6 +1360,8 @@
 									<th>Recvrd %</th>
 									<th>Death %</th>
 									<th>Cases %</th>
+									<th>Tot tests</th>
+									<th>Tests/ 1M pop</th>
 								</tr>
 							</thead>
 							<tbody id="world_tbody">
@@ -1404,6 +1406,10 @@
 									<td class="text-right" th:text="${worldStat.deathRate}"></td>
 
 									<td class="text-right" th:text="${worldStat.casePercentage}"></td>
+
+									<td class="text-right" th:text="${worldStat.tests}"></td>
+
+									<td class="text-right" th:text="${worldStat.testsPerOneMillion}"></td>
 								</tr>
 							</tbody>
 						</table>

@@ -62,6 +62,7 @@ public class HomeController {
 				.getStateDistrictData();
 
 		model.addAttribute("worldStats", worldStats);
+		
 		model.addAttribute("totalNewCases", worldStatsDataService.getTotalNewCasesCount());
 		model.addAttribute("totalNewDeathsCount", worldStatsDataService.getTotalNewDeathsCount());
 		model.addAttribute("totalWorldCases", numberFormat.format(Long.parseLong(allStats.getCases())));
