@@ -17,7 +17,8 @@ $(document).ready(function () {
 
     $('#table_id2').dataTable({
         "bInfo": false,
-        "paging": false,
+        "paging": true,
+        "lengthMenu": [15, 30, 45, "All"],
         "responsive": true,
         language: {
             searchPlaceholder: "Search country",
