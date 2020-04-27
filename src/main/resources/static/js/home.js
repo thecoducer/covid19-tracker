@@ -18,8 +18,8 @@ $(document).ready(function () {
     $('#table_id2').dataTable({
         "bInfo": false,
         "paging": true,
-        /* "lengthMenu": [ [15, 30, 45, -1], [15, 30, 45, "All"] ], */
-        "lengthMenu": [15, 30, 45, ],
+        "lengthMenu": [ [15, 30, 45, -1], [15, 30, 45, "All"] ],
+        /* "lengthMenu": [15, 30, 45, ], */
         "responsive": true,
         language: {
             searchPlaceholder: "Search country",
