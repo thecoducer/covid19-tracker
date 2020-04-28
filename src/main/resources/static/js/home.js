@@ -18,7 +18,7 @@ $(document).ready(function () {
     $('#table_id2').dataTable({
         "bInfo": false,
         "paging": true,
-        "lengthMenu": [ [15, 30, 45, -1], [15, 30, 45, "All"] ],
+        "lengthMenu": [[15, 30, 45, -1], [15, 30, 45, "All"]],
         /* "lengthMenu": [15, 30, 45, ], */
         "responsive": true,
         language: {
@@ -38,9 +38,8 @@ $(document).ready(function () {
 
     $('#india_casesrate').click();
     $('#india_casesrate').click();
-});
 
-$(document).ready(function () {
+
     var m_tbody = new Map([
         ["Andaman and Nicobar Islands", "AN_tbody"],
         ["Andhra Pradesh", "AP_tbody"],
@@ -88,10 +87,7 @@ $(document).ready(function () {
         $("#district_table").find("tbody").not("#" + id).hide();
         $("#" + id).show();
     });
-});
 
-
-$(document).ready(function () {
 
     var m = new Map();
 
@@ -154,16 +150,12 @@ $(document).ready(function () {
         });
 
 
-    /* $("#nav-profile-tab").click(function () {
-        console.log("Initiate world charts");
-        drawWorldTotalCasesGraph(m, date);
-        drawWorldDeathGraph(m, date);
-        drawWorldRecoveredGraph(m, date);
-    }); */
-
 
     function drawWorldTotalCasesGraph(m, date) {
         Highcharts.chart('worldtotalcasesgraph', {
+            chart: {
+                zoomType: 'x'
+            },
             plotOptions: {
                 series: {
                     pointStart: date,
@@ -282,6 +274,9 @@ $(document).ready(function () {
 
     function drawWorldDeathGraph(m, date) {
         Highcharts.chart('worlddeathsgraph', {
+            chart: {
+                zoomType: 'x'
+            },
             plotOptions: {
                 series: {
                     pointStart: date,
@@ -401,6 +396,9 @@ $(document).ready(function () {
 
     function drawWorldRecoveredGraph(m, date) {
         Highcharts.chart('worldrecoveredgraph', {
+            chart: {
+                zoomType: 'x'
+            },
             plotOptions: {
                 series: {
                     pointStart: date,
@@ -515,10 +513,7 @@ $(document).ready(function () {
             ]
         });
     }
-});
 
-
-$(document).ready(function () {
 
     $.getJSON('https://corona.lmao.ninja/v2/countries/USA,Spain,Italy,Germany,France,Russia,Iran,UK,Turkey,Belgium,S.%20Korea,India',
         function (data) {
@@ -588,10 +583,6 @@ $(document).ready(function () {
         });
     }
 
-});
-
-
-$(document).ready(function () {
 
     $.getJSON('https://corona.lmao.ninja/v2/continents?yesterday=false&sort=cases',
         function (data) {
@@ -615,7 +606,7 @@ $(document).ready(function () {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
             },
             title: {
                 text: 'Total cases per continent/region'
@@ -677,259 +668,268 @@ $(document).ready(function () {
         });
     }
 
-});
+
+    /* $(document).ready(
+        function () {
+            $.ajax({
+                url: "/getseries",
+                success: function (result) {
+     
+                    var dailyConfirmed = [];
+                    var dailyDeceased = [];
+                    var dailyRecovered = [];
+     
+                    var totalConfirmed = [];
+                    var totalDeceased = [];
+                    var totalRecovered = [];
+     
+     
+                    Object.keys(result).forEach(
+                        function (key) {
+     
+                            dailyConfirmed.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyConfirmed)]);
+     
+                            dailyDeceased.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyDeceased)]);
+     
+                            dailyRecovered.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyRecovered)]);
+     
+                            totalConfirmed.push([new Date(result[key].date + '2020'), parseInt(result[key].totalConfirmed)]);
+     
+                            totalDeceased.push([new Date(result[key].date + '2020'), parseInt(result[key].totalDeceased)]);
+     
+                            totalRecovered.push([new Date(result[key].date + '2020'), parseInt(result[key].totalRecovered)]);
+                        });
+     
+                    drawDailyCasesGraph(dailyConfirmed, dailyDeceased, dailyRecovered);
+                    drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered);
+     
+                }
+            });
+        }); */
 
 
-/* $(document).ready(
-    function () {
-        $.ajax({
-            url: "/getseries",
-            success: function (result) {
- 
-                var dailyConfirmed = [];
-                var dailyDeceased = [];
-                var dailyRecovered = [];
- 
-                var totalConfirmed = [];
-                var totalDeceased = [];
-                var totalRecovered = [];
- 
- 
-                Object.keys(result).forEach(
-                    function (key) {
- 
-                        dailyConfirmed.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyConfirmed)]);
- 
-                        dailyDeceased.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyDeceased)]);
- 
-                        dailyRecovered.push([new Date(result[key].date + '2020'), parseInt(result[key].dailyRecovered)]);
- 
-                        totalConfirmed.push([new Date(result[key].date + '2020'), parseInt(result[key].totalConfirmed)]);
- 
-                        totalDeceased.push([new Date(result[key].date + '2020'), parseInt(result[key].totalDeceased)]);
- 
-                        totalRecovered.push([new Date(result[key].date + '2020'), parseInt(result[key].totalRecovered)]);
-                    });
- 
-                drawDailyCasesGraph(dailyConfirmed, dailyDeceased, dailyRecovered);
-                drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered);
- 
+    $.getJSON('https://api.covid19india.org/data.json',
+        function (result) {
+
+            var dailyConfirmed = [];
+            var dailyDeceased = [];
+            var dailyRecovered = [];
+
+            var totalConfirmed = [];
+            var totalDeceased = [];
+            var totalRecovered = [];
+
+            var cts = result.cases_time_series;
+
+
+            for (x in cts) {
+
+                var date_i = new Date(cts[x].date + '2020');
+                var date_str = date_i.getFullYear() + '-' + (date_i.getMonth() + 1) + '-' + date_i.getDate();
+                var today = new Date();
+                var today_str = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+                if (date_str != today_str) {
+
+                    dailyConfirmed.push([date_i, parseInt(cts[x].dailyconfirmed)]);
+
+                    dailyDeceased.push([date_i, parseInt(cts[x].dailydeceased)]);
+
+                    dailyRecovered.push([date_i, parseInt(cts[x].dailyrecovered)]);
+
+                    totalConfirmed.push([date_i, parseInt(cts[x].totalconfirmed)]);
+
+                    totalDeceased.push([date_i, parseInt(cts[x].totaldeceased)]);
+
+                    totalRecovered.push([date_i, parseInt(cts[x].totalrecovered)]);
+                }
             }
+
+            drawDailyCasesGraph(dailyConfirmed, dailyDeceased, dailyRecovered);
+            drawTotalCasesUniformGraph(totalConfirmed, totalDeceased, totalRecovered);
+            drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered);
         });
-    }); */
 
 
-$.getJSON('https://api.covid19india.org/data.json',
-    function (result) {
-
-        var dailyConfirmed = [];
-        var dailyDeceased = [];
-        var dailyRecovered = [];
-
-        var totalConfirmed = [];
-        var totalDeceased = [];
-        var totalRecovered = [];
-
-        var cts = result.cases_time_series;
-
-
-        for (x in cts) {
-
-            var date_i = new Date(cts[x].date + '2020');
-            var date_str = date_i.getFullYear() + '-' + (date_i.getMonth() + 1) + '-' + date_i.getDate();
-            var today = new Date();
-            var today_str = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
-            if (date_str != today_str) {
-
-                dailyConfirmed.push([date_i, parseInt(cts[x].dailyconfirmed)]);
-
-                dailyDeceased.push([date_i, parseInt(cts[x].dailydeceased)]);
-
-                dailyRecovered.push([date_i, parseInt(cts[x].dailyrecovered)]);
-
-                totalConfirmed.push([date_i, parseInt(cts[x].totalconfirmed)]);
-
-                totalDeceased.push([date_i, parseInt(cts[x].totaldeceased)]);
-
-                totalRecovered.push([date_i, parseInt(cts[x].totalrecovered)]);
-            }
-        }
-
-        drawDailyCasesGraph(dailyConfirmed, dailyDeceased, dailyRecovered);
-        drawTotalCasesUniformGraph(totalConfirmed, totalDeceased, totalRecovered);
-        drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered);
-    });
-
-
-function drawDailyCasesGraph(dailyConfirmed, dailyDeceased, dailyRecovered) {
-    Highcharts.chart('dailyseriesgraph', {
-        plotOptions: {
-            series: {
-                pointStart: Date.UTC(2020, 0, 30),
-                pointInterval: 1000 * 3600 * 24
-            }
-        },
-        title: {
-            text: 'Daily Cases',
-            style: {
-                fontSize: '17px'
-            }
-        },
-        subtitle: {
-            text: 'linear scale'
-        },
-        xAxis: {
-            type: 'datetime',
-        },
-        yAxis: [{
-            className: 'highcharts-color-0',
+    function drawDailyCasesGraph(dailyConfirmed, dailyDeceased, dailyRecovered) {
+        Highcharts.chart('dailyseriesgraph', {
+            chart: {
+                zoomType: 'x'
+            },
+            plotOptions: {
+                series: {
+                    pointStart: Date.UTC(2020, 0, 30),
+                    pointInterval: 1000 * 3600 * 24
+                }
+            },
             title: {
-                text: ''
-            }
-        }],
-        credits: {
-            enabled: false
-        },
-        tooltip: {
-            crosshairs: true,
-            shared: true,
-            valueSuffix: '',
-            xDateFormat: '%A, %b %e, %Y'
-        },
-        series: [{
-            name: 'Confirmed',
-            data: dailyConfirmed,
-            type: 'line',
-            color: '#4830ff'
-        },
-        {
-            name: 'Deceased',
-            data: dailyDeceased,
-            type: 'line',
-            color: '#ff0000'
-        },
-        {
-            name: 'Recovered',
-            data: dailyRecovered,
-            type: 'line',
-            color: '#29ff00'
-        }]
-    });
-}
+                text: 'Daily Cases',
+                style: {
+                    fontSize: '17px'
+                }
+            },
+            subtitle: {
+                text: 'linear scale'
+            },
+            xAxis: {
+                type: 'datetime',
+            },
+            yAxis: [{
+                className: 'highcharts-color-0',
+                title: {
+                    text: ''
+                }
+            }],
+            credits: {
+                enabled: false
+            },
+            tooltip: {
+                crosshairs: true,
+                shared: true,
+                valueSuffix: '',
+                xDateFormat: '%A, %b %e, %Y'
+            },
+            series: [{
+                name: 'Confirmed',
+                data: dailyConfirmed,
+                type: 'line',
+                color: '#4830ff'
+            },
+            {
+                name: 'Deceased',
+                data: dailyDeceased,
+                type: 'line',
+                color: '#ff0000'
+            },
+            {
+                name: 'Recovered',
+                data: dailyRecovered,
+                type: 'line',
+                color: '#29ff00'
+            }]
+        });
+    }
 
 
-function drawTotalCasesUniformGraph(totalConfirmed, totalDeceased, totalRecovered) {
-    Highcharts.chart('totalseriesuniformgraph', {
-        plotOptions: {
-            series: {
-                pointStart: Date.UTC(2020, 0, 30),
-                pointInterval: 1000 * 3600 * 24
-            }
-        },
-        title: {
-            text: 'Total Cases',
-            style: {
-                fontSize: '17px'
-            }
-        },
-        subtitle: {
-            text: 'linear scale'
-        },
-        xAxis: {
-            type: 'datetime',
-        },
-        yAxis: [{
-            className: 'highcharts-color-0',
-            type: '',
+    function drawTotalCasesUniformGraph(totalConfirmed, totalDeceased, totalRecovered) {
+        Highcharts.chart('totalseriesuniformgraph', {
+            chart: {
+                zoomType: 'x'
+            },
+            plotOptions: {
+                series: {
+                    pointStart: Date.UTC(2020, 0, 30),
+                    pointInterval: 1000 * 3600 * 24
+                }
+            },
             title: {
-                text: ''
-            }
-        }],
-        credits: {
-            enabled: false
-        },
-        tooltip: {
-            crosshairs: true,
-            shared: true,
-            valueSuffix: '',
-            xDateFormat: '%A, %b %e, %Y'
-        },
-        series: [{
-            name: 'Confirmed',
-            data: totalConfirmed,
-            type: 'line',
-            color: '#4830ff'
-        },
-        {
-            name: 'Deceased',
-            data: totalDeceased,
-            type: 'line',
-            color: '#ff0000'
-        },
-        {
-            name: 'Recovered',
-            data: totalRecovered,
-            type: 'line',
-            color: '#29ff00'
-        }]
-    });
-}
+                text: 'Total Cases',
+                style: {
+                    fontSize: '17px'
+                }
+            },
+            subtitle: {
+                text: 'linear scale'
+            },
+            xAxis: {
+                type: 'datetime',
+            },
+            yAxis: [{
+                className: 'highcharts-color-0',
+                type: '',
+                title: {
+                    text: ''
+                }
+            }],
+            credits: {
+                enabled: false
+            },
+            tooltip: {
+                crosshairs: true,
+                shared: true,
+                valueSuffix: '',
+                xDateFormat: '%A, %b %e, %Y'
+            },
+            series: [{
+                name: 'Confirmed',
+                data: totalConfirmed,
+                type: 'line',
+                color: '#4830ff'
+            },
+            {
+                name: 'Deceased',
+                data: totalDeceased,
+                type: 'line',
+                color: '#ff0000'
+            },
+            {
+                name: 'Recovered',
+                data: totalRecovered,
+                type: 'line',
+                color: '#29ff00'
+            }]
+        });
+    }
 
-function drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered) {
-    Highcharts.chart('totalserieslogarithmicgraph', {
-        plotOptions: {
-            series: {
+    function drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered) {
+        Highcharts.chart('totalserieslogarithmicgraph', {
+            chart: {
+                zoomType: 'x'
+            },
+            plotOptions: {
+                series: {
 
-                pointStart: Date.UTC(2020, 0, 30),
-                pointInterval: 1000 * 3600 * 24
-            }
-        },
-        title: {
-            text: 'Total Cases',
-            style: {
-                fontSize: '17px'
-            }
-        },
-        subtitle: {
-            text: 'logarithmic scale'
-        },
-        xAxis: {
-            type: 'datetime',
-        },
-        yAxis: [{
-            className: 'highcharts-color-0',
-            type: 'logarithmic',
+                    pointStart: Date.UTC(2020, 0, 30),
+                    pointInterval: 1000 * 3600 * 24
+                }
+            },
             title: {
-                text: ''
-            }
-        }],
-        credits: {
-            enabled: false
-        },
-        tooltip: {
-            crosshairs: true,
-            shared: true,
-            valueSuffix: '',
-            xDateFormat: '%A, %b %e, %Y'
-        },
-        series: [{
-            name: 'Confirmed',
-            data: totalConfirmed,
-            type: 'line',
-            color: '#4830ff'
-        },
-        {
-            name: 'Deceased',
-            data: totalDeceased,
-            type: 'line',
-            color: '#ff0000'
-        },
-        {
-            name: 'Recovered',
-            data: totalRecovered,
-            type: 'line',
-            color: '#29ff00'
-        }]
-    });
-}
+                text: 'Total Cases',
+                style: {
+                    fontSize: '17px'
+                }
+            },
+            subtitle: {
+                text: 'logarithmic scale'
+            },
+            xAxis: {
+                type: 'datetime',
+            },
+            yAxis: [{
+                className: 'highcharts-color-0',
+                type: 'logarithmic',
+                title: {
+                    text: ''
+                }
+            }],
+            credits: {
+                enabled: false
+            },
+            tooltip: {
+                crosshairs: true,
+                shared: true,
+                valueSuffix: '',
+                xDateFormat: '%A, %b %e, %Y'
+            },
+            series: [{
+                name: 'Confirmed',
+                data: totalConfirmed,
+                type: 'line',
+                color: '#4830ff'
+            },
+            {
+                name: 'Deceased',
+                data: totalDeceased,
+                type: 'line',
+                color: '#ff0000'
+            },
+            {
+                name: 'Recovered',
+                data: totalRecovered,
+                type: 'line',
+                color: '#29ff00'
+            }]
+        });
+    }
+
+});

@@ -9,6 +9,10 @@ hr {
     border-top: 1px solid white;
 }
 
+.center-div {
+    margin: 0 auto;
+}
+
 .thehindu_container {
     margin: auto;
     margin-top: 40px;
@@ -97,9 +101,8 @@ input {
     border-radius: 0em;
 }
 
-#container_dailytimeseries, #container_totaltimeseries {
-    background-color: ;
-    border-radius: 0em;
+#container_timeseries {
+    
 }
 
 #container_worldgraph {
@@ -152,7 +155,7 @@ html {
 
 #info {
     font-family: 'Karla', sans-serif;
-    color: #777777;
+    color: #ff7070;
     font-size: 13px;
 }
 
@@ -296,6 +299,7 @@ tspan {
     font-family: 'Montserrat', sans-serif;
 }
 
+
 /* 
 ##Device = Desktops
 ##Screen = 1281px to higher resolution desktops
@@ -323,11 +327,11 @@ tspan {
         width: 100%;
         table-layout: fixed;
     }
-    #info_table {
-        font-family: 'Karla', sans-serif;
-        color: #777777;
-        font-size: 13px;
+    .mobile-only {
         display: none;
+    }
+    .desktop-only {
+        display: ;
     }
 }
 
@@ -358,11 +362,11 @@ tspan {
         width: 100%;
         table-layout: fixed;
     }
-    #info_table {
-        font-family: 'Karla', sans-serif;
-        color: #777777;
-        font-size: 13px;
+    .mobile-only {
         display: none;
+    }
+    .desktop-only {
+        display: ;
     }
 }
 
@@ -396,12 +400,6 @@ tspan {
         width: 100%;
         table-layout: fixed;
     }
-    #info_table {
-        font-family: 'Karla', sans-serif;
-        color: #777777;
-        font-size: 13px;
-        display: ;
-    }
     .thehindu_container {
         margin: auto;
         margin-top: 40px;
@@ -410,6 +408,12 @@ tspan {
         max-width: 70%;
         padding-top: 40px;
         padding-bottom: 40px;
+    }
+    .mobile-only {
+        display: ;
+    }
+    .desktop-only {
+        display: none;
     }
 }
 
@@ -447,18 +451,15 @@ tspan {
         width: 100%;
         table-layout: fixed;
     }
-    #info_table {
-        font-family: 'Karla', sans-serif;
-        color: #777777;
-        font-size: 13px;
-    }
     .margin-top-40 {
         margin-top: 40px;
     }
-    /* #container_recoveredgraph {
-        width: 600px;
-        height: 450px;
-    } */
+    .mobile-only {
+        display: ;
+    }
+    .desktop-only {
+        display: none;
+    }
 }
 
 /* 
@@ -495,11 +496,6 @@ tspan {
         margin-left: 10%;
         margin-right: 10%;
     }
-    #info_table {
-        font-family: 'Karla', sans-serif;
-        color: #777777;
-        font-size: 13px;
-    }
     .margin-top-40 {
         margin-top: 40px;
     }
@@ -514,6 +510,12 @@ tspan {
         max-width: 100%;
         padding-top: 40px;
         padding-bottom: 40px;
+    }
+    .mobile-only {
+        display: ;
+    }
+    .desktop-only {
+        display: none;
     }
 }
 
@@ -551,11 +553,6 @@ tspan {
         margin-left: 10%;
         margin-right: 10%;
     }
-    #info_table {
-        font-family: 'Karla', sans-serif;
-        color: #777777;
-        font-size: 13px;
-    }
     .margin-top-40 {
         margin-top: 40px;
     }
@@ -570,6 +567,12 @@ tspan {
         max-width: 100%;
         padding-top: 40px;
         padding-bottom: 40px;
+    }
+    .mobile-only {
+        display: ;
+    }
+    .desktop-only {
+        display: none;
     }
 }
 
@@ -599,11 +602,6 @@ tspan {
         margin-left: 10%;
         margin-right: 10%;
     }
-    #info_table {
-        font-family: 'Karla', sans-serif;
-        color: #777777;
-        font-size: 13px;
-    }
     .margin-top-40 {
         margin-top: 40px;
     }
@@ -618,5 +616,11 @@ tspan {
         max-width: 100%;
         padding-top: 40px;
         padding-bottom: 40px;
+    }
+    .mobile-only {
+        display: ;
+    }
+    .desktop-only {
+        display: none;
     }
 }
