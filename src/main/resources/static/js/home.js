@@ -636,7 +636,7 @@ $(document).ready(function () {
             },
             plotOptions: {
                 pie: {
-                    size: 200,
+                    size: 220,
                     allowPointSelect: true,
                     cursor: 'pointer',
                     dataLabels: {
