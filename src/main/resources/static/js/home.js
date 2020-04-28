@@ -529,7 +529,7 @@ $(document).ready(function () {
             updatedOn = []
 
             for (i = 0; i < data.length; i++) {
-                countries.push(data[i].country)
+                countries.push(data[i].country.trim())
                 testsData.push(data[i].testsPerOneMillion)
                 updatedOn.push(new Date(data[i].updated))
             }
@@ -600,7 +600,7 @@ $(document).ready(function () {
             var cm = new Map();
 
             for (i = 0; i < data.length; i++) {
-                continent = data[i].continent
+                continent = data[i].continent.trim()
                 totalcases = data[i].cases
                 cm.set(continent, totalcases)
             }
@@ -933,109 +933,3 @@ function drawTotalCasesLogGraph(totalConfirmed, totalDeceased, totalRecovered) {
         }]
     });
 }
-
-/* $(document).ready(function () {
-
-    $.getJSON('https://api.covid19india.org/states_daily.json',
-        function (data) {
-
-            var sm = new Map();
-
-            var months = new Map([
-                ["Jan", "January"],
-                ["Feb", "February"],
-                ["Mar", "March"],
-                ["Apr", "April"],
-                ["May", "May"],
-                ["Jun", "June"],
-                ["Jul", "July"]
-            ]);
-
-            var confirmedList = [];
-            var deceasedList = [];
-            var recoveredList = [];
-
-            var countList = [];
-
-            var i;
-
-            for (i = 0; i < data.states_daily.length; i++) {
-
-                var date = data.states_daily[i].date.split("-");
-                var date_str = date[0] + " " + months.get(date[1]) + " " + date[2] + "20";
-
-                var sd = data.states_daily[i];
-
-                for (x in sd) {
-                    if (data.states_daily[i].status == "Confirmed") {
-
-
-                    } else if (data.states_daily[i].status == "Recovered") {
-
-
-                    } else if (data.states_daily[i].status == "Deceased") {
-
-
-                    }
-
-
-                }
-
-
-            }
-
-        });
-});
-
-
-function drawStateGraph(dailyConfirmed, dailyDeceased, dailyRecovered) {
-    Highcharts.chart('statesgraph', {
-        plotOptions: {
-            series: {
-
-                pointStart: Date.UTC(2020, 0, 30),
-                pointInterval: 1000 * 3600 * 24
-            }
-        },
-        title: {
-            text: 'Daily Cases'
-        },
-        xAxis: {
-            type: 'datetime',
-        },
-        yAxis: [{
-            className: 'highcharts-color-0',
-            title: {
-                text: ''
-            }
-        }],
-        credits: {
-            enabled: false
-        },
-        tooltip: {
-            crosshairs: true,
-            shared: true,
-            valueSuffix: '',
-            xDateFormat: '%A, %b %e, %Y'
-        },
-        series: [{
-            name: 'Confirmed',
-            data: dailyConfirmed,
-            type: 'line',
-            color: '#4830ff'
-        },
-        {
-            name: 'Deceased',
-            data: dailyDeceased,
-            type: 'line',
-            color: '#ff0000'
-        },
-        {
-            name: 'Recovered',
-            data: dailyRecovered,
-            type: 'line',
-            color: '#29ff00'
-        }]
-    });
-}
- */
