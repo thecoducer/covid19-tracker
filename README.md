@@ -30,6 +30,8 @@
 
 ## 📸 Screenshots
 
+Video: https://youtu.be/XCtLPd1nD6E
+
 ### District modals for different states in India
 ![](https://raw.githubusercontent.com/thecoducer/covid19-tracker/master/screenshots/district-modal.png)
 
