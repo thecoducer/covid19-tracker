@@ -24,6 +24,8 @@ public class IndiaTotalCountersDataService {
 	private String totalNewRecoveredCases;
 	private String totalNewDeaths;
 	private String totalDeaths;
+	
+	private String lastupdatedtime;
 
 	@PostConstruct
 	@Scheduled(cron = "0 0/5 * * * *")
@@ -47,6 +49,7 @@ public class IndiaTotalCountersDataService {
 		this.totalNewRecoveredCases = (String) first_s_obj.get("deltarecovered");
 		this.totalNewDeaths = (String) first_s_obj.get("deltadeaths");
 		this.totalDeaths = (String) first_s_obj.get("deaths");
+		this.lastupdatedtime = (String) first_s_obj.get("lastupdatedtime");
 	}
 
 	public String getTotalNewCases() {
@@ -75,5 +78,9 @@ public class IndiaTotalCountersDataService {
 
 	public String getTotalCases() {
 		return totalCases;
+	}
+
+	public String getLastupdatedtime() {
+		return lastupdatedtime;
 	}
 }

@@ -57,6 +57,7 @@ public class IndiaStatsDataService {
 			stats.setConfirmed(setHyphenIfZero(confirmed));
 			stats.setDeaths(setHyphenIfZero(deaths));
 			stats.setRecovered(setHyphenIfZero(recovered));
+			
 			stats.setState((String) s_obj.get("state"));
 			
 			stats.setDelta_Confirmed((String) s_obj.get("deltaconfirmed"));

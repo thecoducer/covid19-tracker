@@ -36,6 +36,8 @@
 
 	<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
 
+	<script src="https://unpkg.com/timeago.js@4.0.2/dist/timeago.min.js"></script>
+
 	<!-- <script src="https://code.highcharts.com/maps/highmaps.js"></script>
 		<script src="https://code.highcharts.com/maps/modules/data.js"></script>
 		<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
@@ -130,13 +132,12 @@
 				</div>
 			</nav>
 
-
-
-
 			<div class="tab-content" id="nav-tabContent">
 
 				<!-- INDIA STATS -->
 				<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+					<p class="text-center" id="info">Last updated on <span th:text="${indialastupdatedtime}"></span> </p>
 
 					<div class="container" id="card-container">
 						<div class="row">
@@ -1231,6 +1232,8 @@
 
 				<!-- WORLD STATS -->
 				<div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+					<p class="text-center" id="info">Last updated on <span th:text="${worldlastupdatedtime}"></span> </p>
 
 					<div class="container" id="card-container">
 						<div class="row">

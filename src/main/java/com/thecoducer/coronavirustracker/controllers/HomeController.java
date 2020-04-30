@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Date;
 import java.util.List;
 
 import com.thecoducer.coronavirustracker.models.AllStats;
@@ -20,9 +21,12 @@ import com.thecoducer.coronavirustracker.services.IndiaTestedDataService;
 import com.thecoducer.coronavirustracker.services.IndiaTotalCountersDataService;
 import com.thecoducer.coronavirustracker.services.WorldStatsDataService;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 @Controller
 public class HomeController {
@@ -71,6 +75,12 @@ public class HomeController {
 		model.addAttribute("totalActiveCases", numberFormat.format(Long.parseLong(allStats.getActive())));
 		model.addAttribute("affectedCountries", allStats.getAffectedCountries());
 		
+		// converting time in milliseconds to desired date format
+		Date d = new Date(Long.parseLong(allStats.getUpdated()));
+		String worldlastupdatedtime = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(d);
+		
+		model.addAttribute("worldlastupdatedtime", worldlastupdatedtime);
+		
 		model.addAttribute("indiaStats", indiaStats);
 
 		String totalIndiaCases = numberFormat.format(Integer.valueOf(indiaTotalCounterDataService.getTotalCases()));
@@ -93,6 +103,7 @@ public class HomeController {
 		model.addAttribute("totalIndiaNewRecoveredCases", totalIndiaNewRecoveredCases);
 		model.addAttribute("totalIndiaNewDeaths", totalIndiaNewDeaths);
 		model.addAttribute("totalIndiaDeaths", totalIndiaDeaths);
+		model.addAttribute("indialastupdatedtime", indiaTotalCounterDataService.getLastupdatedtime());
 
 		String sourceIndividualTested = testStats.getSourceIndividualTested();
 		String sourceSamplesTested = testStats.getSourceSamplesTested();
