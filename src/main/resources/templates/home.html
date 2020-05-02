@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Track Covid-19 cases both in India and rest of the world"/>
+	<meta name="description" content="Track Covid-19 cases both in India and rest of the world" />
 	<meta name="google-site-verification" content="sJ0MA1D7_S6XjRiYOWo3Rf2f0igAsFhEKwUyJty9VBQ" />
 	<title>COVID-19 Tracker</title>
 
@@ -36,8 +36,6 @@
 
 	<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
 
-	<script src="https://unpkg.com/timeago.js@4.0.2/dist/timeago.min.js"></script>
-
 	<!-- <script src="https://code.highcharts.com/maps/highmaps.js"></script>
 		<script src="https://code.highcharts.com/maps/modules/data.js"></script>
 		<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
@@ -59,7 +57,7 @@
 
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="mynavbar">
-		<a class="navbar-brand" href="http://tcovid19.herokuapp.com/">COVID-19 Tracker</a>
+		<a class="navbar-brand" href="/">COVID-19 Tracker</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
 			aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -137,7 +135,8 @@
 				<!-- INDIA STATS -->
 				<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-					<p class="text-center" id="info">Last updated on <span th:text="${indialastupdatedtime}"></span> IST</p>
+					<p class="text-center" id="info">Last updated on <span th:text="${indialastupdatedtime}"></span> IST
+					</p>
 
 					<div class="container" id="card-container">
 						<div class="row">
@@ -200,7 +199,8 @@
 							</div>
 
 						</div>
-						<p class="text-center" id="info" style="margin-top: 30px;">Tap on any label to show/hide its respective line</p>
+						<p class="text-center" id="info" style="margin-top: 30px;">Tap on any label to show/hide its
+							respective line</p>
 
 					</div>
 
@@ -210,11 +210,17 @@
 							<h4>State-wise stats</h4>
 							<p style="font-size: 15px; color:rgb(114, 114, 114)">Credits: The Hindu</p>
 
-							<a type="button" id="latestnewsbtn" class="btn btn-sm btn-primary btn-thehindu" target="_blank" href="https://public.flourish.studio/visualisation/1927202/">Samples Tested</a>
+							<a type="button" id="latestnewsbtn" class="btn btn-sm btn-primary btn-thehindu"
+								target="_blank" href="https://public.flourish.studio/visualisation/1927202/">Samples
+								Tested</a>
 
-							<a type="button" id="latestnewsbtn" class="btn btn-sm btn-primary btn-thehindu" target="_blank" href="https://public.flourish.studio/visualisation/1735105/">Total Cases</a>
+							<a type="button" id="latestnewsbtn" class="btn btn-sm btn-primary btn-thehindu"
+								target="_blank" href="https://public.flourish.studio/visualisation/1735105/">Total
+								Cases</a>
 
-							<a type="button" id="latestnewsbtn" class="btn btn-sm btn-primary btn-thehindu" target="_blank" href="https://public.flourish.studio/visualisation/1733938/">Total Deaths</a>
+							<a type="button" id="latestnewsbtn" class="btn btn-sm btn-primary btn-thehindu"
+								target="_blank" href="https://public.flourish.studio/visualisation/1733938/">Total
+								Deaths</a>
 
 						</div>
 					</div>
@@ -230,6 +236,13 @@
 						<span th:text="${totalIndividualTested}"></span>
 						individuals tested till <span th:text="${timestampIndividual}"></span>
 					</h3>
+
+
+					<div class="btn-zone-container">
+						<div class="text-center">
+							<a type="button" href="/zones" class="btn btn-primary btn-zone">Know which zone your area is in</a>
+						</div>
+					</div>
 
 
 					<p class="text-center mobile-only" id="info">Swipe the table left or right to read more</p>
@@ -1233,7 +1246,8 @@
 				<!-- WORLD STATS -->
 				<div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
-					<p class="text-center" id="info">Last updated on <span th:text="${worldlastupdatedtime}"></span> GMT</p>
+					<p class="text-center" id="info">Last updated on <span th:text="${worldlastupdatedtime}"></span> GMT
+					</p>
 
 					<div class="container" id="card-container">
 						<div class="row">
@@ -1303,7 +1317,8 @@
 							</div>
 
 						</div>
-						<p class="text-center" id="info" style="margin-top: 30px;">Tap on any label to show/hide its respective line</p>
+						<p class="text-center" id="info" style="margin-top: 30px;">Tap on any label to show/hide its
+							respective line</p>
 					</div>
 
 					<div class="container text-center" id="container_continentspie">
@@ -1402,51 +1417,6 @@
 				Coducer</a>
 		</div>
 	</footer>
-
-	<!-- <script>
-		$(document).ready(function () {
-			$('#table_id').dataTable();
-		});
-
-		$(document).ready(function () {
-			$('#table_id2').dataTable();
-		});
-
-		$('#table_id').dataTable({
-			"bInfo": false,
-			"paging": false,
-			"responsive": true,
-			language: {
-				searchPlaceholder: "Search state",
-				search: ""
-			},
-			"order": [],
-			'columnDefs': [{
-				'targets': [1, 3, 4], /* column index */
-				'orderable': false, /* true or false */
-
-			}]
-		});
-
-		$('#table_id2').dataTable({
-			"bInfo": false,
-			"paging": false,
-			"responsive": true,
-			language: {
-				searchPlaceholder: "Search country",
-				search: ""
-			},
-			"order": [],
-			'columnDefs': [{
-				'targets': [1, 4], /* column index */
-				'orderable': false, /* true or false */
-
-			}]
-		});
-
-		$('div.dataTables_filter input').addClass('form-control');
-
-	</script> -->
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-104755350-2"></script>

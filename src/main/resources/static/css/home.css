@@ -29,6 +29,38 @@ hr {
     border: none;
 }
 
+.btn-zone-container {
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.btn-zone {
+    font-family: 'Karla', sans-serif;
+}
+
+.zonesheading_container {
+    margin: auto;
+    font-family: 'Karla', sans-serif;
+    max-width: 70%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#green_zone {
+    background-color: #5cfa7c;
+}
+
+#red_zone {
+    background-color: rgb(255, 96, 96);
+}
+
+#orange_zone {
+    background-color: rgb(255, 149, 79);
+}
+
 #new_counter {
     font-size: 20px;
 }
@@ -409,6 +441,15 @@ tspan {
         padding-top: 40px;
         padding-bottom: 40px;
     }
+    .zonesheading_container {
+        margin: auto;
+        font-family: 'Karla', sans-serif;
+        max-width: 70%;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
     .mobile-only {
         display: ;
     }
@@ -511,6 +552,15 @@ tspan {
         padding-top: 40px;
         padding-bottom: 40px;
     }
+    .zonesheading_container {
+        margin: auto;
+        font-family: 'Karla', sans-serif;
+        max-width: 100%;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
     .mobile-only {
         display: ;
     }
@@ -568,6 +618,15 @@ tspan {
         padding-top: 40px;
         padding-bottom: 40px;
     }
+    .zonesheading_container {
+        margin: auto;
+        font-family: 'Karla', sans-serif;
+        max-width: 100%;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
     .mobile-only {
         display: ;
     }
@@ -616,6 +675,15 @@ tspan {
         max-width: 100%;
         padding-top: 40px;
         padding-bottom: 40px;
+    }
+    .zonesheading_container {
+        margin: auto;
+        font-family: 'Karla', sans-serif;
+        max-width: 100%;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
     .mobile-only {
         display: ;

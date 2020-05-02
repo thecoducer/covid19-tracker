@@ -33,7 +33,6 @@ $(document).ready(function () {
         }]
     });
 
-
     $('div.dataTables_filter input').addClass('form-control');
 
     $('#india_casesrate').click();

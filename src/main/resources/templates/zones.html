@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Track Covid-19 cases both in India and rest of the world" />
+    <meta name="google-site-verification" content="sJ0MA1D7_S6XjRiYOWo3Rf2f0igAsFhEKwUyJty9VBQ" />
+    <title>Zones | COVID-19 Tracker</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Karla|Montserrat&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/home.css" />
+
+    <script type="text/javascript" src="/js/zones.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="mynavbar">
+        <a class="navbar-brand" href="/">COVID-19 Tracker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+
+                </li>
+                <li class="nav-item">
+
+                </li>
+                <li class="nav-item">
+
+                </li>
+                <li class="nav-item dropdown">
+
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+
+                    </div>
+                </li>
+            </ul>
+            <span class="my-2 my-lg-0" style="font-family: 'Karla', sans-serif;">
+                <a class=" my-2 my-sm-0" href="https://thecoducer.github.io/covid19-tracker/" target="_blank"
+                    style="color: white;">About</a>
+                &nbsp;
+                <a class="my-2 my-sm-0" href="https://forms.gle/NycW8q9PN3BgQETZ9" style="color: white;">Contact</a>
+            </span>
+        </div>
+    </nav>
+
+    <main role="main">
+
+        <div class="container">
+
+            <div class="zonesheading_container">
+                <h2 class="text-center">Search your area & know whether you're in a red, orange or a green zone.</h2>
+            </div>
+
+            <div class="table-responsive" id="mytable">
+                <table class="table table-hover" id="zoneslist">
+                    <thead id="table-header">
+                        <tr>
+                            <th>Zone</th>
+                            <th>District</th>
+                            <th>State</th>
+                            <th>Last updated</th>
+                        </tr>
+                    </thead>
+                    <tbody id="indiazones_tbody">
+                        <tr th:each="IndiaZones : ${IndiaZonesList}">
+                            <td id="zoneinfo" th:text="${IndiaZones.zone}"></td>
+                            <td th:text="${IndiaZones.district}"></td>
+                            <td th:text="${IndiaZones.state}"></td>
+                            <td th:text="${IndiaZones.lastupdated}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="footer" style="margin-top: 50px; margin-bottom: -20px;">
+        <div class="text-center">
+            Made with <i class="icon ion-heart"></i> by <a href="https://thecoducer.github.io/" target="_blank">The
+                Coducer</a>
+        </div>
+    </footer>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104755350-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-104755350-2');
+    </script>
+
+
+</body>
+
+</html>

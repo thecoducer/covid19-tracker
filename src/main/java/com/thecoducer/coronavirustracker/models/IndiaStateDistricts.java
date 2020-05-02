@@ -7,7 +7,7 @@ public class IndiaStateDistricts {
 	private String confirmed;
 	private String deltaConfirmed;
 	
-	
+	// Comparator to sort by total confirmed cases
 	public static Comparator<IndiaStateDistricts> iSDComparator = new Comparator<IndiaStateDistricts>() {
 		public int compare(IndiaStateDistricts d1, IndiaStateDistricts d2) {
 			long c1 = Long.parseLong(d1.getConfirmed());
