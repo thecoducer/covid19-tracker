@@ -35,6 +35,11 @@ hr {
     margin-bottom: 40px;
 }
 
+.btn-zonesmap-container {
+    margin: 0;
+    margin-top: 40px;
+}
+
 .btn-zone {
     font-family: 'Karla', sans-serif;
 }
