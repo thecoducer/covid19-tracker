@@ -90,7 +90,7 @@ $(document).ready(function () {
 
     var m = new Map();
 
-    $.getJSON('https://corona.lmao.ninja/v2/historical/USA,Spain,Italy,Germany,France,China,Iran,UK,Turkey,Belgium,S.%20Korea,India?lastdays=30',
+    $.getJSON('https://corona.lmao.ninja/v2/historical/USA,Spain,Italy,Germany,France,China,Iran,UK,Turkey,Belgium,Russia,India?lastdays=30',
         function (data) {
 
             var i;
@@ -255,8 +255,8 @@ $(document).ready(function () {
                 color: '#950000'
             },
             {
-                name: 'South Korea',
-                data: m.get("S. Korea")[0],
+                name: 'Russia',
+                data: m.get("Russia")[0],
                 type: 'line',
                 color: '#3aa287'
             },
@@ -376,8 +376,8 @@ $(document).ready(function () {
                 color: '#950000'
             },
             {
-                name: 'South Korea',
-                data: m.get("S. Korea")[1],
+                name: 'Russia',
+                data: m.get("Russia")[1],
                 type: 'line',
                 color: '#3aa287'
             },
@@ -498,8 +498,8 @@ $(document).ready(function () {
                 color: '#950000'
             },
             {
-                name: 'South Korea',
-                data: m.get("S. Korea")[2],
+                name: 'Russia',
+                data: m.get("Russia")[2],
                 type: 'line',
                 color: '#3aa287'
             },
