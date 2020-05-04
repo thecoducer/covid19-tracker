@@ -13,11 +13,44 @@ hr {
     margin: 0 auto;
 }
 
+#updates-div {
+    display: none;
+    margin-top: 20px;
+}
+
+#india-recent-div {
+    font-family: 'Karla', sans-serif;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+#updates-p {
+    font-family: 'Karla', sans-serif;
+    font-size: 17px;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: rgb(28, 28, 255);
+    width: 40%;
+    background-color: #f1f1f1;
+    padding: 15px 15px 15px 15px;
+    border-radius: 0.2rem;
+}
+
+#india-recent-on-btn {
+    background-color: #dfdfdf;
+}
+
+#india-recent-off-btn {
+    background-color: #b8b8b8;
+    display: none;
+}
+
 .thehindu_container {
     margin: auto;
     margin-top: 40px;
     font-family: 'Karla', sans-serif;
-    background-image: radial-gradient( circle 879px at 10.4% 22.3%,  rgba(255,235,238,1) 0%, rgb(208, 210, 233) 93.6% );
+    background-image: radial-gradient( circle 879px at 10.4% 22.3%, rgba(255, 235, 238, 1) 0%, rgb(208, 210, 233) 93.6%);
     max-width: 50%;
     padding-top: 40px;
     padding-bottom: 40px;
@@ -138,9 +171,7 @@ input {
     border-radius: 0em;
 }
 
-#container_timeseries {
-    
-}
+#container_timeseries {}
 
 #container_worldgraph {
     margin-bottom: 40px;
@@ -336,7 +367,6 @@ tspan {
     font-family: 'Montserrat', sans-serif;
 }
 
-
 /* 
 ##Device = Desktops
 ##Screen = 1281px to higher resolution desktops
@@ -455,6 +485,18 @@ tspan {
         margin-top: 40px;
         margin-bottom: 40px;
     }
+    #updates-p {
+        font-family: 'Karla', sans-serif;
+        font-size: 17px;
+        margin: auto;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color: rgb(28, 28, 255);
+        width: 100%;
+        background-color: #f1f1f1;
+        padding: 15px 15px 15px 15px;
+        border-radius: 0.2rem;
+    }
     .mobile-only {
         display: ;
     }
@@ -566,6 +608,18 @@ tspan {
         margin-top: 40px;
         margin-bottom: 40px;
     }
+    #updates-p {
+        font-family: 'Karla', sans-serif;
+        font-size: 17px;
+        margin: auto;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color: rgb(28, 28, 255);
+        width: 100%;
+        background-color: #f1f1f1;
+        padding: 15px 15px 15px 15px;
+        border-radius: 0.2rem;
+    }
     .mobile-only {
         display: ;
     }
@@ -632,6 +686,18 @@ tspan {
         margin-top: 40px;
         margin-bottom: 40px;
     }
+    #updates-p {
+        font-family: 'Karla', sans-serif;
+        font-size: 17px;
+        margin: auto;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color: rgb(28, 28, 255);
+        width: 100%;
+        background-color: #f1f1f1;
+        padding: 15px 15px 15px 15px;
+        border-radius: 0.2rem;
+    }
     .mobile-only {
         display: ;
     }
@@ -689,6 +755,18 @@ tspan {
         padding-bottom: 40px;
         margin-top: 40px;
         margin-bottom: 40px;
+    }
+    #updates-p {
+        font-family: 'Karla', sans-serif;
+        font-size: 17px;
+        margin: auto;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color: rgb(28, 28, 255);
+        width: 100%;
+        background-color: #f1f1f1;
+        padding: 15px 15px 15px 15px;
+        border-radius: 0.2rem;
     }
     .mobile-only {
         display: ;

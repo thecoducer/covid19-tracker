@@ -26,6 +26,7 @@ public class IndiaZonesDataService {
 	@PostConstruct
 	@Scheduled(cron = "0 0/5 * * * *")
 	public void fetchZoneInfo() throws MalformedURLException, ParseException, IOException {
+		
 		JSONObject zd = (JSONObject) new JSONParser().parse(IOUtils.toString(new URL("https://api.covid19india.org/zones.json").openStream()));
 		
 		JSONArray zones = (JSONArray) zd.get("zones");

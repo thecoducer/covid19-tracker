@@ -88,6 +88,23 @@ $(document).ready(function () {
     });
 
 
+    /* Toggle recent updates */
+
+    $("#india-recent-on-btn").click(function () {
+        // assumes element with id='button'
+        $("#india-recent-on-btn").hide();
+        $("#india-recent-off-btn").show();
+        $("#updates-div").show();
+    });
+
+    $("#india-recent-off-btn").click(function () {
+        // assumes element with id='button'
+        $("#india-recent-off-btn").hide();
+        $("#india-recent-on-btn").show();
+        $("#updates-div").hide();
+    });
+
+
     var m = new Map();
 
     $.getJSON('https://corona.lmao.ninja/v2/historical/USA,Spain,Italy,Germany,France,China,Iran,UK,Turkey,Belgium,Russia,India?lastdays=30',

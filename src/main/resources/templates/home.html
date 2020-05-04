@@ -135,6 +135,28 @@
 				<!-- INDIA STATS -->
 				<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
+					<div class="center-div text-center" id="india-recent-div">
+						<a type="button" class="btn btn-light btn-sm" id="india-recent-on-btn"><img width="20"
+								height="20" src="/media/notifications-outline.svg"></img> Recent updates</a>
+
+						<a type="button" class="btn btn-light btn-sm" id="india-recent-off-btn"><img width="20"
+								height="20" src="/media/notifications-off-outline.svg"></img> Recent updates</a>
+
+						<div id="updates-div">
+							<table class="table" id="">
+								<tbody id="">
+									<tr th:each="indiarecentupdate : ${indiarecentupdates}">
+										<div class="container" id="updates-card-container">
+											<p th:text="${indiarecentupdate.update}" id="updates-p"></p>
+											<!-- <p  th:text="${indiarecentupdate.timestamp}"></p> -->
+										</div>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
 					<p class="text-center" id="info">Last updated on <span th:text="${indialastupdatedtime}"></span> IST
 					</p>
 
@@ -240,7 +262,8 @@
 
 					<div class="btn-zone-container">
 						<div class="text-center">
-							<a type="button" target="_blank" href="/zones" class="btn btn-primary btn-zone">Know which zone your area is in</a>
+							<a type="button" target="_blank" href="/zones" class="btn btn-primary btn-zone">Know which
+								zone your area is in</a>
 						</div>
 					</div>
 

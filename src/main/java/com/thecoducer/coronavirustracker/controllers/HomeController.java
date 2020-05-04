@@ -10,11 +10,13 @@ import java.util.Date;
 import java.util.List;
 
 import com.thecoducer.coronavirustracker.models.AllStats;
+import com.thecoducer.coronavirustracker.models.IndiaRecentUpdates;
 import com.thecoducer.coronavirustracker.models.IndiaStateDistricts;
 import com.thecoducer.coronavirustracker.models.IndiaStats;
 import com.thecoducer.coronavirustracker.models.TestedStats;
 import com.thecoducer.coronavirustracker.models.WorldStats;
 import com.thecoducer.coronavirustracker.services.AllStatsDataService;
+import com.thecoducer.coronavirustracker.services.IndiaRecentUpdatesDataService;
 import com.thecoducer.coronavirustracker.services.IndiaStateDistrictDataService;
 import com.thecoducer.coronavirustracker.services.IndiaStatsDataService;
 import com.thecoducer.coronavirustracker.services.IndiaTestedDataService;
@@ -48,6 +50,9 @@ public class HomeController {
 
 	@Autowired
 	IndiaStateDistrictDataService indiaStateDistrictDataService;
+	
+	@Autowired
+	IndiaRecentUpdatesDataService indiaRecentUpdatesDataService;
 
 	@GetMapping("/")
 	public String home(Model model) {
@@ -59,6 +64,8 @@ public class HomeController {
 		List<WorldStats> worldStats = worldStatsDataService.getWorldStats();
 
 		List<IndiaStats> indiaStats = indiaStatsDataService.getIndiaStats();
+		
+		List<IndiaRecentUpdates> indiaRecentUpdatesList = indiaRecentUpdatesDataService.getIndiaRecentUpdates();
 
 		TestedStats testStats = indiaTestedDataService.getTestStats();
 
@@ -104,6 +111,8 @@ public class HomeController {
 		model.addAttribute("totalIndiaNewDeaths", totalIndiaNewDeaths);
 		model.addAttribute("totalIndiaDeaths", totalIndiaDeaths);
 		model.addAttribute("indialastupdatedtime", indiaTotalCounterDataService.getLastupdatedtime());
+		
+		model.addAttribute("indiarecentupdates", indiaRecentUpdatesList);
 
 		String sourceIndividualTested = testStats.getSourceIndividualTested();
 		String sourceSamplesTested = testStats.getSourceSamplesTested();
