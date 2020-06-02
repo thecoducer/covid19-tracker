@@ -535,30 +535,6 @@
 												</tr>
 											</tbody>
 
-											<tbody id="DN_tbody">
-												<tr th:each="DN : ${DadraandNagarHaveli}">
-
-													<td th:text="${DN.districtName}" id="district_name"></td>
-
-													<td class="text-right">
-														<span id="up_newcases" th:if="${DN.deltaConfirmed != '0'}">
-															<svg xmlns="http://www.w3.org/2000/svg" width="12"
-																height="12" viewBox="0 0 24 24" fill="none"
-																stroke="currentColor" stroke-width="2"
-																stroke-linecap="round" stroke-linejoin="round">
-																<line x1="12" y1="19" x2="12" y2="5"></line>
-																<polyline points="5 12 12 5 19 12"></polyline>
-															</svg>
-
-															<span th:text="${DN.deltaConfirmed}"></span>
-														</span>
-
-														<span th:text="${DN.confirmed}"></span>
-													</td>
-
-												</tr>
-											</tbody>
-
 											<tbody id="DL_tbody">
 												<tr th:each="DL : ${Delhi}">
 
@@ -1183,13 +1159,13 @@
 												</tr>
 											</tbody>
 
-											<tbody id="DD_tbody">
-												<tr th:each="DD : ${DamanandDiu}">
+											<tbody id="DNDD_tbody">
+												<tr th:each="DNDD : ${DadraandNagarHaveliandDamanandDiu}">
 
-													<td th:text="${DD.districtName}" id="district_name"></td>
+													<td th:text="${DNDD.districtName}" id="district_name"></td>
 
 													<td class="text-right">
-														<span id="up_newcases" th:if="${DD.deltaConfirmed != '0'}">
+														<span id="up_newcases" th:if="${DNDD.deltaConfirmed != '0'}">
 															<svg xmlns="http://www.w3.org/2000/svg" width="12"
 																height="12" viewBox="0 0 24 24" fill="none"
 																stroke="currentColor" stroke-width="2"
@@ -1197,10 +1173,10 @@
 																<line x1="12" y1="19" x2="12" y2="5"></line>
 																<polyline points="5 12 12 5 19 12"></polyline>
 															</svg>
-															<span th:text="${DD.deltaConfirmed}"></span>
+															<span th:text="${DNDD.deltaConfirmed}"></span>
 														</span>
 
-														<span th:text="${DD.confirmed}"></span>
+														<span th:text="${DNDD.confirmed}"></span>
 													</td>
 
 												</tr>

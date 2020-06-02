@@ -133,6 +133,7 @@ public class HomeController {
 		for (Map.Entry<String, List<IndiaStateDistricts>> entry : indiaStateDistrictData.entrySet()) {
 			if (entry.getValue().size() != 0) {
 				model.addAttribute(entry.getKey(), entry.getValue());
+				System.out.println(entry.getKey());
 			}
 		}
 
