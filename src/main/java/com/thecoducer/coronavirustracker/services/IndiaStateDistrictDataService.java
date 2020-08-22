@@ -63,7 +63,13 @@ public class IndiaStateDistrictDataService {
 				districtList.add(sd);
 			}
 			
-			Collections.sort(districtList, IndiaStateDistricts.iSDComparator);
+			try {
+				Collections.sort(districtList, IndiaStateDistricts.iSDComparator);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// will get back in a week
 			
 			newStateMap.put(stateName, districtList);
 		}
