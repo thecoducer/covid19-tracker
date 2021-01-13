@@ -120,8 +120,8 @@ public class HomeController {
 		String timestampIndividual = testStats.getTimestampIndividual();
 		String timestampSamples = testStats.getTimestampSamples();
 
-		String totalIndividualTested = numberFormat.format(Long.parseLong(testStats.getTotalIndividualTested()));
-		String totalSamplesTested = numberFormat.format(Long.parseLong(testStats.getTotalSamplesTested()));
+		//String totalIndividualTested = numberFormat.format(Long.parseLong(testStats.getTotalIndividualTested()));
+		//String totalSamplesTested = numberFormat.format(Long.parseLong(testStats.getTotalSamplesTested()));
 
 		model.addAttribute("sourceIndividualTested", sourceIndividualTested);
 		model.addAttribute("sourceSamplesTested", sourceSamplesTested);
