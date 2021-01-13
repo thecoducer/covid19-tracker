@@ -127,8 +127,8 @@ public class HomeController {
 		model.addAttribute("sourceSamplesTested", sourceSamplesTested);
 		model.addAttribute("timestampIndividual", timestampIndividual);
 		model.addAttribute("timestampSamples", timestampSamples);
-		model.addAttribute("totalIndividualTested", totalIndividualTested);
-		model.addAttribute("totalSamplesTested", totalSamplesTested);
+		//model.addAttribute("totalIndividualTested", totalIndividualTested);
+		//model.addAttribute("totalSamplesTested", totalSamplesTested);
 
 		for (Map.Entry<String, List<IndiaStateDistricts>> entry : indiaStateDistrictData.entrySet()) {
 			if (entry.getValue().size() != 0) {
